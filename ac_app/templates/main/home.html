@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Astronomy Club{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container-home">
+            <div class="slider">
+                <div class="slider-wrapper">
+                    <div class="slide">
+                        <img src="{% static 'images/home_sliders/Stars.png' %}" alt="img">
+                        <div class="star-slide">
+                            <h1>Explore the Stars</h1>
+                            <button class="page-button" type="submit">
+                                <a href="#">Explore</a>
+                            </button>
+                            <p>What spectral class is the Sun?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

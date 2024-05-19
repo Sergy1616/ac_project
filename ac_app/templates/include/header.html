@@ -1,0 +1,52 @@
+{% load static %}
+<header id="menu" class="header">
+    <div class="main-menu">
+        <a href="{% url 'home' %}">
+            <div class="logo-container">
+                <img class="logo-base" src="{% static 'images/log1.svg' %}">
+                <img class="logo-action" src="{% static 'images/log2.svg' %}">
+            </div>
+        </a>
+        <nav class="menu-wrapper">
+            <ul class="menu-list">
+                {% with request.resolver_match.url_name as url_name %}
+                    <li class="menu-item {% if url_name == 'news' %}active{% endif %}">
+                        <a href="#">News</a>
+                    </li>
+                    <li class="menu-item {% if url_name == 'stars' %}active{% endif %}">
+                        <a href="#">Stars</a>
+                    </li>
+                    <li class="menu-item {% if url_name == 'constellations' %}active{% endif %}">
+                        <a href="#">Сonstellations</a>
+                    </li>
+                    <li class="menu-item {% if url_name == 'products' %}active{% endif %}">
+                        <a href="#">Shop</a>
+                    </li>
+                {% endwith %}
+            </ul>
+            <div class="extra-menu-list">
+                <div class="search-bar">
+                    <form action="" method="get">
+                        <input type="text" name="query" placeholder="Search">
+                        <button type="submit">
+                            <span class="query-container">
+                                <img class="query-base" src="{% static 'images/query1.svg' %}" alt="query1">
+                                <img class="query-action" src="{% static 'images/query2.svg' %}" alt="query2">
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                <div class="user-container">
+                    <img class="user-base" src="{% static 'images/user1.svg' %}">
+                    <img class="user-action" src="{% static 'images/user2.svg' %}">
+                </div>
+                <a class="menu-cart" href="#">
+                    <div class="cart-container">
+                        <img class="cart-base" src="{% static 'images/cart1.svg' %}">
+                        <img class="cart-action" src="{% static 'images/cart2.svg' %}">
+                    </div>
+                </a>
+            </div>
+        </nav>        
+    </div>
+</header>
