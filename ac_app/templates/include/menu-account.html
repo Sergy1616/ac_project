@@ -4,7 +4,8 @@
     <img class="icon-close" src="{% static 'images/close.svg' %}" id="close-menu">
     {% if request.user.is_authenticated %}
         <div class="menu-account-user">
-            <img src="{% static 'images/astro.svg' %}">
+            <img src="{% if user.photo %}{{ user.photo.url }}{% else %}
+            {% static 'images/astro.svg' %}{% endif %}">
             <p>{{ user.first_name|default:user.username }}</p>
         </div>
         <ul class="menu-account-list">
@@ -18,12 +19,7 @@
     {% else %}
         <img class="menu-account-logo" src="{% static 'images/log1.svg' %}">
         <div class="login-form">
-            <form action="" method="post">
-                <input class="form-item" placeholder="Username or Email" type="text">
-                <input class="form-item" placeholder="Password" type="password">
-                <div class="user-log-button"><button class="page-button" type="submit">Sign in</button></div>
-            </form>
-            
+            {% include 'include/login_form.html' %}
             <div class="form-link">
                 <a href="#">Sign in with Google</a>
                 <a href="#">Forgot password?</a>

@@ -1,0 +1,23 @@
+<form action="{% url 'login_user' %}" method="post" hx-post="/login_user/" hx-trigger="submit">
+    {% csrf_token %}
+    <input class="form-item" placeholder="Username or Email"
+           type="text"
+           name="username_or_email"
+           hx-post="/check_user/"
+           hx-trigger="keyup[target.value.length > 4]"
+           hx-target="#username_or_email-error"
+           required id="id_username_or_email">
+    <input type="hidden" name="username_or_email" id="id_username">
+    <div id="username_or_email-error" class="form-error"></div>
+    
+    <input class="form-item" placeholder="{{ login_form.password.label }}"
+           type="password"
+           name="password"
+           hx-post="/check_password/"
+           hx-swap="outerhtml"
+           hx-trigger="keyup[target.value.length > 4]"
+           hx-target="#password-error"
+           required id="id_password">
+    <div id="password-error" class="form-error"></div>
+    <div class="user-log-button"><button class="page-button" type="submit">Sign in</button></div>
+</form>
