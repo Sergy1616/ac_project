@@ -360,13 +360,47 @@ main { min-height: calc(100vh - 150px); }
     box-shadow: inset 0 0 2px 0px var(--sleep-color);
 }
 
+/* меню после авторизации */
+.menu-account-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 40px 20px;
+}
+
+.menu-account-user img {
+    width: 50px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px 0px var(--sleep-color);
+}
+
+.menu-account-user p {
+    font-size: 20px;
+    padding: 10px;
+    word-break: break-all;
+}
+
+.menu-account-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.menu-account-item {
+    margin-bottom: 20px;
+    transition: 0.5s;
+    width: max-content;
+}
+
 .user-log-button {
     display: flex;
     justify-content: center;
     margin: 20px 0 30px;
 }
 
-.form-link {
+.form-link,
+.registration-link {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,0 +1,48 @@
+/* Pages */
+
+/* templates/registration */
+.main-registration {
+    background-image: url(../images/bg_image1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container-registration { margin: 20px auto; }
+
+.registration-box {
+    width: 500px;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    padding: 30px 20px;
+    border-radius: 16px;
+    background-color: var(--bg-table);
+}
+
+.signup-link {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.signup-link img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.registration-link a {
+    margin-bottom: 10px;
+    transition: 0.5s;
+}
+
+.registration-form h1 {
+    margin: 20px 0 30px;
+    font-size: 18px;
+}
+
+.registration-form p { margin-bottom: 30px; }
+
+/* templates/registration end */

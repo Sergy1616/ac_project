@@ -1,0 +1,33 @@
+{% extends "base-registration.html" %}
+{% load static %}
+{% block title %}login{% endblock %}
+{% block content %}
+    <div class="registration-form">
+        <h1>Sign in to Astronomy Club</h1>
+        <div class="user-log-button">
+            <button class="page-button" type="submit">
+                <a class="signup-link" href="#">
+                    <img src="{% static 'images/google.svg' %}">
+                    <span>Continue with Google</span>
+                </a>
+            </button>
+        </div>
+        <div class="login-form">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-error">{{ login_form.non_field_errors }}</div>
+                {% for i in login_form %}
+                    <input class="form-item" placeholder="{{ i.label }}"
+                           type="{{ i.field.widget.input_type }}" name="{{ i.name }}"
+                           value="{{ i.value|default_if_none:'' }}">
+                    <div class="form-error">{{ i.errors }}</div>
+                {% endfor %}
+                <div class="user-log-button"><button class="page-button" type="submit">Sign in</button></div>
+            </form>
+            <div class="registration-link">
+                <a href="#">Forgot password?</a>
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
