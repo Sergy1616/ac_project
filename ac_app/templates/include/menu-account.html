@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="menu-account" id="account-menu">
+    <img class="icon-close" src="{% static 'images/close.svg' %}" id="close-menu">
+    <img class="menu-account-logo" src="{% static 'images/log1.svg' %}">
+    <div class="login-form">
+        <form action="" method="post">
+            <input class="form-item" placeholder="Username or Email" type="text">
+            <input class="form-item" placeholder="Password" type="password">
+            <div class="user-log-button"><button class="page-button" type="submit">Sign in</button></div>
+        </form>
+        
+        <div class="form-link">
+            <a href="#">Sign in with Google</a>
+            <a href="#">Forgot password?</a>
+            <a href="#">Sign up</a>
+        </div>
+    </div>
+</div>

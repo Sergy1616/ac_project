@@ -36,7 +36,7 @@
                         </button>
                     </form>
                 </div>
-                <div class="user-container">
+                <div class="user-container" id="open-account-menu">
                     <img class="user-base" src="{% static 'images/user1.svg' %}">
                     <img class="user-action" src="{% static 'images/user2.svg' %}">
                 </div>
@@ -47,6 +47,7 @@
                     </div>
                 </a>
             </div>
-        </nav>        
+        </nav>
+        {% include 'include/menu-account.html' %}
     </div>
 </header>
