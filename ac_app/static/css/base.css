@@ -13,7 +13,7 @@
     --slider-starhover: #ff4425;
 }
 
-/* Общие настройки */
+/* general styles */
 html {
     box-sizing: border-box;
     min-height: 100%;
@@ -153,9 +153,9 @@ main { min-height: calc(100vh - 150px); }
     padding: 0 10px;
     margin: 100px auto;
 } 
-/* Общие настройки end */
+/* general styles end */
 
-/* Навигация - main-menu */
+/* main-menu */
 .header{
     background: linear-gradient(180deg,
         var(--background) 50%,

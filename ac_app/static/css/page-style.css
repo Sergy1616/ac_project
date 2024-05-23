@@ -1,4 +1,82 @@
 /* Pages */
+/* general styles */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+/* general styles end */
+
+/* account/profile */
+.profile {
+    max-width: 500px;
+    padding: 2rem; 
+    border-radius: 20px;
+    box-shadow: inset 0 0 6px 0px var(--shadow);
+    background-color: var(--bg-table);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-header img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius:10px;
+    box-shadow: inset 0 0 2px 0px var(--sleep-color);
+    margin-right: 15px;
+}
+
+.profile-name ul {
+    display: flex;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+}
+
+.profile-name li { margin-right: 5px; }
+
+.profile-header p {
+    color: var(--sleep-color);
+    font-weight: 600;
+}
+
+.profile-name span { 
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+.profile-info-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.profile-info-title {
+    width: 40px;
+    margin-right: 10px;
+    color: var(--sleep-color);
+}
+
+.profile-info-text { flex-basis: 90%; }
+
+.profile-links {
+    display: flex;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.profile-links ul { margin: 15px auto; }
+
+.profile-links li {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.profile-links li:last-child { margin-bottom: 0; }
+/* profile end */
 
 /* templates/registration */
 .main-registration {

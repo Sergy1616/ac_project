@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="profile">
+                <div class="profile-header">
+                    <img src="{% if user.photo %}{{ user.photo.url }}{% else %}{% static 'images/astro.svg' %}{% endif %}">
+                    <div class="profile-name">
+                        <ul>
+                            {% if user.get_full_name %}
+                                <li>{{user.first_name}}</li>
+                                <li>{{user.last_name}}</li>
+                            {% else %}
+                                <li>{{user.username}}</li>
+                            {% endif %}
+                        </ul>
+                        <hr>
+                        <p>Your profile<span>({{ user.username }})</span></p>
+                    </div>
+                </div>
+                <ul class="profile-info">
+                    {% if user.email %}
+                        <li class="profile-info-row">
+                            <p class="profile-info-title">Email:</p>
+                            <p class="profile-info-text">{{user.email}}</p>
+                        </li>
+                    {% endif %}
+                    {% if user.bio %}
+                        <li class="profile-info-row">
+                            <p class="profile-info-title">Bio:</p>
+                            <p class="profile-info-text">{{user.bio|linebreaksbr}}</p>
+                        </li>
+                    {% endif %}
+                </ul>
+                <hr>
+                <div class="profile-links">
+                    <ul>
+                        <li><a class="page-link" href="#">Edit Profile</a></li>
+                        <li><a class="page-link" href="#">Comments</a></li>
+                        <li><a class="page-link" href="#">Favorite Stars</a></li>
+                        <li><a class="page-link" href="#">Show Wish List</a></li>
+                        <li><a class="page-link" href="#">View Orders</a></li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="buttons">
+                    <button class="page-button" type="submit"><a href="{% url 'logout' %}">Sign out</a></button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

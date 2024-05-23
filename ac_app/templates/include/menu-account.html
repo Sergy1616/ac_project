@@ -9,7 +9,7 @@
             <p>{{ user.first_name|default:user.username }}</p>
         </div>
         <ul class="menu-account-list">
-            <li class="menu-account-item"><a href="#">Profile</a></li>
+            <li class="menu-account-item"><a href="{{ user.get_absolute_url }}">Profile</a></li>
             <li class="menu-account-item"><a href="#">Wish List</a></li>
             <li class="menu-account-item"><a href="#">Orders</a></li>
         </ul>
