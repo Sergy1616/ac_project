@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="registration-box">
+                <div class="signup-form">
+                    <h1>Create your account</h1>
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">{{ message|safe }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="user-log-button">
+                        <button class="page-button" type="submit">
+                            <a class="signup-link" href="#">
+                                <img src="{% static 'images/google.svg' %}">
+                                <span>Continue with Google</span>
+                            </a>
+                        </button>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for i in signup_form %}
+                            <input class="form-item" placeholder="{{ i.label }}"
+                                   type="{{ i.field.widget.input_type }}" name="{{ i.name }}"
+                                   value="{{ i.value|default_if_none:'' }}">
+                            <div class="form-error">{{ i.errors }}</div>
+                        {% endfor %}
+                        <div class="buttons"><button class="page-button" type="submit">Sign up</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
