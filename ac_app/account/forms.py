@@ -27,3 +27,26 @@ class SignUpProfileForm(UserCreationForm):
         if Profile.objects.filter(email=data).exists():
             raise forms.ValidationError('Email already in use.')
         return data
+
+
+class ProfileEditForm(forms.ModelForm):
+    username = forms.CharField(min_length=5, widget=forms.TextInput(attrs={'class': 'edit-input'}))
+    remove_photo = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'checkbox'}))
+
+    class Meta:
+        model = Profile
+        fields = ['photo', 'remove_photo', 'username', 'first_name', 'last_name', 'email', 'bio']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'edit-input'}),
+            'last_name': forms.TextInput(attrs={'class': 'edit-input'}),
+            'email': forms.EmailInput(attrs={'class': 'edit-input'}),
+            'photo': forms.FileInput(attrs={'class': 'edit-img-input'}),
+            'bio': forms.Textarea(attrs={'class': 'edit-text-input'}),
+        }
+
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        qs = Profile.objects.exclude(id=self.instance.id).filter(email=data)
+        if qs.exists():
+            raise forms.ValidationError(' Email already in use.')
+        return data

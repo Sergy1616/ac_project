@@ -1,11 +1,46 @@
 /* Pages */
 /* general styles */
+.edit-input, 
+.edit-text-input {
+    padding: 5px;
+    font-size: 18px;
+    color: var(--text-color);
+    text-align: center;
+    background-color: var(--bg-input);
+    border: none;
+    border-radius: 15px;
+    box-shadow: inset 0 0 2px 0px var(--sleep-color);
+    overflow-y: hidden;
+    resize: none;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
-/* general styles end */
+
+.checkbox { display: none; }
+
+.checkbox-main {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 0 3px 0px #393e4a;
+    vertical-align: text-bottom;
+}
+
+.checkbox:checked + .checkbox-main::before {
+    content: '✓';
+    font-size: 30px;
+    display: block;
+    margin-left: 2px;
+    margin-top: -12px;
+}
 
 /* account/profile */
 .profile {
@@ -76,7 +111,73 @@
 }
 
 .profile-links li:last-child { margin-bottom: 0; }
-/* profile end */
+
+/* edit profile */
+.edit-box {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px 0px var(--shadow);
+    background-color: var(--bg-table);
+}
+
+.edit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.edit-item label { width: 150px; }
+
+.edit-text-input {
+    max-width: 300px;
+    max-height: 150px;
+    text-align: left;
+}
+
+.edit-photo { text-align: center; }
+
+.edit-photo p { 
+    color: var(--text-color);
+    font-weight: 400;
+}
+
+/* корректировка кнопки загрузки файла */
+.edit-img-input{ color: var(--sleep-color); }
+
+.edit-img-input::-webkit-file-upload-button {
+    margin-right: 10px;
+    color: var(--sleep-color);
+    background: var(--bg-input);
+    box-shadow: inset 0 0 2px 0px var(--sleep-color);
+    cursor: pointer;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 20px;
+}
+
+.edit-img-input::-webkit-file-upload-button:hover{
+    color: var(--text-color);
+    transition: 0.5s;
+}
+
+.remove-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.edit-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.edit-links button:first-child { margin-right: 10px; }
+
+.delete-link { color: var(--error-color); }
 
 /* templates/registration */
 .main-registration {
@@ -128,5 +229,3 @@
 }
 
 .registration-form p { margin-bottom: 30px; }
-
-/* templates/registration end */

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // HEADER:
-// 1. Дополнительное меню аккаунта
+// 1. Модальное окно аккаунта
 function accountMenu() {
     const accountMenu = document.getElementById('account-menu');
 
@@ -34,7 +34,7 @@ function accountMenu() {
     }
 };
 
-// 2. Обработка поля ввода htmx "Username or Email")
+// 2. htmx login 
 function handleInput() {
     var userOrEmailInput = document.getElementById('id_username_or_email');
     var usernameInput = document.getElementById('id_username');
