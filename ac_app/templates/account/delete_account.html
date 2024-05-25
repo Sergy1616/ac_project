@@ -1,0 +1,32 @@
+{% extends "base-registration.html" %}
+{% load static %}
+{% block title %}Delete Account Confirmation{% endblock %}
+
+{% block content %}
+    <div class="registration-form">
+        <h1>Delete Account Confirmation</h1>
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message|safe }}</li>
+            {% endfor %}
+        </ul>
+        <p>Please enter your password to confirm deleting your account.</p>
+        <form method="post">
+            {% csrf_token %}
+            <input class="form-item" type="password" name="password" placeholder="Password">
+            <div class="form-error">{{ form.password.errors }}</div>
+            <div class="text-note">
+                <p>Your account will be deactivated immediately.</p>
+                <p>You won't be able to access or manage your profile.</p>
+            </div>
+            <label class="label-checkbox">
+                <input class="checkbox" type="checkbox" name="confirm_delete">
+                <span class="checkbox-main"></span>{{ form.confirm_delete.label }}
+            </label>
+            <div class="confirm-button">
+                <button type="button"><a href="{{ user.get_absolute_url }}">Cancel</a></button>
+                <button type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

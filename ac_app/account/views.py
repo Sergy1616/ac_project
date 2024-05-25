@@ -1,13 +1,19 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, FormView, UpdateView
+from django.views.generic import DeleteView, DetailView, FormView, UpdateView
 from django.shortcuts import redirect
 
-from account.forms import CustomPasswordResetForm, SignUpProfileForm, ProfileEditForm, CustomPasswordChangeForm
+from account.forms import (
+    CustomPasswordResetForm,
+    SignUpProfileForm,
+    ProfileEditForm,
+    CustomPasswordChangeForm,
+    DeleteAccountForm
+)
 from account.models import Profile
 
 
@@ -102,3 +108,31 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
             return self.get(request, *args, **kwargs)
         else:
             return self.form_invalid(form)
+
+
+class DeleteAccountView(LoginRequiredMixin, DeleteView):
+    form_class = DeleteAccountForm
+    template_name = 'account/delete_account.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        password = request.POST.get('password')
+        if user.check_password(password):
+            if self.request.POST.get('confirm_delete'):
+                return super().post(request, *args, **kwargs)
+            else:
+                messages.error(self.request, 'Please check the confirmation box to delete your account.')
+                return super().get(request, *args, **kwargs)
+        else:
+            messages.error(self.request, 'Incorrect password. Account deletion failed.')
+            return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.delete()
+        logout(self.request)
+        return HttpResponseRedirect(success_url)

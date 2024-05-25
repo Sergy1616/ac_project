@@ -74,3 +74,8 @@ class CustomPasswordResetForm(PasswordResetForm):
         if not Profile.objects.filter(email=data).exists():
             raise forms.ValidationError('No account found with that email address.')
         return data
+
+
+class DeleteAccountForm(forms.Form):
+    password = forms.CharField(widget=forms.PasswordInput)
+    confirm_delete = forms.BooleanField(label='I understand that this action is irreversible')
