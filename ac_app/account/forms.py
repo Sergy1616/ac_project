@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -50,3 +50,15 @@ class ProfileEditForm(forms.ModelForm):
         if qs.exists():
             raise forms.ValidationError(' Email already in use.')
         return data
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.user.has_usable_password():
+            self.fields.pop('old_password')
+        self.fields['new_password2'].label = 'Confirm password'
+
+    class Meta:
+        model = Profile
+        fields = ['old_password', 'new_password1', 'new_password2']

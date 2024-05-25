@@ -1,12 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from django.views.generic import DetailView, FormView, UpdateView
 from django.shortcuts import redirect
 
-from account.forms import SignUpProfileForm, ProfileEditForm
+from account.forms import SignUpProfileForm, ProfileEditForm, CustomPasswordChangeForm
 from account.models import Profile
 
 
@@ -60,4 +61,19 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         response = super().form_invalid(form)
         messages.error(self.request, "Failed to update your profile.")
+        return response
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy('password_change')
+    form_class = CustomPasswordChangeForm
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Password changed successfully.")
+        return response
+
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.error(self.request, "Password change failed.")
         return response
