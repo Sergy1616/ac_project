@@ -1,13 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, FormView, UpdateView
 from django.shortcuts import redirect
 
-from account.forms import SignUpProfileForm, ProfileEditForm, CustomPasswordChangeForm
+from account.forms import CustomPasswordResetForm, SignUpProfileForm, ProfileEditForm, CustomPasswordChangeForm
 from account.models import Profile
 
 
@@ -77,3 +77,28 @@ class CustomPasswordChangeView(PasswordChangeView):
         response = super().form_invalid(form)
         messages.error(self.request, "Password change failed.")
         return response
+
+
+class CustomPasswordResetView(PasswordResetView):
+    form_class = CustomPasswordResetForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            form.save(request=request)
+            messages.success(request, "We've emailed you instructions for setting your password.")
+            return self.get(request, *args, **kwargs)
+        else:
+            return self.form_invalid(form)
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your password has been set successfully.")
+            return self.get(request, *args, **kwargs)
+        else:
+            return self.form_invalid(form)

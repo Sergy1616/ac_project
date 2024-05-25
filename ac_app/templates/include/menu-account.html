@@ -22,7 +22,7 @@
             {% include 'include/login_form.html' %}
             <div class="form-link">
                 <a href="#">Sign in with Google</a>
-                <a href="#">Forgot password?</a>
+                <a href="{% url 'password_reset' %}">Forgot password?</a>
                 <a href="{% url 'signup' %}">Sign up</a>
             </div>
         </div>

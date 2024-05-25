@@ -229,3 +229,10 @@
 }
 
 .registration-form p { margin-bottom: 30px; }
+
+.text-note {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-top: 30px;
+}
+
+.text-note p { margin: 0 0 10px; }

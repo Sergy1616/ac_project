@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -62,3 +62,15 @@ class CustomPasswordChangeForm(PasswordChangeForm):
     class Meta:
         model = Profile
         fields = ['old_password', 'new_password1', 'new_password2']
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    class Meta:
+        model = Profile
+        fields = ['email']
+
+    def clean_email(self):
+        data = self.cleaned_data['email'].lower()
+        if not Profile.objects.filter(email=data).exists():
+            raise forms.ValidationError('No account found with that email address.')
+        return data
