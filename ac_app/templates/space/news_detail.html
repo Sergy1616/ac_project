@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="detail-box">
+                <h1 class="page-title detail-title">{{ news.title }}</h1>
+                <div class="detail-wrapper">
+                    {% if news.image %}<img src="{{ news.image.url }}" alt="img">{% endif %}
+                    <div class="space-news-content">
+                        <p>{{ news.time_create|date:"F j, Y" }}</p>
+                        <p>{{ news.description|linebreaksbr }}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

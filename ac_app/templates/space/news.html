@@ -6,11 +6,11 @@
             <h1 class="page-title">Space News</h1>
             {% for news in news_list %}
                 <div class="news-wrapper">
-                    <a class="img-link" href="#">
+                    <a class="img-link" href="{{ news.get_absolute_url }}">
                         {% if news.image %}<img src="{{ news.image.url }}" alt="img">{% endif %}
                     </a>
                     <div class="news">
-                        <h2><a href="#">
+                        <h2><a href="{{ news.get_absolute_url }}">
                             {{ news.title|truncatewords:20 }}</a></h2>
                         <p>{{ news.description|truncatewords:50 }}</p>
                         <p class="date">{{ news.time_create|date:"F j, Y" }}</p>

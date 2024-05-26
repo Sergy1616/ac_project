@@ -1,5 +1,7 @@
 /* Pages */
 /* general styles */
+.detail-box { max-width: 840px; }
+
 .edit-input, 
 .edit-text-input {
     padding: 5px;
@@ -300,3 +302,26 @@
     font-weight: 400;
 }
 
+/*  space detail */
+.space-news-content {
+    text-align: justify;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.space-news-content p { margin-bottom: 20px; }
+
+.detail-wrapper {
+    margin: 5px;
+    text-align: center;
+}
+
+.detail-wrapper img, 
+.extra-content img {
+    width: 800px;
+    max-height: 600px;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 1px solid var(--text-color);
+    border-radius:10px;
+}
