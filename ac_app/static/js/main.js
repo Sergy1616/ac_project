@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Функция инициализации для всех страниц
     function initializeOnAllPages() {
+        handleMenu();
         accountMenu();
         handleInput();
     }
@@ -11,7 +12,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // HEADER:
-// 1. Модальное окно аккаунта
+// 1. Navbar (scrolling)
+function handleMenu() {
+    var prevPos = window.pageYOffset;
+    var menu = document.getElementById("menu");
+    var isUpdating = false;
+
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+
+        if (!isUpdating && Math.abs(prevPos - currentScrollPos) > 200) {
+            isUpdating = true;
+            event.stopPropagation();
+
+            requestAnimationFrame(function updateMenuPosition() {
+                if (prevPos > currentScrollPos) {
+                    menu.style.top = "0";
+                } else {
+                    menu.style.top = "-200px";
+                }
+                prevPos = currentScrollPos;
+                isUpdating = false;
+            });
+        }
+    }
+};
+
+// 2. Модальное окно аккаунта
 function accountMenu() {
     const accountMenu = document.getElementById('account-menu');
 
@@ -34,7 +61,7 @@ function accountMenu() {
     }
 };
 
-// 2. htmx login 
+// 3. htmx login 
 function handleInput() {
     var userOrEmailInput = document.getElementById('id_username_or_email');
     var usernameInput = document.getElementById('id_username');
