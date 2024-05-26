@@ -1,0 +1,20 @@
+<div class="comments-box">
+    <div class="comments-list">
+        {% for comment in news.comments.all %}
+            <div class="comment-wrapper">
+                <p class="comment-author">{{ comment.author }}
+                    <span>{{ comment.time_create|date:"F j, Y" }}</span></p>
+                <p class="comment-content">{{ comment.text|linebreaksbr }}</p>
+                {% if comment.author == user %}
+                <div class="comment-controls">
+                    <a href="javascript:void(0)"
+                        onclick="window.commentsHandler.loadEditForm({{ comment.pk }},
+                        '{{ comment.text|escapejs }}')">Edit</a>
+                    <a href="javascript:void(0)"
+                        onclick="window.commentsHandler.showConfirmModal({{ comment.id }});">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

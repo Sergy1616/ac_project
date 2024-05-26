@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="comment">
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'comment_view' news.slug %}">
+            {% csrf_token %}
+            <div class="comment-item">
+                <div class="comment-user">
+                    <img src="{% if user.photo %}{{ user.photo.url }}{% else %}
+                    {% static 'images/astro.svg' %}{% endif %}">
+                    <p>{{ user.first_name|default:user.username }}</p>
+                </div>
+                {% for comment in form %}
+                    <p>{{ comment }}</p>
+                    <div class="form-error">{{ comment.errors }}</div>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="comment_id" id="commentId" value="">
+            <div class="buttons comment-button">
+                <button class="page-button" type="submit">Comment</button>
+            </div>
+        </form>
+    {% else %}
+        <a class="page-link" href="{% url 'login' %}?next={{ request.path }}">Add a comment...</a>
+    {% endif %}
+</div>

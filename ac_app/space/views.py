@@ -1,9 +1,13 @@
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .utils import NavigationMixin
-from .models import SpaceNews
+from .models import SpaceNews, Comment
+from .forms import CommentForm
 
 
 class SpaceNewsView(ListView):
@@ -26,10 +30,40 @@ class SpaceNewsDetailView(NavigationMixin, DetailView):
 
     def get_object(self, queryset=None):
         slug = self.kwargs.get(self.slug_url_kwarg)
-        news = get_object_or_404(SpaceNews, slug=slug, published=True)
+        news = get_object_or_404(SpaceNews.objects.prefetch_related(
+            "comments__author"), slug=slug, published=True)
         return news
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["news_list"] = reverse("news")
+        context["form"] = CommentForm()
+        context["comments"] = self.object.comments.filter(active=True)
         return context
+
+
+class CommentView(LoginRequiredMixin, View):
+    def post(self, request, slug):
+        news = get_object_or_404(SpaceNews, slug=slug)
+        form = CommentForm(request.POST)
+        comment_id = request.POST.get("comment_id")
+        if form.is_valid():
+            if comment_id:
+                comment = get_object_or_404(Comment, pk=comment_id, author=request.user, news=news)
+                comment.text = form.cleaned_data["text"]
+            else:
+                comment = form.save(commit=False)
+                comment.author = request.user
+                comment.news = news
+            comment.save()
+        return redirect(news.get_absolute_url())
+
+
+class CommentDeleteView(LoginRequiredMixin, View):
+    def post(self, request, slug):
+        news = get_object_or_404(SpaceNews, slug=slug)
+        comment_id = request.POST.get("comment_id")
+        comment = get_object_or_404(Comment, pk=comment_id, author=request.user, news=news)
+        comment.delete()
+        referer_url = request.META.get("HTTP_REFERER")
+        return HttpResponseRedirect(referer_url)

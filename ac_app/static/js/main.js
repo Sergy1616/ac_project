@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // initializing the comment handler with data-page="comment-edit"
+    if (document.body.getAttribute('data-page') === 'comment-edit') {
+        window.commentsHandler = new CommentsHandler();
+    }
 
-    // Функция инициализации для всех страниц
     function initializeOnAllPages() {
         handleMenu();
         accountMenu();
@@ -38,7 +41,7 @@ function handleMenu() {
     }
 };
 
-// 2. Модальное окно аккаунта
+// 2. Modal account
 function accountMenu() {
     const accountMenu = document.getElementById('account-menu');
 
@@ -82,3 +85,26 @@ function handleInput() {
         });
     });
 };
+
+// COMMENTS:
+class CommentsHandler {
+    constructor() {
+        this.initCancelCommentDeletion();
+    }
+    // 1. Cancel Delete Button
+    initCancelCommentDeletion() {
+        document.getElementById('cancelCommentDeletion').onclick = function() {
+            document.getElementById('confirmModal').style.display = 'none';
+        };
+    }
+    // 2. Form Text Edit
+    loadEditForm(commentId, commentText) {
+        document.querySelector('textarea[name="text"]').value = commentText;
+        document.getElementById('commentId').value = commentId;
+    }
+    // 3. Modal
+    showConfirmModal(commentId) {
+        document.getElementById('modalCommentId').value = commentId;
+        document.getElementById('confirmModal').style.display = 'block';
+    }
+}

@@ -1,0 +1,13 @@
+<div class="confirm-delete-box" id="confirmModal" style="display:none;">
+    <div class="confirm-delete">
+        <form method="post" action="{% url 'comment_delete' slug=target_slug %}">
+            {% csrf_token %}
+            <input type="hidden" name="comment_id" id="modalCommentId" value="">
+            <p>Are you sure you want to delete your comment?</p>
+            <div class="confirm-button">
+                <button type="button" id="cancelCommentDeletion">Cancel</button>
+                <button type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>

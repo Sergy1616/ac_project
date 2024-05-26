@@ -26,8 +26,18 @@
                             <img class="page-arrows" src="{% static 'images/arrow_right.svg' %}" alt="img">
                         </a>
                     {% endif %}
-                 </div>
+                </div>
+                <hr>
+                {% with comments.count as total_comments %}
+                    <h1 class="comments-count">
+                        <span>{{ total_comments }}</span>Comment{{ total_comments|pluralize }}
+                    </h1>
+                {% endwith %}
+                {% include 'include/space/news_comment.html' %}
+                {% include 'include/space/comments_list.html' %}
+                {% include 'include/space/confirm_delete.html' with target_slug=news.slug %}            
             </div>
         </div>
     </main>
+    <body data-page="comment-edit">
 {% endblock %}
