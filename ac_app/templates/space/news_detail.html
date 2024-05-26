@@ -14,6 +14,19 @@
                         <hr>
                     </div>
                 </div>
+                <div class="detail-control">
+                    {% if prev_news %}
+                        <a class="pagin-arrows" href="{{ prev_news.get_absolute_url }}">
+                            <img class="page-arrows" src="{% static 'images/arrow_left.svg' %}" alt="img">  
+                        </a>
+                    {% endif %}
+                    <a class="page-link" href="{{ news_list }}">All News</a>
+                    {% if next_news %}
+                        <a class="pagin-arrows" href="{{ next_news.get_absolute_url }}">
+                            <img class="page-arrows" src="{% static 'images/arrow_right.svg' %}" alt="img">
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </main>

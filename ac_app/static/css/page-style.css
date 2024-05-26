@@ -2,6 +2,27 @@
 /* general styles */
 .detail-box { max-width: 840px; }
 
+.detail-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.detail-control a { margin: 0 10px; }
+
+.page-arrows {
+    width: 35px;
+    margin: 8px;
+}
+
+.pagin-arrows {    
+    border-radius: 50%;
+    transition: 0.9s;
+}
+
+.pagin-arrows:hover { box-shadow: 0 0 4px 4px var(--hover-color); }
+
 .edit-input, 
 .edit-text-input {
     padding: 5px;
