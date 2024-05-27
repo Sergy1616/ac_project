@@ -7,6 +7,7 @@ from account.htmx_views import check_username_or_email_htmx, check_password_htmx
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('account/', include('account.urls')),
     path('space/', include('space.urls')),
 
