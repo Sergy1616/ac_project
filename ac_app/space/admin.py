@@ -1,3 +1,5 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
 from django.contrib import admin
 
 from .models import SpaceNews, Comment, Constellation
@@ -20,8 +22,17 @@ class NewsAdmin(admin.ModelAdmin):
     inlines = [CommentInline]
 
 
+class ConstellationAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Constellation
+        fields = '__all__'
+
+
 @admin.register(Constellation)
 class ConstellationAdmin(admin.ModelAdmin):
+    form = ConstellationAdminForm
     list_display = ('name', 'quadrant', 'time_create', 'image')
     search_fields = ('name', 'quadrant', 'time_create')
     prepopulated_fields = {'slug': ('name',)}

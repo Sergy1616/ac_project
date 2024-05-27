@@ -94,5 +94,148 @@
     "time_create": "2023-07-28T16:43:48.687Z",
     "published": true
   }
+},
+{
+  "model": "space.constellation",
+  "pk": 1,
+  "fields": {
+    "name": "Orion",
+    "slug": "orion",
+    "image": "constellations/orion/Orion.jpg",
+    "area": "594.120",
+    "quadrant": "NQ1",
+    "description": "<p>Orion constellation is one of the brightest and best known constellations in the night sky. It lies on the celestial equator. Orion has been known since ancient times. The constellation is also known as the Hunter, as it is associated with one in Greek mythology. It represents the mythical hunter Orion, who is often depicted in star maps as either facing the charge of&nbsp;Taurus, the bull, pursuing the&nbsp;Pleiades&nbsp;sisters, represented by the famous open cluster, or chasing after the hare (constellation Lepus) with his two hunting dogs, represented by the nearby constellations&nbsp;Canis Major&nbsp;and&nbsp;Canis Minor.</p>\r\n\r\n<p>The constellation Orion contains two of the ten&nbsp;brightest stars in the sky&nbsp;&ndash;&nbsp;Rigel&nbsp;(Beta Orionis) and&nbsp;Betelgeuse (Alpha Orionis)&nbsp;&ndash; a number of famous nebulae &ndash; the&nbsp;Orion Nebula&nbsp;(Messier 42),&nbsp;De Mairan&rsquo;s Nebula&nbsp;(Messier 43) and the&nbsp;Horsehead Nebula, among others &ndash; the well-known&nbsp;Trapezium Cluster, and one of the most prominent&nbsp;asterisms&nbsp;in the night sky &ndash;&nbsp;Orion&rsquo;s Belt.</p>\r\n<p><img alt=\"\" src=\"/media/constellations/orion/Orion2.jpg\" /></p>\r\n<p>The brightest star in the constellation is&nbsp;Rigel, Beta Orionis, with an apparent magnitude of 0.18. Rigel is also the sixth brightest star in the sky. The second brightest star in Orion,&nbsp;Betelgeuse, Alpha Orionis, has an apparent magnitude of 0.43 and is the eighth brightest star in the night sky.&nbsp;The constellation Orion contains 10 formally named stars. The&nbsp;star names&nbsp;approved by the International Astronomical Union (IAU) are Alnilam, Alnitak, Bellatrix, Betelgeuse, Hatysa, Meissa, Mintaka, Rigel, Saiph, and Tabit.</p>",
+    "time_create": "2023-02-13T14:36:12.060Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 2,
+  "fields": {
+    "name": "Taurus",
+    "slug": "taurus",
+    "image": "constellations/taurus/Taurus.jpg",
+    "area": "797.249",
+    "quadrant": "NQ1",
+    "description": "<p>Taurus is a large constellation in the northern sky.&nbsp;The constellation is symbolized by the bull&rsquo;s head ♉.&nbsp;Taurus is one of the&nbsp;12 constellations of the zodiac. It is one of the oldest constellations, dating back to the&nbsp;Early Bronze Age&nbsp;at least, when it marked the location of the Sun during the spring&nbsp;equinox.&nbsp;</p>\r\n\r\n<p>Taurus is the 17th largest constellation in the sky, occupying an area of 797 square degrees. It is one of the 15&nbsp;equatorial constellations. It is located in the first quadrant of the northern hemisphere (NQ1) and can be seen at latitudes between +90&deg; and -65&deg;.&nbsp;Taurus contains two Messier objects &ndash;&nbsp;Messier 1&nbsp;(M1, NGC 1952, Crab Nebula) and&nbsp;Messier 45&nbsp;(the Pleiades) &ndash; and has five stars that may have planets in their orbits. The brightest star in the constellation is&nbsp;Aldebaran, Alpha Tauri, with an apparent magnitude of 0.85. Aldebaran is also the 13th brightest star in the sky.&nbsp;</p>",
+    "time_create": "2023-02-14T14:06:10.849Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 3,
+  "fields": {
+    "name": "Centaurus",
+    "slug": "centaurus",
+    "image": "constellations/centaurus/Centaurus.jpg",
+    "area": "1060.422",
+    "quadrant": "SQ3",
+    "description": "<p>Centaurus is one of the&nbsp;largest constellations&nbsp;in the sky. It represents the centaur, the half man, half horse creature in Greek mythology.&nbsp;Centaurus contains two of the top ten&nbsp;brightest stars&nbsp;in the sky:&nbsp;Alpha Centauri&nbsp;and&nbsp;Beta Centauri. It is also home to&nbsp;Centaurus A, one of the brightest galaxies in the night sky, and to the globular cluster&nbsp;Omega Centauri. The famous&nbsp;Blue Planetary Nebula, also known as the Southerner, and the&nbsp;Boomerang Nebula&nbsp;are also located in Centaurus.</p>\r\n\r\n<p>Centaurus is the ninth largest constellation in the sky, occupying an area of 1060 square degrees. It lies in the third quadrant of the southern hemisphere (SQ3) and can be seen at latitudes between +25&deg; and -90&deg;.&nbsp;Centaurus contains 11 stars with known planets and does not have any Messier objects. The brightest star in the constellation is&nbsp;Alpha Centauri, which is also the fourth brightest star in the sky.&nbsp;Beta Centauri, the second brightest star in Centaurus, is the tenth brightest star in night sky. There are three meteor showers associated with the constellation: the Alpha Centaurids, the Omicron Centaurids, and the Theta Centaurids.</p>",
+    "time_create": "2023-02-14T14:26:56.951Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 4,
+  "fields": {
+    "name": "Aquila",
+    "slug": "aquila",
+    "image": "constellations/aquila/Aquila.jpg",
+    "area": "652.473",
+    "quadrant": "NQ4",
+    "description": "<p>Aquila constellation is located in the northern sky, on the celestial equator. The constellation&rsquo;s name means &ldquo;the eagle&rdquo; in Latin. The&nbsp;constellation&nbsp;represents the eagle of the god Jupiter in Roman mythology.&nbsp;The Eagle constellation is easy to spot, flying opposite the celestial&nbsp;Swan&nbsp;(Cygnus). Altair, the constellation&rsquo;s brightest star, forms a prominent asterism known as the&nbsp;Summer Triangle&nbsp;with the luminaries of&nbsp;Cygnus&nbsp;(Deneb) and&nbsp;Lyra&nbsp;(Vega).</p>\r\n\r\n<p>Aquila is the 22nd biggest star constellation in the sky, occupying an area of 652 square degrees in the fourth quadrant of the northern hemisphere (NQ4). It can be seen at latitudes between +90&deg; and -75&deg;.&nbsp;Aquila is one of the 15&nbsp;equatorial constellations. It has three stars brighter than magnitude 3.00 and two stars located within 10 parsecs (32.6 light years) of Earth.</p>\r\n<p><img alt=\"\" src=\"/media/constellations/aquila/Aquila2.jpg/\" /></p>\r\n<p>The brightest star in the constellation is&nbsp;Altair, Alpha Aquilae&nbsp;(spectral class A7 V), which is also the 12th brightest star in the sky. Altair is also the nearest star in Aquila, at a distance of only 16.77 light years from Earth.&nbsp;Aquila does not contain any Messier objects. There are two meteor showers associated with the constellation: the June Aquilids and the Epsilon Aquilids.</p>",
+    "time_create": "2023-02-14T15:59:29.975Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 5,
+  "fields": {
+    "name": "Scorpius",
+    "slug": "scorpius",
+    "image": "constellations/scorpius/Scorpius.jpg",
+    "area": "496.783",
+    "quadrant": "SQ3",
+    "description": "<p>Scorpius constellation lies in the southern sky. It represents the scorpion and is associated with the story of&nbsp;Orion&nbsp;in Greek mythology.&nbsp;Scorpius is among the most distinctive of constellations in the&nbsp;zodiac.&nbsp;Its symbol is ♏.&nbsp;The name is Latin for scorpion, or literally translated as the &quot;creature with the burning sting.&quot;&nbsp;The constellation is easy to find in the sky because it is located near the centre of the Milky Way. It contains a number of notable stars and deep sky objects, including the bright stars&nbsp;Antares&nbsp;and&nbsp;Shaula.&nbsp;</p>\r\n\r\n<p>Scorpius is the 33rd constellation in size, occupying an area of 497 square degrees. It lies in the third quadrant of the southern hemisphere (SQ3) and can be seen at latitudes between +40&deg; and -90&deg;.&nbsp;</p>",
+    "time_create": "2023-02-14T16:47:50.596Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 6,
+  "fields": {
+    "name": "Boötes",
+    "slug": "bootes",
+    "image": "constellations/bootes/Bootes.jpg",
+    "area": "906.831",
+    "quadrant": "NQ3",
+    "description": "<p>Bo&ouml;tes is one of the largest constellations in the sky. Located in the northern celestial hemisphere, the constellation is dominated by the&nbsp;Kite, a diamond-shaped asterism formed by its brightest stars.&nbsp;Bo&ouml;tes comes from the Greek word for ox-driver or herdsman.&nbsp;The constellation is home to the contrasting double star&nbsp;Izar&nbsp;and&nbsp;Arcturus, the brightest star in the northern celestial hemisphere.&nbsp;Bo&ouml;tes is the 13th largest constellation in the night sky, occupying an area of 907 square degrees. It is located in the third quadrant of the northern hemisphere (NQ3) and can be seen at latitudes between +90&deg; and -50&deg;.&nbsp;</p>\r\n<p><img alt=\"\" src=\"/media/constellations/bootes/Bootes2.jpg/\" /></p>\r\n<p>Bo&ouml;tes has five stars with known planets and does not contain any Messier objects. The brightest star in the constellation is&nbsp;Arcturus, Alpha Bo&ouml;tis, which is also the third brightest star in the night sky. There are three meteor showers associated with the constellation Bo&ouml;tes: the January Bootids, the June Bootids, and the&nbsp;Quadrantids.</p>",
+    "time_create": "2023-02-14T17:32:09.087Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 7,
+  "fields": {
+    "name": "Ursa Major",
+    "slug": "ursa-major",
+    "image": "constellations/ursa-major/Ursa_Major.jpg",
+    "area": "1279.660",
+    "quadrant": "NQ2",
+    "description": "<p>Ursa Major is the largest&nbsp;northern constellation&nbsp;and third largest constellation in the sky. Its brightest stars form the&nbsp;Big Dipper&nbsp;asterism, one of the most recognizable shapes in the sky, also known as the Plough. Ursa Major is well-known in most world cultures and associated with a number of myths.&nbsp;Five stars of the constellation form an associated group called the Ursa Major moving group, with a common&nbsp;proper motion, but Dubhe (the upper pointer) and Alcaid (the last star of the tail) have no connection with the others. Stars in other parts of the sky have been found to belong to the same&nbsp;cluster. Dubhe is the brightest star in Ursa Major, with a&nbsp;magnitude&nbsp;of 1.8. This constellation also contains the noted visual&nbsp;double&nbsp;of&nbsp;Mizar&nbsp;and&nbsp;Alcor, which sit in the middle of the Big Dipper.</p>",
+    "time_create": "2023-02-14T17:52:00.846Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 8,
+  "fields": {
+    "name": "Cepheus",
+    "slug": "cepheus",
+    "image": "constellations/cepheus/Cepheus.jpg",
+    "area": "587.787",
+    "quadrant": "NQ4",
+    "description": "<p>This constellation inherited its name after the mythical king of Ethiopia. Cepheus is the 27th largest constellation in the night sky, occupying an area of 588 square degrees. Cepheus was one of the 48 constellations listed by the second-century astronomer Ptolemy.&nbsp;Cepheus is the 27th largest constellation in the night sky, occupying an area of 588 square degrees. It is located in the fourth quadrant of the northern hemisphere (NQ4) and can be seen at latitudes between +90&deg; and -10&deg;.&nbsp;</p>\r\n\r\n<p>The constellation is home to&nbsp;Herschel&rsquo;s Garnet Star, also known as Mu Cephei. This star is a&nbsp;red supergiant&nbsp;or also referred to as a hypergiant. This star, Mu Cephei, is located slightly below the constellation&rsquo;s outline and resembles the bottom of the house, roughly in the middle.</p>",
+    "time_create": "2023-02-14T18:14:28.546Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 9,
+  "fields": {
+    "name": "Canis Major",
+    "slug": "canis-major",
+    "image": "constellations/canis-major/Canis_Major.jpg",
+    "area": "380.118",
+    "quadrant": "SQ2",
+    "description": "<p>Canis Major is a constellation in the southern sky. Its name means &ldquo;the greater dog&rdquo; in Latin. Canis Major represents the bigger dog following&nbsp;Orion, the hunter in Greek mythology.&nbsp;Canis Major is home to&nbsp;Sirius, the brightest star in the sky, as well as to several notable deep sky objects: the Canis Major Dwarf Galaxy, the open cluster&nbsp;Messier 41, the emission nebula NGC 2359 (also known as&nbsp;Thor&rsquo;s Helmet), and the colliding spiral galaxies NGC 2207 and IC 2163.</p>\r\n\r\n<p>Canis Major is the 43rd biggest constellation in the sky, occupying an area of 380 square degrees. It is located in the second quadrant of the southern hemisphere (SQ1) and can be seen at latitudes between +60&deg; and -90&deg;.&nbsp;Canis Major contains one Messier object, the star cluster&nbsp;Messier 41&nbsp;(NGC 2287), and has four stars with known planets. The brightest star in Canis Major, Sirius (Alpha Canis Majoris), is also the brightest star in the night sky. There are no meteor showers associated with the constellation.</p>",
+    "time_create": "2023-02-14T18:34:47.509Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 10,
+  "fields": {
+    "name": "Canis Minor",
+    "slug": "canis-minor",
+    "image": "constellations/canis-minor/Canis_Minor.jpg",
+    "area": "183.367",
+    "quadrant": "NQ2",
+    "description": "<p>Canis Minor is a small constellation in the northern sky. Its name means &ldquo;the smaller dog&rdquo; or &ldquo;lesser dog&rdquo; in Latin.&nbsp;The constellation represents one of the dogs following&nbsp;Orion, the hunter in Greek mythology. Canis Minor is home to&nbsp;Procyon, one of the&nbsp;brightest stars in the night sky, Luyten&rsquo;s Star, one of the nearest stars to Earth, and the spiral galaxy NGC 2485, among other notable objects.</p>\r\n\r\n<p>Canis Minor is the 71st largest constellation in the sky, occupying an area of 183 square degrees. It is one of the 15&nbsp;equatorial constellations. It lies in the second quadrant of the northern hemisphere (NQ2) and can be seen at latitudes between +90&deg; and -75&deg;.&nbsp;</p>",
+    "time_create": "2023-02-14T18:46:17.217Z"
+  }
+},
+{
+  "model": "space.constellation",
+  "pk": 11,
+  "fields": {
+    "name": "Ophiuchus",
+    "slug": "ophiuchus",
+    "image": "constellations/ophiuchus/Ophiuchus.jpg",
+    "area": "948.340",
+    "quadrant": "SQ3",
+    "description": "<p>Ophiuchus constellation lies in the southern sky, on the celestial equator. Its name means &ldquo;the serpent bearer&rdquo; in Greek.&nbsp;Ophiuchus is generally depicted as a man holding a snake, represented by the neighboring constellation&nbsp;Serpens, which is divided into two parts by Ophiuchus: Serpens Caput, the snake&rsquo;s head, and Serpens Cauda, the snake&rsquo;s tail. The snake is usually depicted coiled around his waist.&nbsp;Ophiuchus contains a number of notable stars, including&nbsp;Rasalhague&nbsp;and&nbsp;Barnard&rsquo;s Star, and many famous deep sky objects, including&nbsp;Kepler&rsquo;s Supernova, the&nbsp;Twin Jet Nebula, the Little Ghost Nebula, the dark nebulae Barnard 68, the Pipe Nebula, the Snake Nebula, and the Dark Horse Nebula, and the globular clusters.</p>\r\n\r\n<p>Ophiuchus is the 11th largest constellation in the sky, occupying an area of 948 square degrees. It is one of the 15&nbsp;equatorial constellations. It is located in the third quadrant of the southern hemisphere (SQ3) and can be seen at latitudes between +80&deg; and -80&deg;.&nbsp;The brightest star in the constellation is&nbsp;Rasalhague, Alpha Ophiuchi, with an apparent magnitude of 2.08. There are four meteor showers associated with the constellation: the Ophiuchids, the Northern May Ophiuchids, the Southern May Ophiuchids and the Theta Ophiuchids.</p>",
+    "time_create": "2023-02-14T19:26:15.533Z"
+  }
 }
 ]
