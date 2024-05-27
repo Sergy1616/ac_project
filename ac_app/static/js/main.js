@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
         window.commentsHandler = new CommentsHandler();
     }
 
+    // news pagination
+    if (window.location.pathname === '/space/news/') {
+        initializeScrollNewsListener();
+    }   
+
     function initializeOnAllPages() {
         handleMenu();
         accountMenu();
@@ -107,4 +112,35 @@ class CommentsHandler {
         document.getElementById('modalCommentId').value = commentId;
         document.getElementById('confirmModal').style.display = 'block';
     }
+};
+
+// PAGINATION:
+function initializeScrollNewsListener() {
+    var page = 1;
+    var emptyPage = false;
+    var blockRequest = false;
+
+    window.addEventListener('scroll', function(e) {
+        var margin = document.documentElement.scrollHeight - window.innerHeight - 200;
+        if(window.pageYOffset > margin && !emptyPage && !blockRequest) {
+            blockRequest = true;
+            page += 1;
+            fetch('?news_object_list=1&page=' + page)
+            .then(response => response.text())
+            .then(html => {
+                if (html === '') {
+                    emptyPage = true;
+                }
+                else {
+                    var newsList = document.getElementById('space_news');
+                    if (newsList) {
+                        newsList.insertAdjacentHTML('beforeEnd', html);
+                        blockRequest = false;
+                    }
+                }
+            });
+        }
+    });
+    const scrollEvent = new Event('scroll');
+    window.dispatchEvent(scrollEvent);
 }

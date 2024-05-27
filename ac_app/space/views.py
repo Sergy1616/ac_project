@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -14,9 +15,32 @@ class SpaceNewsView(ListView):
     model = SpaceNews
     template_name = "space/news.html"
     context_object_name = "news_list"
+    paginate_by = 4
 
     def get_queryset(self):
         return SpaceNews.objects.filter(published=True)
+
+    # pagination
+    def get(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+        news_object_list = request.GET.get("news_object_list")
+
+        if news_object_list:
+            page = request.GET.get("page")
+            paginator = Paginator(self.object_list, self.paginate_by)
+            try:
+                news_list = paginator.page(page)
+            except PageNotAnInteger:
+                news_list = paginator.page(1)
+            except EmptyPage:
+                return HttpResponse("")
+
+            context = {"news_list": news_list}
+            return render(request, "include/space/other_news.html", context)
+
+        else:
+            context = self.get_context_data()
+            return self.render_to_response(context)
 
 
 class SpaceNewsDetailView(NavigationMixin, DetailView):
