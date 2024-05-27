@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SpaceNews, Comment
+from .models import SpaceNews, Comment, Constellation
 
 
 class CommentInline(admin.TabularInline):
@@ -18,3 +18,10 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ('published', 'time_create')
     prepopulated_fields = {'slug': ('title',)}
     inlines = [CommentInline]
+
+
+@admin.register(Constellation)
+class ConstellationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'quadrant', 'time_create', 'image')
+    search_fields = ('name', 'quadrant', 'time_create')
+    prepopulated_fields = {'slug': ('name',)}

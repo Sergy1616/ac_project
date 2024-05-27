@@ -26,7 +26,9 @@ class SpaceNews(models.Model):
 class Comment(models.Model):
     DoesNotExist = None
     objects = None
-    news = models.ForeignKey(SpaceNews, on_delete=models.CASCADE, related_name='comments')
+    news = models.ForeignKey(
+        SpaceNews, on_delete=models.CASCADE, related_name="comments"
+    )
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     time_create = models.DateTimeField(auto_now_add=True)
@@ -36,4 +38,25 @@ class Comment(models.Model):
         return f'Comment by {self.author} on "{self.news}"'
 
     class Meta:
-        ordering = ['-time_create']
+        ordering = ["-time_create"]
+
+
+class Constellation(models.Model):
+    objects = None
+
+    def upload_img(self, filename):
+        return f"constellations/{self.slug}/{filename}"
+
+    name = models.CharField(max_length=100, db_index=True, unique=True)
+    slug = models.SlugField(max_length=100, db_index=True, unique=True)
+    image = models.ImageField(blank=True, upload_to=upload_img)
+    area = models.DecimalField(max_digits=7, decimal_places=3, blank=True, null=True)
+    quadrant = models.CharField(max_length=50, blank=True, db_index=True)
+    description = models.TextField(blank=True)
+    time_create = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name"]
