@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Constellations{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">Constellations</h1>
+            <div id="constellation">{% include 'include/space/other_constellations.html' %}</div>
+        </div>
+    </main>
+{% endblock %}

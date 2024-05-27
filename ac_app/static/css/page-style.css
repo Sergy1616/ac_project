@@ -287,7 +287,8 @@
 .text-note p { margin: 0 auto 10px; }
 
 /* space listView */
-.news-wrapper {
+.news-wrapper,
+.constellations-wrapper {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 20px;
@@ -295,7 +296,8 @@
     text-align: justify;
 }
 
-.news-wrapper img {
+.news-wrapper img,
+.constellations-wrapper img {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -303,13 +305,15 @@
     border-radius:10px;
 }
 
-.news {
+.news,
+.constellation {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.news h2 {
+.news h2,
+.constellation h2 {
     font-family: 'Merriweather', serif;
     margin-bottom: 10px;
     font-size: 18px;

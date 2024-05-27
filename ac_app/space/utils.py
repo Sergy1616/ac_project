@@ -1,3 +1,33 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic import ListView
+
+
+class PaginatedListView(ListView):
+    paginate_by = 4
+
+    def get(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+        if request.GET.get('ajax') == 'true':
+            page = request.GET.get('page', 1)
+            paginator = Paginator(self.object_list, self.paginate_by)
+            try:
+                objects = paginator.page(page)
+            except PageNotAnInteger:
+                objects = paginator.page(1)
+            except EmptyPage:
+                return HttpResponse('')
+
+            context = {self.context_object_name: objects}
+            return render(request, self.get_ajax_template_name(), context)
+
+        return super().get(request, *args, **kwargs)
+
+    def get_ajax_template_name(self):
+        raise NotImplementedError("Define 'get_ajax_template_name' method with appropriate template name.")
+
+
 class NavigationMixin:
     navigate_on_field = None
     extra_filters = {}

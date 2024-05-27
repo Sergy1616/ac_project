@@ -1,46 +1,25 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView
 
-from .utils import NavigationMixin
-from .models import SpaceNews, Comment
+from .utils import NavigationMixin, PaginatedListView
+from .models import SpaceNews, Comment, Constellation
 from .forms import CommentForm
 
 
-class SpaceNewsView(ListView):
+class SpaceNewsView(PaginatedListView):
     model = SpaceNews
     template_name = "space/news.html"
     context_object_name = "news_list"
-    paginate_by = 4
 
     def get_queryset(self):
         return SpaceNews.objects.filter(published=True)
 
-    # pagination
-    def get(self, request, *args, **kwargs):
-        self.object_list = self.get_queryset()
-        news_object_list = request.GET.get("news_object_list")
-
-        if news_object_list:
-            page = request.GET.get("page")
-            paginator = Paginator(self.object_list, self.paginate_by)
-            try:
-                news_list = paginator.page(page)
-            except PageNotAnInteger:
-                news_list = paginator.page(1)
-            except EmptyPage:
-                return HttpResponse("")
-
-            context = {"news_list": news_list}
-            return render(request, "include/space/other_news.html", context)
-
-        else:
-            context = self.get_context_data()
-            return self.render_to_response(context)
+    def get_ajax_template_name(self):
+        return "include/space/other_news.html"
 
 
 class SpaceNewsDetailView(NavigationMixin, DetailView):
@@ -91,3 +70,12 @@ class CommentDeleteView(LoginRequiredMixin, View):
         comment.delete()
         referer_url = request.META.get("HTTP_REFERER")
         return HttpResponseRedirect(referer_url)
+
+
+class ConstellationView(PaginatedListView):
+    model = Constellation
+    template_name = "space/constellations.html"
+    context_object_name = "constellation_list"
+
+    def get_ajax_template_name(self):
+        return "include/space/other_constellations.html"

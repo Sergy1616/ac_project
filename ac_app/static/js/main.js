@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // news pagination
     if (window.location.pathname === '/space/news/') {
-        initializeScrollNewsListener();
-    }   
+        new Pagination('space_news', 'space_news');
+    }    
+    //  constellations pagination
+    if (window.location.pathname === '/space/constellations/') {
+        new Pagination('constellation', 'constellation');
+    }  
 
     function initializeOnAllPages() {
         handleMenu();
@@ -115,32 +119,46 @@ class CommentsHandler {
 };
 
 // PAGINATION:
-function initializeScrollNewsListener() {
-    var page = 1;
-    var emptyPage = false;
-    var blockRequest = false;
+class Pagination {
+    constructor(modelType, containerId) {
+        this.modelType = modelType;
+        this.containerId = containerId;
+        this.page = 1;
+        this.emptyPage = false;
+        this.blockRequest = false;
+        this.init();
+    }
 
-    window.addEventListener('scroll', function(e) {
-        var margin = document.documentElement.scrollHeight - window.innerHeight - 200;
-        if(window.pageYOffset > margin && !emptyPage && !blockRequest) {
-            blockRequest = true;
-            page += 1;
-            fetch('?news_object_list=1&page=' + page)
-            .then(response => response.text())
-            .then(html => {
-                if (html === '') {
-                    emptyPage = true;
-                }
-                else {
-                    var newsList = document.getElementById('space_news');
-                    if (newsList) {
-                        newsList.insertAdjacentHTML('beforeEnd', html);
-                        blockRequest = false;
-                    }
-                }
-            });
+    init() {
+        window.addEventListener('scroll', this.handleScroll.bind(this));
+        window.dispatchEvent(new Event('scroll'));
+    }
+
+    handleScroll() {
+        let margin = document.documentElement.scrollHeight - window.innerHeight - 200;
+        if(window.pageYOffset > margin && !this.emptyPage && !this.blockRequest) {
+            this.loadMore();
         }
-    });
-    const scrollEvent = new Event('scroll');
-    window.dispatchEvent(scrollEvent);
+    }
+
+    loadMore() {
+        this.blockRequest = true;
+        this.page += 1;
+        let fetchUrl = `?ajax=true&page=${this.page}`;
+        fetch(fetchUrl)
+            .then(response => response.text())
+            .then(html => this.processResponse(html));
+    }
+
+    processResponse(html) {
+        if(html === '') {
+            this.emptyPage = true;
+        } else {
+            let containerList = document.getElementById(this.containerId);
+            if (containerList) {
+                containerList.insertAdjacentHTML('beforeEnd', html);
+                this.blockRequest = false;
+            }
+        }
+    }
 }
