@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.urls import reverse
 
@@ -58,8 +59,49 @@ class Constellation(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self): 
-        return reverse('constellation_detail', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse("constellation_detail", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["name"]
+
+
+class SpectralClass(models.Model):
+    name = models.CharField(max_length=50, db_index=True, unique=True)
+    slug = models.SlugField(max_length=100, db_index=True, unique=True)
+    image = models.FileField(
+        blank=True,
+        upload_to="Spectrum_svg/",
+        validators=[FileExtensionValidator(["png", "svg"])],
+    )
+    color = models.CharField(max_length=50)
+    temperature = models.CharField(max_length=50)
+    features = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Spectral classes"
+        ordering = ["id", "name"]
+
+
+class Star(models.Model):
+    def upload_img(self, filename):
+        return f"stars/{self.slug}/{filename}"
+
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, db_index=True, unique=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(blank=True, upload_to=upload_img)
+    time_create = models.DateTimeField(auto_now_add=True)
+    spectrum = models.ForeignKey(SpectralClass, on_delete=models.PROTECT)
+    constellation = models.ForeignKey(
+        Constellation, on_delete=models.PROTECT, blank=True, null=True, default=None
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name", "spectrum"]

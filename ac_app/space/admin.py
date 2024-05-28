@@ -2,7 +2,13 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.contrib import admin
 
-from .models import SpaceNews, Comment, Constellation
+from .models import (
+    SpaceNews,
+    Comment,
+    Constellation,
+    SpectralClass,
+    Star
+)
 
 
 class CommentInline(admin.TabularInline):
@@ -35,4 +41,19 @@ class ConstellationAdmin(admin.ModelAdmin):
     form = ConstellationAdminForm
     list_display = ('name', 'quadrant', 'time_create', 'image')
     search_fields = ('name', 'quadrant', 'time_create')
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(SpectralClass)
+class SpectralClassAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'color')
+    list_display_links = ('id', 'name')
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Star)
+class StarAdmin(admin.ModelAdmin):
+    list_display = ('name', 'id', 'spectrum', 'time_create', 'image')
+    search_fields = ('name', 'description')
+    list_filter = ('spectrum', )
     prepopulated_fields = {'slug': ('name',)}
