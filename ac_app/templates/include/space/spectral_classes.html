@@ -1,0 +1,27 @@
+{% for class in classes %}
+    <ul class="classes-wrapper {% if request.GET.spectral == class.slug %}selected{% endif %}">
+        <li class="spectral-wrapper">
+            <a href="?spectral={{ class.slug }}">
+                <img src="{{ class.image.url }}" alt="{{ class.name }}">
+            </a>
+            <ul class="spectral-description">
+                <li>
+                    <h2>Spectral class:</h2>
+                    <p>{{ class.name }}</p>
+                </li>
+                <li>
+                    <h2>Color:</h2>
+                    <p>{{ class.color }}</p>
+                </li>
+                <li>
+                    <h2>Temperature (°K):</h2>
+                    <p>{{ class.temperature }}</p>
+                </li>
+                <li>
+                    <h2>Features:</h2>
+                    <p>{{ class.features }}</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+{% endfor %}

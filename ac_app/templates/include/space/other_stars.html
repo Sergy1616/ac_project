@@ -1,0 +1,24 @@
+{% for star in stars_list %}
+    <div class="stars-wrapper">
+        <a class="img-link" href="#">
+            {% if star.image %}<img src="{{ star.image.url }}" alt="img">{% endif %}
+        </a>
+        <div class="star">
+            <div class="star-title">
+                <h2><a class="page-link" href="#">{{ star.name }}</a></h2>
+                {% if star.constellation %}
+                    <div class="constellation-link">(
+                        <a class="page-link" href="{{ star.constellation.get_absolute_url }}">
+                            {{ star.constellation.name }}</a>
+                        <span>constellation</span>
+                        )
+                    </div>
+                {% endif %}
+            </div>
+            {% if not request.GET.spectral %}
+                <p class="star-info">Class<span>{{ star.spectrum.name }}</span></p>
+            {% endif %}
+            {{ star.description|safe|truncatewords:35 }}
+        </div>
+    </div>
+{% endfor %}

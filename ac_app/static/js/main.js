@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // news pagination
     if (window.location.pathname === '/space/news/') {
         new Pagination('space_news', 'space_news');
-    }    
+    }
+    // stars pagination
+    if (window.location.pathname === '/space/stars/') {
+        new Pagination('stars', 'stars');
+    }
     //  constellations pagination
     if (window.location.pathname === '/space/constellations/') {
         new Pagination('constellation', 'constellation');
@@ -129,6 +133,7 @@ class Pagination {
         this.page = 1;
         this.emptyPage = false;
         this.blockRequest = false;
+        this.spectralFilter = this.modelType === 'stars' ? new URLSearchParams(window.location.search).get('spectral') : null;
         this.init();
     }
 
@@ -148,6 +153,9 @@ class Pagination {
         this.blockRequest = true;
         this.page += 1;
         let fetchUrl = `?ajax=true&page=${this.page}`;
+        if (this.modelType === 'stars') {
+            fetchUrl += this.spectralFilter ? '&spectral=' + this.spectralFilter : '';
+        }
         fetch(fetchUrl)
             .then(response => response.text())
             .then(html => this.processResponse(html));

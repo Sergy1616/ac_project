@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Stars{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="spectral-classes">
+                <div class="spectral-title">
+                    <a href="?SpectralClass="
+                       class="page-link {% if request.GET.SpectralClass == '' %}active{% endif %}">Classes</a>
+                </div>
+                <div class="spectral-item">
+                    {% include 'include/space/spectral_classes.html' %}
+                </div>
+            </div>
+            <div class="stars-content">
+                {% if not request.GET.spectral and not request.GET.SpectralClass == "" %}
+                    {% include 'include/space/stars_info.html' %}
+                    <a class="page-link" href="?SpectralClass=">List of Stars</a>
+                {% else %}
+                    <h1 class="page-title">
+                        {% if request.GET.spectral %}
+                            {% for class in classes %}
+                                {% if class.slug == request.GET.spectral %}
+                                    Spectral class<span class="spectral-span">{{ class.name }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            List of Stars
+                        {% endif %}
+                    </h1>
+                    <div id="stars">{% include 'include/space/other_stars.html' %}</div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

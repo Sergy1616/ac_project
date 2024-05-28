@@ -6,7 +6,13 @@ from django.views import View
 from django.views.generic import DetailView
 
 from .utils import NavigationMixin, PaginatedListView
-from .models import SpaceNews, Comment, Constellation
+from .models import (
+    SpaceNews,
+    Comment,
+    Constellation,
+    SpectralClass,
+    Star
+)
 from .forms import CommentForm
 
 
@@ -83,12 +89,40 @@ class ConstellationView(PaginatedListView):
 
 class ConstellationDetailView(NavigationMixin, DetailView):
     model = Constellation
-    template_name = 'space/constellation_detail.html'
-    context_object_name = 'constellation'
-    navigate_on_field = 'name'
-    sort_order = 'asc'
+    template_name = "space/constellation_detail.html"
+    context_object_name = "constellation"
+    navigate_on_field = "name"
+    sort_order = "asc"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['constellation_list'] = reverse('constellations')
+        context["constellation_list"] = reverse("constellations")
         return context
+
+
+class StarsView(PaginatedListView):
+    model = Star
+    template_name = "space/stars.html"
+    context_object_name = "stars_list"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["classes"] = SpectralClass.objects.all()
+        return context
+
+    def get_queryset(self):
+        if hasattr(self, "_filtered_queryset"):
+            return self._filtered_queryset
+
+        queryset = Star.objects.select_related("spectrum").prefetch_related("constellation")
+        spectral_slug = self.request.GET.get("spectral")
+        if spectral_slug:
+            spectral_class = get_object_or_404(SpectralClass, slug=spectral_slug)
+            queryset = queryset.filter(spectrum__slug=spectral_slug)
+
+        # ! for "select_related" method (SpectralClass similar queries)
+        self._filtered_queryset = queryset
+        return queryset
+
+    def get_ajax_template_name(self):
+        return "include/space/other_stars.html"
