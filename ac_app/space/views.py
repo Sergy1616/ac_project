@@ -79,3 +79,16 @@ class ConstellationView(PaginatedListView):
 
     def get_ajax_template_name(self):
         return "include/space/other_constellations.html"
+
+
+class ConstellationDetailView(NavigationMixin, DetailView):
+    model = Constellation
+    template_name = 'space/constellation_detail.html'
+    context_object_name = 'constellation'
+    navigate_on_field = 'name'
+    sort_order = 'asc'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['constellation_list'] = reverse('constellations')
+        return context

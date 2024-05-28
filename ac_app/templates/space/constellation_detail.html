@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ constellation.name }} Constellation{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="detail-box">
+                <h1 class="page-title">{{ constellation.name }}<span>Constellation</span></h1>
+                <div class="detail-wrapper">
+                    {% if constellation.image %}<img src="{{ constellation.image.url }}" alt="img">{% endif %}
+                    <div class="constellation-content">
+                        <p class="item-info">Area:<span>{{ constellation.area }}</span></p>
+                        <p class="item-info">Quadrant:<span>{{ constellation.quadrant }}</span>square degrees</p>
+                        <ul class="constellation-stars">
+                            <li>Stars:</li>
+                            <li><a class="page-link" href="#">Star1</a></li>
+                            <li><a class="page-link" href="#">Star2</a></li>
+                            <li><a class="page-link" href="#">Star3</a></li>
+                        </ul>
+                        <div class="item-description">{{ constellation.description|safe|linebreaksbr }}</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="detail-control">
+                    {% if prev_item %}
+                        <a class="pagin-arrows" href="{{ prev_item.get_absolute_url }}">
+                            <img class="page-arrows" src="{% static 'images/arrow_left.svg' %}" alt="img">  
+                        </a>
+                    {% endif %}
+                    <a class="page-link" href="{{ constellation_list }}">All Constellations</a>
+                    {% if next_item %}
+                        <a class="pagin-arrows" href="{{ next_item.get_absolute_url }}">
+                            <img class="page-arrows" src="{% static 'images/arrow_right.svg' %}" alt="img">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

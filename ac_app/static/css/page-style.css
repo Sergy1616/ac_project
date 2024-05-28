@@ -330,7 +330,8 @@
 }
 
 /*  space detail */
-.space-news-content {
+.space-news-content,
+.constellation-content {
     text-align: justify;
     margin-top: 20px;
     padding: 0 10px;
@@ -351,6 +352,24 @@
     margin: 0 auto;
     border: 1px solid var(--text-color);
     border-radius:10px;
+}
+
+.constellation-stars {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.constellation-stars li:first-child { margin-right: 5px; }
+ 
+.constellation-stars li { margin-right: 10px; }
+
+/* django-ckeditor */
+.item-description { margin-bottom: 20px; }
+.item-description img {
+    width: 100%;
+    object-fit: contain;
+    border: transparent;
 }
 
 /* comments */

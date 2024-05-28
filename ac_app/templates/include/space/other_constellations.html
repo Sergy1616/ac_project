@@ -1,11 +1,15 @@
-{% for i in constellation_list %}
+{% for item in constellation_list %}
     <div class="constellations-wrapper">
-        <a href="#">{% if i.image %}<img src="{{ i.image.url }}" alt="img">{% endif %}</a>
+        <a href="{{ item.get_absolute_url }}">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="img">
+            {% endif %}
+        </a>
         <div class="constellation">
-            <h2><a class="page-link" href="#">{{ i.name }}</a></h2>
-            <p class="item-info">Area:<span>{{ i.area }}</span>square degrees</p>
-            <p class="item-info">Quadrant:<span>{{ i.quadrant }}</span></p>
-            {{ i.description|safe|truncatewords:50 }}
+            <h2><a class="page-link" href="{{ item.get_absolute_url }}">{{ item.name }}</a></h2>
+            <p class="item-info">Area:<span>{{ item.area }}</span>square degrees</p>
+            <p class="item-info">Quadrant:<span>{{ item.quadrant }}</span></p>
+            {{ item.description|safe|truncatewords:50 }}
         </div>
     </div>
 {% endfor %}
