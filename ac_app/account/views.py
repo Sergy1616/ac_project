@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, DetailView, FormView, UpdateView
+from django.views.generic import DeleteView, DetailView, FormView, UpdateView, ListView
 from django.shortcuts import redirect
 
 from account.forms import (
@@ -15,6 +15,7 @@ from account.forms import (
     DeleteAccountForm
 )
 from account.models import Profile
+from space.models import Comment
 
 
 class LoginProfileView(LoginView):
@@ -136,3 +137,12 @@ class DeleteAccountView(LoginRequiredMixin, DeleteView):
         self.object.delete()
         logout(self.request)
         return HttpResponseRedirect(success_url)
+
+
+class UserCommentsView(LoginRequiredMixin, ListView):
+    model = Comment
+    template_name = 'account/user_comments.html'
+    context_object_name = 'user_comments'
+
+    def get_queryset(self):
+        return Comment.objects.select_related('news', 'author').filter(author=self.request.user)

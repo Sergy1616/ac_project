@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile - Comments{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">Your comments</h1>
+            <div class="user-comments">
+                {% if user_comments %}
+                    {% for comment in user_comments %}
+                        {% include 'include/space/confirm_delete.html' with target_slug=comment.news.slug %}
+                        <ul>
+                            <li class="user-comment-row">
+                                <p class="user-comment-title">Date:</p>
+                                <p class="user-comment-text">{{ comment.time_create|date:"F j, Y" }}</p>
+                            </li>
+                            <li class="user-comment-row">
+                                <p class="user-comment-title">News:</p>
+                                <p class="user-comment-text">
+                                    <a class="page-link" href="{{ comment.news.get_absolute_url }}">
+                                        {{ comment.news.title|truncatewords:20 }}</a>
+                                </p>
+                            </li>
+                            <li class="user-comment-row">
+                                <p class="user-comment-title">Text:</p>
+                                <p class="user-comment-text comment-content">{{ comment.text|linebreaksbr }}</p>
+                            </li>
+                            <li class="user-comment-delete">
+                                <a href="javascript:void(0)"
+                                   onclick="window.commentsHandler.showConfirmModal({{ comment.id }});">Delete</a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                {% else %}
+                    <p class="page-title">No comments yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <body data-page="comment-edit">
+{% endblock %}

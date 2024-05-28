@@ -102,9 +102,12 @@ class CommentsHandler {
     }
     // 1. Cancel Delete Button
     initCancelCommentDeletion() {
-        document.getElementById('cancelCommentDeletion').onclick = function() {
-            document.getElementById('confirmModal').style.display = 'none';
-        };
+        const cancelButton = document.getElementById('cancelCommentDeletion');
+        if (cancelButton) {
+            cancelButton.onclick = function() {
+                document.getElementById('confirmModal').style.display = 'none';
+            };
+        }
     }
     // 2. Form Text Edit
     loadEditForm(commentId, commentText) {

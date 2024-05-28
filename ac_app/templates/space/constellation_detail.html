@@ -21,19 +21,7 @@
                         <hr>
                     </div>
                 </div>
-                <div class="detail-control">
-                    {% if prev_item %}
-                        <a class="pagin-arrows" href="{{ prev_item.get_absolute_url }}">
-                            <img class="page-arrows" src="{% static 'images/arrow_left.svg' %}" alt="img">  
-                        </a>
-                    {% endif %}
-                    <a class="page-link" href="{{ constellation_list }}">All Constellations</a>
-                    {% if next_item %}
-                        <a class="pagin-arrows" href="{{ next_item.get_absolute_url }}">
-                            <img class="page-arrows" src="{% static 'images/arrow_right.svg' %}" alt="img">
-                        </a>
-                    {% endif %}
-                </div>
+                {% include "include/pagination/item_navigator.html" with return_url='constellations' items_name='Constellations' %}
             </div>
         </div>
     </main>

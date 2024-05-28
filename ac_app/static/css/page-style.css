@@ -225,6 +225,35 @@
 
 .delete-link { color: var(--error-color); }
 
+/* profile comments */
+.user-comments { margin: 0 10px; }
+
+.user-comments ul { margin-bottom: 20px; }
+
+.user-comment-row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.user-comment-title {
+    flex-basis: 7%;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.user-comment-text { flex-basis: 83%; }
+
+.user-comment-text a { font-family: 'Roboto Condensed', sans-serif; }
+
+.user-comment-delete {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8%;
+    color: var(--sleep-color);
+    font-family: 'Merriweather', serif;
+}
+
 /* templates/registration */
 .main-registration {
     background-image: url(../images/bg_image1.jpg);
