@@ -1,0 +1,26 @@
+<svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_135_17)">
+<g filter="url(#filter0_f_135_17)">
+<path d="M28 45.0762C37.9411 45.0762 46 37.0173 46 27.0762C46 17.135 37.9411 9.07617 28 9.07617C18.0589 9.07617 10 17.135 10 27.0762C10 37.0173 18.0589 45.0762 28 45.0762Z" fill="url(#paint0_radial_135_17)"/>
+</g>
+<path d="M28 40C35.1797 40 41 34.1797 41 27C41 19.8203 35.1797 14 28 14C20.8203 14 15 19.8203 15 27C15 34.1797 20.8203 40 28 40Z" fill="url(#paint1_radial_135_17)"/>
+</g>
+<defs>
+<filter id="filter0_f_135_17" x="0" y="-0.923828" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="5" result="effect1_foregroundBlur_135_17"/>
+</filter>
+<radialGradient id="paint0_radial_135_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(28.0225 27.0646) scale(18.0068)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#FFFDC7"/>
+</radialGradient>
+<radialGradient id="paint1_radial_135_17" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(28.0163 26.9916) scale(13.0049)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#FEFFDA"/>
+</radialGradient>
+<clipPath id="clip0_135_17">
+<rect width="55" height="55" fill="white"/>
+</clipPath>
+</defs>
+</svg>

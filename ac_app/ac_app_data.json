@@ -237,5 +237,349 @@
     "description": "<p>Ophiuchus constellation lies in the southern sky, on the celestial equator. Its name means &ldquo;the serpent bearer&rdquo; in Greek.&nbsp;Ophiuchus is generally depicted as a man holding a snake, represented by the neighboring constellation&nbsp;Serpens, which is divided into two parts by Ophiuchus: Serpens Caput, the snake&rsquo;s head, and Serpens Cauda, the snake&rsquo;s tail. The snake is usually depicted coiled around his waist.&nbsp;Ophiuchus contains a number of notable stars, including&nbsp;Rasalhague&nbsp;and&nbsp;Barnard&rsquo;s Star, and many famous deep sky objects, including&nbsp;Kepler&rsquo;s Supernova, the&nbsp;Twin Jet Nebula, the Little Ghost Nebula, the dark nebulae Barnard 68, the Pipe Nebula, the Snake Nebula, and the Dark Horse Nebula, and the globular clusters.</p>\r\n\r\n<p>Ophiuchus is the 11th largest constellation in the sky, occupying an area of 948 square degrees. It is one of the 15&nbsp;equatorial constellations. It is located in the third quadrant of the southern hemisphere (SQ3) and can be seen at latitudes between +80&deg; and -80&deg;.&nbsp;The brightest star in the constellation is&nbsp;Rasalhague, Alpha Ophiuchi, with an apparent magnitude of 2.08. There are four meteor showers associated with the constellation: the Ophiuchids, the Northern May Ophiuchids, the Southern May Ophiuchids and the Theta Ophiuchids.</p>",
     "time_create": "2023-02-14T19:26:15.533Z"
   }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 1,
+  "fields": {
+    "name": "O",
+    "slug": "class-o",
+    "image": "Spectrum_svg/O_select.svg",
+    "color": "Blue",
+    "temperature": "28,000 - 50,000",
+    "features": "Neutral and ionized helium lines, weak hydrogen lines. Main sequence lifespan: 1 - 10 Myr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 2,
+  "fields": {
+    "name": "B",
+    "slug": "class-b",
+    "image": "Spectrum_svg/B_select.svg",
+    "color": "Blue-white",
+    "temperature": "10,000 - 28,000",
+    "features": "Neutral helium lines, strong hydrogen lines. Main sequence lifespan: 11 - 400 Myr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 3,
+  "fields": {
+    "name": "A",
+    "slug": "class-a",
+    "image": "Spectrum_svg/A_select.svg",
+    "color": "White",
+    "temperature": "7,500 - 10,000",
+    "features": "Strongest hydrogen lines, weak ionized calcium lines, weak ionized metal (e.g., iron, magnesium) lines. Main sequence lifespan: 400 Myr - 3 Gyr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 4,
+  "fields": {
+    "name": "F",
+    "slug": "class-f",
+    "image": "Spectrum_svg/F_select.svg",
+    "color": "Yellow-white",
+    "temperature": "6,000 - 7,500",
+    "features": "Strong hydrogen lines, strong ionized calcium lines, weak sodium lines, many ionized metal lines. Main sequence lifespan: 3 - 7 Gyr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 5,
+  "fields": {
+    "name": "G",
+    "slug": "class-g",
+    "image": "Spectrum_svg/G_select.svg",
+    "color": "Yellow",
+    "temperature": "4,900 - 6,000",
+    "features": "Weaker hydrogen lines, strong ionized calcium lines, strong sodium lines, many lines of ionized and neutral metals. Main sequence lifespan: 7 - 15 Gyr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 6,
+  "fields": {
+    "name": "K",
+    "slug": "class-k",
+    "image": "Spectrum_svg/K_select.svg",
+    "color": "Orange",
+    "temperature": "3,500 - 4,900",
+    "features": "Very weak hydrogen lines, strong ionized calcium lines, strong sodium lines, many lines of neutral metals. Main sequence lifespan: 17 Gyr."
+  }
+},
+{
+  "model": "space.spectralclass",
+  "pk": 7,
+  "fields": {
+    "name": "M",
+    "slug": "class-m",
+    "image": "Spectrum_svg/M_select.svg",
+    "color": "Red",
+    "temperature": "2,000 - 3,500",
+    "features": "Strong lines of neutral metals and molecular bands of titanium oxide dominate. Main sequence lifespan: 56 Gyr."
+  }
+},
+{
+  "model": "space.star",
+  "pk": 1,
+  "fields": {
+    "name": "Alnitak Aa",
+    "slug": "alnitak-aa",
+    "description": "<p>Alnitak Aa, the primary star in the Zeta Orionis system, is a hot blue supergiant with the stellar classification O9.5 Iab. It is the brightest class O star in the sky. The star has a visual magnitude of 2.0 and an absolute magnitude of -6.0. It has 33 times the Sun&rsquo;s mass and a radius 20 times that of the Sun.</p>\r\n\r\n<p>Alnitak A is a close binary star, consisting of components Alnitak Aa and&nbsp;Alnitak Ab &ndash; a blue subgiant of spectral type B1lV, and Alnitak B &ndash; a B-class blue giant star.&nbsp;All of the Zeta Orionis stars belong to the Orion OB1 association and are members of the Collinder 70 open cluster.&nbsp;</p>\r\n\r\n<p>Alnitak Aa appears to be the youngest star, at around 6.4 million years while Alnitak Ab appears to be the oldest at around 7.2 million years, and Alnitak B is in the middle at 7 million years. Alnitak Aa is around 250.000 times brighter than our sun and it is the hottest star of its system with a surface temperature of around 29.500 K.&nbsp;It is the brightest star of Class O in the night sky.&nbsp;It&rsquo;s also a fast spinner, having a rotational velocity of around 110 km / 68 mi per second.&nbsp;Because Alnitak Aa is so massive, it has already stopped fusing hydrogen in its core. Despite the star&rsquo;s young age, it will eventually evolve into a red supergiant similar to Betelgeuse. After this, it will end its life in a supernova explosion, and it is possible that Alnitak Ab will share the same fate.</p>\r\n\r\n<p>Alnitak forms the&nbsp;Belt of Orion, one of the most conspicuous asterisms in the sky, with its bright neighbours&nbsp;Alnilam (middle) and Mintaka (westernmost star).</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/alnitak-aa/Orions-Belt-1.jpg\" /></p>\r\n\r\n<p>The constellation of Orion is home to many blue stars, clusters, nebulae, and clouds of dust and gas. Star formation is pretty active in this region. All the three stars in Orion&rsquo;s Belt, for example, have many other companion stars around them, thus they form multiple star systems.&nbsp;The binary pair is formed by Alnitak Aa and Alnitak Ab. As such, the binary pair is named Alnitak A. The two giants complete one orbit around each other once every 2.687 days. The third companion, Alnitak B, is around 3 arc-seconds away from Alnitak A. It completes one orbit around the primary system one every 1.500 years. A fourth companion designated Alnitak C is speculated to also be part of the system, though studies indicate it is more of a visual companion and not physically related to the other stars.</p>",
+    "image": "stars/alnitak-aa/Alnitac_Aa.jpg",
+    "time_create": "2024-02-03T13:34:00.458Z",
+    "spectrum": 1,
+    "constellation": 1
+  }
+},
+{
+  "model": "space.star",
+  "pk": 2,
+  "fields": {
+    "name": "Alnitak Ab",
+    "slug": "alnitak-ab",
+    "description": "<p>Alnitak Ab has the spectral classification of B1IV, indicating a blue subgiant star. It has an apparent magnitude of 4.28 and an absolute magnitude of -3.9. It lies only 11 astronomical units from the primary star Alnitak Aa, which makes the pair a very close binary system. To illustrate, the distance from the Sun to Saturn is about 9.58 astronomical units.&nbsp;Alnitak Ab has around 14 solar masses and a radius of around 7.3 times that of the Sun.&nbsp;The secondary star, Alnitak Ab appears to be the oldest at around 7.2 million years.&nbsp;</p>\r\n\r\n<p>Alnitak, Zeta Orionis (&zeta; Ori), is a triple star system with a combined apparent magnitude of 1.77. It lies at an approximate distance of 1,260 light years from Earth in the constellation Orion.&nbsp;The star system is composed of Alnitak Aa &ndash; a blue supergiant of spectral type O9.5lab, Alnitak Ab &ndash; a blue subgiant of spectral type B1lV, and Alnitak B &ndash; a B-class blue giant star.&nbsp;All of the Zeta Orionis stars belong to the Orion OB1 association and are members of the Collinder 70 open cluster.</p>\r\n\r\n<p>Alnitak forms the&nbsp;Belt of Orion, one of the most conspicuous asterisms in the sky, with its bright neighbours&nbsp;Alnilam (middle) and Mintaka (westernmost star).&nbsp;Alnitak is the easternmost star that makes up the famous Orion&rsquo;s Belt asterism in the night sky.&nbsp;The constellation of Orion is home to many blue stars, clusters, nebulae, and clouds of dust and gas. Star formation is pretty active in this region. All the three stars in Orion&rsquo;s Belt, for example, have many other companion stars around them, thus they form multiple star systems.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/alnitak-aa/Orions-Belt-1.jpg\" /></p>\r\n\r\n<p>The binary pair is formed by Alnitak Aa and Alnitak Ab. As such, the binary pair is named Alnitak A. The two giants complete one orbit around each other once every 2.687 days. The third companion, Alnitak B, is around 3 arc-seconds away from Alnitak A. It completes one orbit around the primary system one every 1.500 years. A fourth companion designated Alnitak C is speculated to also be part of the system, though studies indicate it is more of a visual companion and not physically related to the other stars.</p>",
+    "image": "stars/alnitak-ab/Alnitac_Ab.jpg",
+    "time_create": "2024-02-04T17:26:13.049Z",
+    "spectrum": 2,
+    "constellation": 1
+  }
+},
+{
+  "model": "space.star",
+  "pk": 3,
+  "fields": {
+    "name": "Rigel",
+    "slug": "rigel",
+    "description": "<p>Rigel A is a massive, luminous star of the spectral type B8 Ia, indicating a bright supergiant appearing blue or blue-white in colour. The star has a radius almost 79 times that of the Sun and an estimated mass of 21 solar masses. With a temperature of 12,100 K, it shines with about 120,000 solar luminosities.&nbsp;</p>\r\n\r\n<p>Even though it appears as a single star to the unaided eye, the Beta Orionis system consists of at least four components, designated Rigel A (or &beta; Ori A), Rigel Ba, Rigel Bb and Rigel C. Rigel B and Rigel C are commonly referred to as Rigel BC. The three fainter components (Rigel Ba, Bb and C) are sometimes simply called Rigel B. There is another star, fainter and at wider separation, that is a suspected component of the system.&nbsp;Rigel A is a luminous supergiant, separated from the fainter triple star system by 9.5 arcseconds. It is 400 times brighter than Rigel BC. Rigel B is a spectroscopic binary star system, which means that its binary nature can only be detected through the stars&rsquo; spectral lines because the two components &ndash; Rigel Ba and Rigel Bb &ndash; are too close together and cannot be resolved visually, even with the largest telescopes. Rigel B and Rigel C, on the other hand, can be resolved, but only with telescopes with very high resolving power.&nbsp;Rigel BC takes about 24,000 years to complete an orbit around Rigel A, while the components B and C orbit each other with a period of about 63 years. Rigel Ba and Rigel Bb have a considerably shorter period, completing an orbit every 9.860 days.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/rigel/Rigel2.jpg\" /></p>\r\n\r\n<p>Rigel has exhausted the supply of hydrogen in its core and, as it evolved from the main sequence, it started to cool and expand to its current size. Based on the star&rsquo;s pulsations, it is possible that it has already been a blue supergiant once, before evolving into a red supergiant and then increasing its temperature and becoming a blue supergiant again. Even though Rigel&rsquo;s physical properties are uncertain, the star will face the same fate as other exceptionally massive stars. It will keep fusing increasingly heavier elements in its core until the core can no longer counter gravitational compression and implodes, triggering a Type II supernova.</p>\r\n\r\n<p>Rigel is one of the nearest known supernova candidates. When it occurs, the supernova will likely reach a visual magnitude of about -11, which is about as bright as a quarter Moon, but it will not affect Earth because the star is too distant.</p>",
+    "image": "stars/rigel/Rigel.jpg",
+    "time_create": "2024-02-04T17:56:18.408Z",
+    "spectrum": 2,
+    "constellation": 1
+  }
+},
+{
+  "model": "space.star",
+  "pk": 4,
+  "fields": {
+    "name": "Regulus",
+    "slug": "regulus",
+    "description": "<p>Regulus A is the primary component in a multiple-star system located 79.3 light-years away in the constellation Leo. With a combined apparent magnitude of 1.40, it is the brightest star in Leo and the 21st brightest star in the sky.&nbsp;Regulus is part of a relatively bright asterism known as the&nbsp;Sickle of Leo, which outlines the celestial lion&rsquo;s head, mane, and shoulders. Regulus sits at the base of the Sickle, marking the lion&rsquo;s heart. The star is also one of the vertices of the&nbsp;Spring Triangle,&nbsp;a conspicuous asterism visible in the evening sky during the northern hemisphere spring.</p>\r\n\r\n<p>Regulus appears as a single star to the unaided eye, but it is in fact a quadruple star system consisting of two pairs of stars and possibly more components. The main components are designated as Alpha Leonis (Regulus) A, B, and C.&nbsp;Regulus A is a spectroscopic binary system consisting of a blue-white main sequence star and a dim companion that has not yet been seen directly. The companion is believed to be a white dwarf.</p>\r\n\r\n<p>The primary component, formally known as Regulus, has been given the stellar classification B8 IVn, with the luminosity class of a subgiant star. Regulus is also an evolutionary subgiant. It is almost finished fusing hydrogen into helium in its core. It is classified as a high proper motion star. Regulus has a mass 3.8 times that of the Sun and a radius 4.35 times solar. With a surface temperature of 11,668 K, it shines with 316.2 solar luminosities. The star is a very fast spinner, with a projected rotational velocity of 318 km/s at the equator. It has an estimated age of at least a billion years.&nbsp;As a result of Regulus&rsquo; fast rotation, the star&rsquo;s shape has been distorted into a highly oblate spheroid. The equatorial diameter of Regulus is 32 percent larger than its polar diameter.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/regulus/Regulus2.jpg\" /></p>\r\n\r\n<p>Regulus completes a rotation in only 15.9 hours and its equatorial rotational velocity is 96.5 percent of its breakup velocity. As a result, the star is emitting polarized light.&nbsp;Regulus is one of the brightest and best-known examples of gravity darkening. Due to the star&rsquo;s oblate shape, its poles are closer to the centre of mass and have a higher effective temperature and therefore brightness, while the equatorial region is cooler and less bright. The poles are said to be &ldquo;gravity brightened,&rdquo; while the equator is &ldquo;gravity darkened.&rdquo; The poles of Regulus are five times brighter than the equator.&nbsp;The main component in the Regulus A system is orbited by a companion with at least 0.3 solar masses. The companion is believed to be a white dwarf. The two components complete an orbit every 40.11 days.&nbsp;The primary component was once the smaller of the two stars. Before it became a white dwarf, the companion is believed to have transferred a lot of its mass onto the other star through gravitational interaction, speeding up the primary component&rsquo;s rotation rate to what it is now.</p>\r\n\r\n<p>Before the discovery of the white dwarf, Regulus was believed to be a much younger star, with an estimated age between 50 and 100 million years. However, it would have taken at least a billion years for the white dwarf to form. Mass transfer from the white dwarf progenitor onto Regulus accounts for any discrepancies between the star&rsquo;s age and its mass, temperature, and luminosity.&nbsp;The other components of the Alpha Leonis system are still on the main sequence, but considerably fainter than Regulus A. They have apparent magnitudes of 8.1 (Regulus B) and 13.5 (Regulus C). Regulus B is visible in binoculars, while Regulus C can only be resolved in a larger telescope. The Regulus BC pair can be observed in smaller instruments.</p>",
+    "image": "stars/regulus/Regulus.jpg",
+    "time_create": "2024-02-12T11:52:58.936Z",
+    "spectrum": 2,
+    "constellation": null
+  }
+},
+{
+  "model": "space.star",
+  "pk": 5,
+  "fields": {
+    "name": "Spica",
+    "slug": "spica",
+    "description": "<p>Spica is a blue-white spectroscopic binary star located at a distance of 250 light years from Earth in the constellation&nbsp;Virgo. With an apparent magnitude of 0.97, it is the brightest star in Virgo and the 16th brightest star in the sky.</p>\r\n\r\n<p>Spica is a spectroscopic binary star consisting of two stars in a close orbit with an orbital period of 4.0145 days. The stars are too close together &ndash; they are separated by only 0.12 astronomical units &ndash; to be resolved in a telescope and can only be detected as a pair through their spectral lines. Spica is a double-lined spectroscopic binary (SB2), which means that spectral lines of both components are visible and the lines are sometimes double and sometimes single.&nbsp;Spica is classified as a rotating ellipsoidal variable, a spectroscopic binary star whose two components are so close together that their shape is distorted by their gravitational interaction. Both components are ellipsoidal. The stars do not eclipse each other during their orbit, but show changes in brightness as a result of the changes in what the observer sees of the stars due to their rotation. Their brightness varies because they are ellipsoidal in shape and their apparent diameters change as they orbit, not as a result of any physical changes to the stars themselves.&nbsp;Rotating ellipsoidal variable stars typically show variations in brightness of up to 0.1 magnitudes and their periods correspond to their orbital motion. Spica is the brightest star of this type in the sky. Its brightness varies by only 0.03 magnitudes and the variations cannot be noticed visually.</p>\r\n\r\n<p>The primary star in the system has the stellar classification B1III-IV, indicating a blue giant or subgiant star. It has an estimated mass 11.43 times that of the Sun and a radius 7.47 times solar. With an effective temperature of about 25,300 K, it is 20,512 times more luminous than the Sun, but a lot of its energy output is in the invisible ultraviolet. The star is a fast spinner, with a projected rotational velocity of 165.3 km/s. Its estimated age is 12.5 million years. It is one of the&nbsp;nearest stars to the solar system&nbsp;that is massive enough to be a Type II supernova candidate.</p>\r\n\r\n<p>The primary component is classified as a Beta Cephei variable, a star showing small, rapid fluctuations in brightness as a result of pulsations of its outer layers. It varies in brightness with a period of 0.1738 days.</p>",
+    "image": "stars/spica/Spica.jpg",
+    "time_create": "2024-02-12T12:35:16.769Z",
+    "spectrum": 2,
+    "constellation": null
+  }
+},
+{
+  "model": "space.star",
+  "pk": 6,
+  "fields": {
+    "name": "Altair",
+    "slug": "altair",
+    "description": "<p>Altair is a white main sequence star located at a distance of 16.73 light years from Earth in the&nbsp;constellation Aquila, the Eagle. With an apparent magnitude of 0.76, it is the brightest star in Aquila and the 12th brightest star in the sky.&nbsp;Altair has the stellar classification A7 V, indicating a white star that is still fusing hydrogen into helium in its core. Once thought to be more than 1 billion years old, the star is now believed to be much younger, with an estimated age of around 100 million years. Altair has 1.86 times the Sun&rsquo;s mass and an estimated radius of 1.57 &ndash; 2.01 solar radii. The star has an equatorial bulge; its radius at the equator is larger than its radius at the poles. With a surface temperature of 6,860 K &ndash; 8,621 K, Altair is 10.6 times more luminous than the Sun.&nbsp;</p>\r\n\r\n<p>Altair is a very fast spinner. With a rotational velocity of about 242 km/s, it is the fastest rotating star within 10 parsecs of the Sun. It spins at about 60.5% of its estimated breakup speed (400 km/s). The star has a rotation period of only 7.7 hours. In comparison, the Sun&rsquo;s rotation period is a little more than 25 days.</p>\r\n\r\n<p>Altair is easy to identify because it is part of the&nbsp;Summer Triangle&nbsp;and has two relatively bright stars &ndash;&nbsp;Alshain&nbsp;and&nbsp;Tarazed&nbsp;&ndash; on either side.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/altair/Altair2.jpg\" /></p>\r\n\r\n<p>Altair is one of the 58 stars selected for use in navigation. Navigational stars are some of the brightest and most identifiable stars in the sky. They have a special status in the field of celestial navigation because they are easy to recognize. They are either exceptionally bright or form distinctive asterisms in the sky.</p>",
+    "image": "stars/altair/Altair.jpg",
+    "time_create": "2024-02-12T12:54:31.361Z",
+    "spectrum": 3,
+    "constellation": 4
+  }
+},
+{
+  "model": "space.star",
+  "pk": 7,
+  "fields": {
+    "name": "Aldebaran",
+    "slug": "aldebaran",
+    "description": "<p>Aldebaran is an orange giant star in the constellation&nbsp;Taurus. It marks the eye of the celestial Bull. With an apparent magnitude that varies from 0.75 to 0.95, it is the brightest star in Taurus and the 14th brightest star in the sky.&nbsp;The star hosts a giant exoplanet - Aldebaran b.&nbsp;Aldebaran is a giant star of the spectral type K5+ III. It has exhausted the hydrogen supply in its core and, as it evolved off the main sequence, it started to expand to its current size. Now it is on the red giant branch (RGB), in the hydrogen shell burning phase.&nbsp;The star has a mass of 1.16 solar masses and has grown to a size of 44.13 solar radii. With a surface temperature of 3,900 K, it shines with a luminosity 439 times that of the Sun, with a lot of its energy output being in the invisible infrared. It rotates very slowly, with a projected rotational velocity of 3.5 km/s, taking 520 days to complete a rotation. Its estimated age is 6.4 billion years and its metallicity around 30% lower than the Sun&rsquo;s.&nbsp;The surface gravity of Aldebaran is 1.59 cgs, about 25 times lower than our planet&rsquo;s and 700 times lower than the Sun&rsquo;s, but not unusual for a giant star.</p>\r\n\r\n<p>Aldebaran is very easy to find and identify because it is one of the&nbsp;brightest stars&nbsp;in the sky and also because it has one of the best known&nbsp;asterisms&nbsp;&ndash; the&nbsp;Orion&rsquo;s Belt&nbsp;&ndash; pointing at it.&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/aldebaran/Aldebaran2.jpg\" /></p>\r\n\r\n<p>Aldebaran is the brightest star in the region between the Belt and the&nbsp;Pleiades. A line extended from the Belt stars,&nbsp;Alnitak,&nbsp;Alnilam&nbsp;and&nbsp;Mintaka, in the direction of the Pleiades leads directly to the star. In the opposite direction, the three stars point toward&nbsp;Sirius, the brightest star in the sky.</p>",
+    "image": "stars/aldebaran/Aldebaran.jpg",
+    "time_create": "2024-02-12T13:28:24.950Z",
+    "spectrum": 6,
+    "constellation": 2
+  }
+},
+{
+  "model": "space.star",
+  "pk": 8,
+  "fields": {
+    "name": "Sun",
+    "slug": "sun",
+    "description": "<p>The Sun is a normal main-sequence&nbsp;G2&nbsp;star, one of more than 100&nbsp;billion&nbsp;stars in our galaxy.&nbsp;The Sun is, at present, about 70% hydrogen and 28% helium by mass everything else (&quot;metals&quot;) amounts to less than 2%. This changes slowly over time as the Sun converts hydrogen to helium in its core.&nbsp;The outer layers of the Sun exhibit differential rotation: at the equator the surface rotates once every 25.4 days; near the poles it&#39;s as much as 36 days. This odd behavior is due to the fact that the Sun is not a solid body like the Earth. Similar effects are seen in the&nbsp;gas planets. The differential rotation extends considerably down into the interior of the Sun but the core of the Sun rotates as a solid body.&nbsp;Conditions at the Sun&#39;s core (approximately the inner 25% of its radius) are extreme. The temperature is 15.6 million Kelvin and the pressure is 250 billion&nbsp;atmospheres. At the center of the core the Sun&#39;s density is more than 150 times that of water.&nbsp;The Sun&#39;s power (about 386 billion billion mega Watts) is produced by&nbsp;nuclear fusion&nbsp;reactions. Each second about 700,000,000 tons of hydrogen are converted to about 695,000,000 tons of helium and 5,000,000 tons (=3.86e33 ergs) of energy in the form of gamma rays. As it travels out toward the surface, the energy is continuously absorbed and re-emitted at lower and lower temperatures so that by the time it reaches the surface, it is primarily visible light. For the last 20% of the way to the surface the energy is carried more by&nbsp;convection&nbsp;than by radiation.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/sun/Sun1.jpg\" /></p>\r\n\r\n<p>The surface of the Sun, called the photosphere, is at a temperature of about 5800 K.&nbsp;Sunspots&nbsp;are &quot;cool&quot; regions, only 3800 K (they look dark only by comparison with the surrounding regions). Sunspots can be very large, as much as 50,000 km in diameter. Sunspots are caused by complicated and not very well understood interactions with the Sun&#39;s magnetic field.</p>",
+    "image": "stars/sun/Sun.jpg",
+    "time_create": "2024-02-12T13:45:06.777Z",
+    "spectrum": 5,
+    "constellation": null
+  }
+},
+{
+  "model": "space.star",
+  "pk": 9,
+  "fields": {
+    "name": "Alpha Centauri A",
+    "slug": "alpha-centauri-a",
+    "description": "<p>Alpha Centauri is a triple star system located in the constellation&nbsp;Centaurus.&nbsp;The two main stars Alpha Centauri A and B form a binary pair and are 4.3 light-years away from Earth. They are also named Alpha Centauri AB. To the naked eye, they appear to be one single star.&nbsp;The Alpha Centauri star system consists of three components:&nbsp;Rigil Kentaurus&nbsp;(Alpha Centauri A),&nbsp;Toliman&nbsp;(Alpha Centauri B), and&nbsp;Proxima Centauri&nbsp;(Alpha Centauri C).&nbsp;Proxima Centauri, the faintest component, is the nearest individual star to the Sun, located only 4.244 light years from Earth. The brighter&nbsp;Rigil Kentaurus&nbsp;and&nbsp;Toliman&nbsp;lie at a distance of 4.37 light years. They form the Alpha Centauri AB binary system, which appears as a single star to the unaided eye.</p>\r\n\r\n<p>The Alpha Centauri system consists of&nbsp;Alpha Centauri A, a yellow main sequence star of the spectral type G2V,&nbsp;Alpha Centauri B, an orange main sequence star with the stellar classification K1V, and Alpha Centauri C, a faint red dwarf of the spectral type M5.5Ve.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/alpha-centauri-a/Alpha-Cen2.jpg\" /></p>\r\n\r\n<p>The components&nbsp;Alpha Centauri A&nbsp;and&nbsp;B, formally named&nbsp;Rigil Kentaurus&nbsp;and&nbsp;Toliman, form the binary star system Alpha Centauri AB. The two stars appear as a single star to the unaided eye but can easily be resolved in smaller instruments. Their total mass is about 2 solar masses. With an absolute magnitude of +4.38,&nbsp;Alpha Centauri A&nbsp;is more luminous than&nbsp;Alpha Centauri B&nbsp;(+5.71).&nbsp;The two Sun-like stars are locked in a 79.91-year orbit with an eccentricity of 0.5179. Their orbit takes them within 11.2 astronomical units of each other and as far apart as 35.6 astronomical units. Their most recent closest approach (periastron) occurred in August 1955 and the next one will be in 2075.</p>\r\n\r\n<p>Rigil Kentaurus, the primary component in the system, is slightly larger and more massive than the Sun. Like the Sun, it is a main sequence star of the spectral type G2V and it exhibits coronal variability due to star spots coupled with the effect of rotation.&nbsp;The star has a mass 1.1 times that of the Sun and a radius 1.2234 times solar. With an effective temperature of 5,790 K, it is 1.519 times more luminous than the Sun.&nbsp;Rigil Kentaurus&nbsp;has an apparent magnitude of +0.01. Individually, it is the fourth brightest star in the sky, slightly outshining&nbsp;Vega&nbsp;(mag. +0.026), but fainter than&nbsp;Sirius&nbsp;(-1.46),&nbsp;Canopus&nbsp;(-0.74), and&nbsp;Arcturus&nbsp;(mag. -0.05). Various catalogues give slightly different values for the star. The Bright Star Catalogue and the Hipparchos and Tycho Catalogues (1997) list a visual magnitude of -0.01, while the Tycho-2 Catalogue gives a magnitude of +0.137, and the 2007 Hipparchos (the New Reduction) lists a value of +0.1373.</p>",
+    "image": "stars/alpha-centauri-a/Alpha-Cen.jpg",
+    "time_create": "2024-02-12T14:03:49.239Z",
+    "spectrum": 5,
+    "constellation": 3
+  }
+},
+{
+  "model": "space.star",
+  "pk": 10,
+  "fields": {
+    "name": "Antares A",
+    "slug": "antares",
+    "description": "<p>Antares is a red supergiant star located at an approximate distance of 550 light years from Earth in the constellation&nbsp;Scorpius.&nbsp;Even though it appears as a single star to the unaided eye, Alpha Scorpii is in fact a binary star system. The system consists of the red supergiant Alpha Scorpii A, formally named Antares, and a fainter blue-white main sequence star designated Alpha Scorpii B. Antares has an apparent magnitude that varies between 0.6 and 1.6, while the companion star is considerably fainter at magnitude 5.5.</p>\r\n\r\n<p>Antares has the stellar classification M1.5Iab-Ib, indicating a supergiant star appearing distinctly red in colour. It has run out of its supply of hydrogen and is currently burning through progressively heavier elements. It has an estimated mass about 12 times that of the Sun. The star&rsquo;s exact mass is uncertain, but estimates are mostly in the range from 11 to 14.3 solar masses. The supergiant has a projected rotational velocity of 20 km/s. Its estimated age is about 15 million years.</p>\r\n\r\n<p>Since evolving away from the main sequence, Antares has expanded to a size of 680 to 800 solar radii. It is losing mass through a powerful stellar wind that has enshrouded the supergiant in an envelope of gas illuminated by the star&rsquo;s light. The gas cloud is sometimes called the Antares Nebula. Antares has lost about 3 solar masses of material from its initial mass.</p>\r\n\r\n<p>With an effective temperature of 3,660 K, Antares is 75,900 times more luminous than the Sun. Like its other properties, the star&rsquo;s exact luminosity is uncertain, but believed to be in the range from 44,700 to 128,900 solar luminosities. Even though the bolometric luminosity of Antares is about 100,000 times that of the Sun, a lot of the star&rsquo;s energy output is in the invisible infrared part of the spectrum. At visual wavelengths, Antares is about 10,000 times more luminous than the Sun. Its luminosity is dimmed by interstellar dust, but the degree of dimming is uncertain.</p>\r\n\r\n<p>Antares serves as a spectral standard for its class, which means that its spectrum is used as an anchor point for the Morgan-Keenan (MK) system of stellar classification, used to classify other stars.&nbsp;Antares is classified as a slow irregular variable (type Lc) and its brightness varies from magnitude 0.6 to 1.6. Type Lc variables are supergiant stars of late spectral types whose brightness typically varies by about 1 magnitude.</p>",
+    "image": "stars/antares/Antares.jpg",
+    "time_create": "2024-02-12T14:21:40.615Z",
+    "spectrum": 7,
+    "constellation": 5
+  }
+},
+{
+  "model": "space.star",
+  "pk": 11,
+  "fields": {
+    "name": "Arcturus",
+    "slug": "arcturus",
+    "description": "<p>Arcturus is a red giant star located 36.7 light-years away in the northern constellation&nbsp;Bo&ouml;tes. With an apparent magnitude of -0.05, it is the brightest star in Bo&ouml;tes and the 4th brightest star in the sky.&nbsp;Arcturus is a giant star of the spectral type K1.5IIIFe-0.5. It is the brightest class K giant in the sky, outshining&nbsp;Aldebaran&nbsp;(mag. 0.86) in the constellation&nbsp;Taurus&nbsp;and&nbsp;Pollux&nbsp;(mag. 1.14) in&nbsp;Gemini. It has an absolute magnitude of about -0.30.</p>\r\n\r\n<p>With an estimated age of 7.1 billion years, Arcturus is a bit older than the Sun (4.5 billion years). It is also more evolved, having exhausted the supply of hydrogen in its core, moved off the main sequence, and expanded into a giant. It has about the same mass as the Sun (1.08 solar masses), but has grown to 25.4 times its size. The star has an estimated surface temperature of 4,286 K and is 170 times more luminous than the Sun.&nbsp;Arcturus is currently on the red giant branch (RGB). RGB stars are low- to intermediate-mass stars that have evolved away from the main sequence but have not yet started fusing helium in their cores. Also known as the first giant branch, this evolutionary stage is characterized by an inert helium core surrounded by a shell in which hydrogen fusion occurs via the CNO (carbon-nitrogen-oxygen) cycle.&nbsp;</p>\r\n\r\n<p>Arcturus is not massive enough to go out as a supernova. Instead, it will end its life by casting out its outer shell to form a planetary nebula and slowly fade away as a compact white dwarf. The Sun will share its fate billions of years from now. The estimated age of Arcturus is in the range from 6 to 8.5 billion years, but the star&rsquo;s evolutionary phase is uncertain. The colour index indicates that it has entered the red giant branch and the hydrogen shell burning stage after exhausting the supply of hydrogen in its core. As it keeps ascending the red giant branch, some of the helium left in its core will be compacted into degenerate matter, which will increase the core&rsquo;s density and temperature. Once the temperature reaches about 100 million K, it will ignite the helium, starting helium fusion in the core. This will increase the temperature which, in turn, will increase the fusion rate, triggering a runaway reaction that will produce a helium flash, a very brief flash of intense helium fusion that lasts only for a few minutes, but has an energy output comparable to that of out entire galaxy.&nbsp;</p>",
+    "image": "stars/arcturus/Arcturus.jpg",
+    "time_create": "2024-02-12T14:39:06.190Z",
+    "spectrum": 6,
+    "constellation": 6
+  }
+},
+{
+  "model": "space.star",
+  "pk": 12,
+  "fields": {
+    "name": "Betelgeuse",
+    "slug": "betelgeuse",
+    "description": "<p>Betelgeuse is a red supergiant star located in the constellation&nbsp;Orion, the Hunter.&nbsp; It has an estimated radius about 764 times that of the Sun and is one of the largest stars visible to the unaided eye. The supergiant lies at an approximate distance of 548 light-years from Earth. Marking Orion&rsquo;s shoulder, it is one of the most recognizable stars in the night sky.&nbsp;Even though it is only 8 to 8.5 million years old, Betelgeuse is a massive star that has evolved quickly and is already approaching the end of its&nbsp;life cycle. It will go out as a supernova in the relatively near future. When it does, it will release its store of raw material needed to create a new generation of stars.</p>\r\n\r\n<p>Betelgeuse has the stellar classification M1-2 Ia&ndash;ab, indicating a supergiant star appearing red in colour. The star has served as a spectral standard for its class since 1943, along with the red supergiant&nbsp;Mu Cephei&nbsp;(which is also nearing the end of its life). The &ldquo;Ia-ab&rdquo; suffix means that Betelgeuse is an intermediate-luminosity supergiant, halfway between a normal and luminous supergiant star.&nbsp;</p>\r\n\r\n<p>Betelgeuse started its life as a hot O-type star less than 10 million years ago. Like other highly massive stars, it has evolved very quickly and lost about 18 or 19 solar masses of material from its initial mass. It has exhausted the hydrogen supply in its core, causing the core to contract into a hotter, denser state, while its outer layers have swelled outward.&nbsp;Betelgeuse likely started expanding into a red giant about 40,000 years ago. It is now believed to be fusing helium into carbon and oxygen in its core and will continue to fuse elements through neon, magnesium, silicon and finally iron. At that point, its core will collapse, triggering a supernova that will be visible even in daylight and leave a neutron star in its wake.&nbsp;The researchers derived a radius 764 times that of the Sun (702 &ndash; 880 solar radii) and a distance estimate of 548 light-years (499 &ndash; 638 ly) with a parallax of 5.95 milliarcseconds. They estimated a mass between 16.5 and 19 times that of Sun, slightly lower than most estimates, and a luminosity 87,000 times that of the Sun.</p>",
+    "image": "stars/betelgeuse/Betelgeuse.jpg",
+    "time_create": "2024-02-12T14:43:59.834Z",
+    "spectrum": 7,
+    "constellation": 1
+  }
+},
+{
+  "model": "space.star",
+  "pk": 13,
+  "fields": {
+    "name": "Dubhe A",
+    "slug": "dubhe-a",
+    "description": "<p>Dubhe is a spectroscopic binary star with an apparent magnitude of 1.79, located at an approximate distance of 123 light years from Earth. It is one of the seven bright stars that form the&nbsp;Big Dipper. Dubhe and its Big Dipper neighbour&nbsp;Merak&nbsp;are known as the&nbsp;Pointer Stars&nbsp;because they are used to find&nbsp;Polaris, the North Star.&nbsp;</p>\r\n\r\n<p>Dubhe is a spectroscopic binary star system consisting of Alpha Ursae Majoris A and Alpha Ursae Majoris B. The primary star, Alpha UMa A, is an orange giant of the spectral type K0III and the companion, Alpha UMa B, is a white hydrogen-fusing dwarf with the stellar classification F0V. Alpha UMa B has an estimated mass of 1.6 solar masses. It completes an orbit around Alpha UMa A every 44.4 years at an average separation of 23 astronomical units. &nbsp;The primary star has 4.25 solar masses and, with a temperature of 4,660 K, it shines with 316 solar luminosities.&nbsp;Dubhe is the coolest (4,660 K) and most distant of the&nbsp;Big Dipper stars. It lies at a distance of 123 light years, while most other stars are about 80 light years distant. It is the second most luminous of the seven stars. Only&nbsp;Alkaid, Eta Ursae Majoris, has a greater energy output.&nbsp;Dubhe is a suspected variable star. Its brightness has been reported to change by a thousandth of a magnitude.</p>\r\n\r\n<p>In spite of not being the brightest star in the constellation Ursa Major, Dubhe has the Bayer designation Alpha Ursae Majoris. This is because German uranographer Johann Bayer assigned Greek letters to the constellation&rsquo;s bright stars going from west to east, and Dubhe is the westernmost of Ursa Major&rsquo;s brightest stars.&nbsp;Merak, the other Pointer Star, has the designation Beta despite being only the 5th brightest star in the constellation, while&nbsp;Alioth, the constellation&rsquo;s brightest star, has the designation Epsilon Ursae Majoris because it is located further to the east. It is the star in the tail of the&nbsp;Great Bear&nbsp;closest to its body, or the star in the handle of the Big Dipper closest to the bowl. With a visual magnitude of 1.77,&nbsp;Alioth&nbsp;is only slightly brighter than Dubhe (mag. 1.79).</p>",
+    "image": "stars/dubhe-a/Dubhe.jpg",
+    "time_create": "2024-02-12T15:00:46.455Z",
+    "spectrum": 6,
+    "constellation": 7
+  }
+},
+{
+  "model": "space.star",
+  "pk": 14,
+  "fields": {
+    "name": "Mu Cephei",
+    "slug": "mu-cephei",
+    "description": "<p>Mu Cephei is a red supergiant of the spectral type M2e located in the constellation&nbsp;Cepheus.&nbsp;With an average apparent magnitude of 4.08, it is the 10th brightest star in the constellation. Also known as Herschel&rsquo;s Garnet Star and notable for its striking red colour, Mu Cephei is a spectral standard for its class (M2). It is one of the largest known stars, with a radius 1,260 &ndash; 1,650 times that of the Sun, and one of the largest stars visible to the unaided eye. Located at an approximate distance of 2,840 light years from Earth, it is one of the most distant stars visible without binoculars.&nbsp;It is often described as a hypergiant, a highly luminous star that is rapidly losing mass due to strong stellar winds.&nbsp;Mu Cephei is visually nearly 100,000 times brighter than the Sun, with an absolute visual magnitude of &minus;7.6. It is also one of the largest known stars with a radius around or over 1,000 times that of the sun&nbsp;and were it placed in the Sun&#39;s position it would engulf the orbit of Mars and Jupiter.&nbsp;Mu Cephei has 19.2 solar masses, which puts it well above the limit for a supernova candidate. It is believed to have started its life with around 25 solar masses. In spite of being only about 10 million years old, it has begun to fuse helium into carbon and is approaching the end of its life. It will eventually go out as a supernova, leaving behind a neutron star or a black hole, in the not-so-distant future.</p>\r\n\r\n<p>The radial pulsations of Mu Cephei have a small amplitude &ndash; about 1.67 magnitudes &ndash; but the amplitude will probably increase down the line. Even though the pulsations are small, they have pushed out the star&rsquo;s outer layers to form a shell of dust and gas around it.&nbsp;The brightness of Mu Cephei changes between magnitude 3.4 and 5.1 with periods of 860 &plusmn; 50 days or 4,400 &plusmn; 1,060 days. At its brightest, the star is relatively easy to spot, but when it dims to magnitude 5.1, it requires very good conditions, with clear, dark skies and no light pollution.</p>\r\n\r\n<p>Mu Cephei is a runaway star, travelling through space at an unusually high velocity relative to the interstellar medium. It moves with a peculiar velocity of 80.7 &plusmn; 17.7 km/s.&nbsp;Many of the star&rsquo;s parameters are uncertain, including size, distance and luminosity. In spite of its distance, the star is large enough to have its angular diameter measured at 0.021 arcseconds. The angular size and the distance assumed from Mu Cephei&rsquo;s membership in the Cepheus OB2 association, which is about 2,400 light years, yield a physical radius of 1,650 solar radii. The distance and temperature yield a luminosity 353,000 times solar and a size of 1,450 solar radii. The radius derived from the angular diameter and a distance of 2,800 light years give a luminosity 475,000 times that of the Sun. The effective temperature of 3,750 K implies a size of 1,260 solar radii.</p>",
+    "image": "stars/mu-cephei/Mu_Cephei.jpg",
+    "time_create": "2024-02-12T15:19:53.056Z",
+    "spectrum": 7,
+    "constellation": 8
+  }
+},
+{
+  "model": "space.star",
+  "pk": 15,
+  "fields": {
+    "name": "Procyon A",
+    "slug": "procyon-a",
+    "description": "<p>The Procyon system is composed of Procyon A, a yellow-white main sequence star of the spectral type F5 IV-V, and Procyon B, a much fainter white dwarf companion with the stellar classification DQZ. The primary component is coming to the end of its main sequence lifetime and will soon stop fusing hydrogen into helium in its core.&nbsp;Procyon A is bright for its spectral class, suggesting that it is evolving into a&nbsp;subgiant&nbsp;that has nearly&nbsp;fused&nbsp;its&nbsp;hydrogen&nbsp;core into&nbsp;helium, after which it will expand as the nuclear reactions move outside the core.&nbsp;As it continues to expand, the star will eventually swell to about 80 to 150 times its current diameter and become a red or orange color. This will probably happen within 10 to 100 million years.&nbsp;The companion star is a white dwarf, a stellar remnant that will gradually cool and fade over time. The white dwarf was once a star that expelled its outer layers into space, leaving behind an exposed hot remnant core. White dwarfs are the end products of moderate-mass stars that have reached the end of their&nbsp;life cycles.&nbsp;The two components of the Alpha Canis Minoris system have an orbital period of 40.840 &plusmn; 0.022 years. They have an elliptical orbit with an eccentricity of 0.39785. Their orbit is inclined at 31.408&deg; to our line of sight. The orbit takes the two stars within 8.9 astronomical units of each other and as far apart as 21 astronomical units. The average distance between them is 15 AU, almost equal to the distance from the Sun to Uranus.</p>\r\n\r\n<p><img alt=\"\" src=\"/media/stars/procyon-a/Procyon2.jpg\" /></p>\r\n\r\n<p>Procyon A has a mass of 1.499 solar masses and a radius twice that of the Sun. With an effective temperature of 6,530 K, it shines with 6.93 solar luminosities. The star&rsquo;s estimated age is 1.87 billion years.</p>",
+    "image": "stars/procyon-a/Procyon1.jpg",
+    "time_create": "2024-02-12T15:30:59.362Z",
+    "spectrum": 4,
+    "constellation": 10
+  }
+},
+{
+  "model": "space.star",
+  "pk": 16,
+  "fields": {
+    "name": "Rasalhague",
+    "slug": "rasalhague",
+    "description": "<p>The Alpha Ophiuchi system consists of Alpha Ophiuchi A - Rasalhague, a white subgiant star of the spectral type A5 IV, and Alpha Ophiuchi B, an orange main sequence star with the stellar classification K5-7 V. The stars orbit each other with a period of 3,148.4 days (8.62 years). They reached the closest approach in April 2012, when they were separated by only 50 milliarcseconds.&nbsp;</p>\r\n\r\n<p>The primary component, formally named Rasalhague, has a mass about 2.4 times that of the Sun and a radius 2.6 times solar. With an effective temperature between 7,880 and 8,050 K, it shines with 25.1 to 25.6 solar luminosities. The star&rsquo;s estimated age is 770 million years. Some sources give the spectral class A5 III for Rasalhague, indicating a giant instead of subgiant star. The companion, Alpha Ophiuchi B, is less evolved and less massive. It has about 0.85 solar masses. With a spectral class in the range from K5V to K7V, it is still a main sequence star fusing hydrogen in its core.&nbsp;Rasalhague is an exceptionally fast spinner. With a projected rotational velocity of 240 km/s, it spins at 88.5% of its breakup velocity. As a result, the star&rsquo;s shape has been distorted into an oblate spheroid and its equatorial radius is about 20% larger than its radius at the poles. The radius at the equator is 2.858 solar radii and the polar radius is 2.388 solar radii.</p>\r\n\r\n<p>Rasalhague is an example of a phenomenon known as gravity darkening. Due to its fast rotation and flattened shape, the surface gravity is higher at the poles than at the equator because the poles are closer to the centre of mass. For the same reason, the temperature is also higher at the poles (9,384 K) than at the equator (7,569 K), as is luminosity.</p>\r\n\r\n<p>The star&rsquo;s axis of rotation is inclined at 87.7&deg; &plusmn; 0.4&deg; to our line of sight, which means that we see Rasalhague almost exactly equator-on. The bolometric luminosity at this angle is 25.6 solar luminosities, but the star&rsquo;s true luminosity is believed to be around 31.3 solar luminosities.</p>",
+    "image": "stars/rasalhague/Rasalhague.jpg",
+    "time_create": "2024-02-12T15:49:04.337Z",
+    "spectrum": 3,
+    "constellation": 11
+  }
+},
+{
+  "model": "space.star",
+  "pk": 17,
+  "fields": {
+    "name": "Sirius",
+    "slug": "sirius",
+    "description": "<p>Sirius is the brightest star in the night sky and one of the nearest star systems to Earth. It has an apparent magnitude of -1.46 and lies at a distance of only 8.6 light years from the Sun. It is also known as the Dog Star, in reference to its position as the luminary of the constellation&nbsp;Canis Major, the Greater Dog.&nbsp;Sirius is a binary star system composed of Sirius A, a white main-sequence star of spectral type A0mA1 Va, and Sirius B, a white dwarf with the stellar classification DA2. Nicknamed The Pup, Sirius B is the nearest known white dwarf to the Sun.</p>\r\n\r\n<p>Sirius A and Sirius B orbit each other every 50 years at a distance between 8.2 and 31.5 astronomical units, which translates into an angular separation between 3 and 11 arcseconds. At periastron (the closest approach), the two stars can only be resolved in a 12-inch or larger telescope. As they have been moving away from each other since the last periastron in 1994, Sirius A and Sirius B are easier to resolve. The average separation between the two stars is about 20 astronomical units, which is roughly equal to the distance between the Sun and Uranus. The stars have an elliptical orbit.</p>\r\n\r\n<p>Sirius A has roughly twice the Sun&rsquo;s mass and 1.7 times the Sun&rsquo;s radius. Its estimated age is between 237 and 247 million years, which makes the star considerably younger than the Sun (4.6 billion years). Sirius A has a visual magnitude of -1.47 and an absolute magnitude of +1.42. Its estimated surface temperature is 9,940 K. Its projected rotational velocity is 16 km/s, not high enough to cause any marked flattening.&nbsp;</p>\r\n\r\n<p>Sirius A is a metallic-line star (Am star), with a spectrum that shows strong absorption lines of elements heavier than helium. It has 316% of the Sun&rsquo;s abundance of iron. The star&rsquo;s spectral type, A0mA1 Va, indicates that Sirius A would have the classification A1 based on its hydrogen and helium lines, but it would belong to the spectral class A0 based on the absorption lines of metals. The high content of metals is believed to be mainly present in the surface layers, not in the entire star.</p>\r\n\r\n<p>Sirius B, on the other hand, is considerably smaller and fainter, and yet it is one of the more massive white dwarfs ever discovered. It has an apparent magnitude of 8.44 and an absolute magnitude of 11.18. Its mass is only slightly greater than the Sun&rsquo;s (1.018 solar masses) and its radius is only 0.0084 solar radii. In other words, it has the mass of a Sun packed into the size of the Earth. The star&rsquo;s estimated surface temperature is about 25,200 K and it will continue to gradually decrease over the next 2 billion years. The estimated age of Sirius B is 228 million years. The star is a stronger source of X-ray radiation than Sirius A.</p>",
+    "image": "stars/sirius/Sirius.jpg",
+    "time_create": "2024-02-12T16:56:20.671Z",
+    "spectrum": 3,
+    "constellation": 9
+  }
+},
+{
+  "model": "space.star",
+  "pk": 18,
+  "fields": {
+    "name": "Tabby",
+    "slug": "tabby",
+    "description": "<p>Tabby&nbsp;is an&nbsp;F-type&nbsp;main-sequence star&nbsp;in the&nbsp;constellation&nbsp;Cygnus&nbsp;approximately 1,470 light-years&nbsp;from Earth.&nbsp;Unusual light fluctuations of Tabby&#39;s Star, including up to a 22% dimming in brightness, were discovered by&nbsp;citizen scientists&nbsp;as part of the&nbsp;Planet Hunters&nbsp;project. The discovery was made from data collected by the&nbsp;Kepler space telescope, which observed changes in the brightness of distant stars to&nbsp;detect exoplanets. Several hypotheses have been proposed to explain the star&#39;s large irregular changes in brightness, but none to date fully explain all aspects of the curve.&nbsp;Tabby has the stellar classification&nbsp;F3&nbsp;V.&nbsp;Observations of the&nbsp;luminosity&nbsp;of the star by the Kepler space telescope show small, frequent, non-periodic dips in brightness, along with two large recorded dips in brightness two years apart. The amplitude of the changes in the star&#39;s brightness, and the aperiodicity of the changes, mean that this star is of particular interest for astronomers.&nbsp;The star&#39;s changes in brightness are consistent with many small masses orbiting the star in &quot;tight formation&quot;.</p>\r\n\r\n<p>Tabby&#39;s Star Radius isn&#39;t that much bigger than&nbsp;The Sun&nbsp;at 1.58. It may seem bigger but compared to other stars out there, its tiny. Tabby&#39;s Star mass is 1.43 times that of our star and will meet the same death as our star when the time comes, it will die as a&nbsp;white dwarf&nbsp;but first will be surrounded by a&nbsp;Planetary Nebula&nbsp;as it looses its mass in stellar winds.</p>",
+    "image": "stars/tabby/Tabbi.jpg",
+    "time_create": "2024-02-12T17:44:02.983Z",
+    "spectrum": 4,
+    "constellation": null
+  }
+},
+{
+  "model": "space.star",
+  "pk": 19,
+  "fields": {
+    "name": "Vega",
+    "slug": "vega",
+    "description": "<p>Vega is a bright white main sequence star located 25.04 light-years from Earth in the northern constellation&nbsp;Lyra.&nbsp;Vega has the spectral classification A0V, indicating a white star on the main sequence, still fusing hydrogen into helium in its core. The star has a mass of 2.135 solar masses and a radius between 2.362 and 2.818 times that of the Sun. With a surface temperature of 9,602 K, it shines with 40.12 solar luminosities. Vega is a relatively young star, with an estimated age of about 455 million years.&nbsp;Even though Vega is only about a tenth the age of the Sun, having twice the Sun&rsquo;s mass means that it will live only a tenth of the Sun&rsquo;s lifetime. These days, Vega is close to the midpoint of its&nbsp;life cycle. It will become an M-type red giant in about 500 million years, after it stops fusing hydrogen in its core.&nbsp;Eventually, the bright star will lose most of its mass and end its life as a white dwarf. In the late red giant stage, it will cast away its outer gaseous envelope to form a planetary nebula. The clouds of gas ejected from the star will glow until they dissipate into the surrounding space and the dense stellar remnant will gradually cool and fade.&nbsp;</p>\r\n\r\n<p>Vega completes a full rotation around its axis every 12.5 hours. For comparison, the Sun takes just over 25 days even though it is considerably smaller. Vega spins with an exceptionally high rotational velocity &ndash; estimates are as high as 236.2 &plusmn; 3.7 km/s along the equator &ndash; and, as a result, it is flattened at the poles and has an extended equator.&nbsp;The high spin rate gives Vega the shape of an oblate spheroid. The star&rsquo;s equatorial diameter is 19% larger than its polar diameter. Vega&rsquo;s equatorial bulge cannot be observed directly because we only get a pole-on view.</p>",
+    "image": "stars/vega/Vega.jpg",
+    "time_create": "2024-02-12T18:03:11.635Z",
+    "spectrum": 3,
+    "constellation": null
+  }
+},
+{
+  "model": "space.star",
+  "pk": 20,
+  "fields": {
+    "name": "Zeta Ophiuchi",
+    "slug": "zeta-ophiuchi",
+    "description": "<p>Zeta Ophiuchi is a hot blue subgiant star located 366 light-years away in the constellation&nbsp;Ophiuchus. Zeta Ophiuchi is the nearest O-type star to the Sun. It is one of the bright stars that outline the polygonal constellation figure of the celestial Serpent Bearer.&nbsp;Zeta Ophiuchi is a massive blue subgiant star of the spectral type O9.2 IVnn. Some sources give it the stellar classification O9.5 V, indicating a hydrogen-fusing dwarf. Its mass of 20.2 solar masses determines its ultimate fate as a supernova. The star has a radius 8.5 times that of the Sun and is 74,100 times more luminous than our star, with an effective temperature of about 34,300 K. It has an estimated age of only 3 million years.</p>\r\n\r\n<p>Even though it is still young, the hot star will expand into a red supergiant in the next few million years. When it does, its diameter will be greater than the orbit of Jupiter. The star will meet its end as a bright supernova, leaving behind a neutron star or pulsar.&nbsp;Zeta Ophiuchi is an exceptionally fast spinner, with a projected rotational velocity of up to 400 km/s. If it really spins this close to its breakup velocity, it takes a day to complete a rotation. Like most massive stars, Zeta Ophiuchi is losing mass through a powerful stellar wind that blows at about 1,600 km/s.</p>\r\n\r\n<p>Zeta Ophiuchi is the nearest O-type star to Earth, as well as the brightest star in this spectral class,&nbsp;located in a dust-rich region of the Milky Way.&nbsp;Zeta Ophiuchi is located in the&nbsp;constellation Ophiuchus. Ophiuchus is the 11th largest constellation in the sky. It stretches across an area of 948 square degrees. It is one of the 15&nbsp;equatorial constellations, visible from most locations on Earth for at least part of the year.</p>",
+    "image": "stars/zeta-ophiuchi/ZetaOphiuchi.jpg",
+    "time_create": "2024-02-12T18:12:45.649Z",
+    "spectrum": 1,
+    "constellation": 11
+  }
 }
 ]
