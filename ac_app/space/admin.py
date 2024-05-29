@@ -7,7 +7,9 @@ from .models import (
     Comment,
     Constellation,
     SpectralClass,
-    Star
+    Star,
+    StarCharacteristics,
+    FavoriteStar
 )
 
 
@@ -51,9 +53,31 @@ class SpectralClassAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+class StarAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Star
+        fields = '__all__'
+
+
+class StarCharacteristicsInline(admin.StackedInline):
+    model = StarCharacteristics
+    extra = 0
+
+
 @admin.register(Star)
 class StarAdmin(admin.ModelAdmin):
+    form = StarAdminForm
     list_display = ('name', 'id', 'spectrum', 'time_create', 'image')
     search_fields = ('name', 'description')
     list_filter = ('spectrum', )
     prepopulated_fields = {'slug': ('name',)}
+    inlines = (StarCharacteristicsInline,)
+
+
+@admin.register(FavoriteStar)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ['user', 'star', 'date_added']
+    list_filter = ['date_added']
+    search_fields = ['user__username', 'star__name']

@@ -581,5 +581,293 @@
     "spectrum": 1,
     "constellation": 11
   }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 1,
+  "fields": {
+    "star": 7,
+    "full_spectrum": "K5+ III",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.75 – 0.95",
+    "absolute_magnitude": "−0.641 ± 0.034",
+    "distance": "65.3 ± 1.0 light years (20.0 ± 0.3 parsecs)",
+    "radial_velocity": "+54.26 ± 0.03 km/s",
+    "mass": 1.16,
+    "age": "6.40",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 2,
+  "fields": {
+    "star": 1,
+    "full_spectrum": "O9.5Iab",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "1.77",
+    "absolute_magnitude": "-6.0",
+    "distance": "1,260 ± 180 light years (387 ± 54 parsecs)",
+    "radial_velocity": "18.50 ± 1.3 km/s",
+    "mass": 33.0,
+    "age": "6.40",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 3,
+  "fields": {
+    "star": 2,
+    "full_spectrum": "B1IV",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "1.74",
+    "absolute_magnitude": "-5.03",
+    "distance": "1,260 ± 180 light years (387 ± 54 parsecs)",
+    "radial_velocity": "",
+    "mass": 14.0,
+    "age": "7.20",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 4,
+  "fields": {
+    "star": 9,
+    "full_spectrum": "G2V",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.01",
+    "absolute_magnitude": "4.38",
+    "distance": "4.7 light years",
+    "radial_velocity": "−21.40 ± 0.76 km/s",
+    "mass": 1.0788,
+    "age": "4.85",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 5,
+  "fields": {
+    "star": 6,
+    "full_spectrum": "A7Vn",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.76",
+    "absolute_magnitude": "2.22",
+    "distance": "16.73 ± 0.05 light-years (5.13 ± 0.01 parsecs)",
+    "radial_velocity": "−26.1 ± 0.9 km/s",
+    "mass": 1.86,
+    "age": "100.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 6,
+  "fields": {
+    "star": 8,
+    "full_spectrum": "G2V",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "",
+    "absolute_magnitude": "4.83",
+    "distance": "",
+    "radial_velocity": "20 km/s",
+    "mass": 1.0,
+    "age": "4.60",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 7,
+  "fields": {
+    "star": 15,
+    "full_spectrum": "F5 IV–V",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.34",
+    "absolute_magnitude": "2.66",
+    "distance": "11.46 ± 0.05 light years (3.51 ± 0.02 parsecs)",
+    "radial_velocity": "−3.2 km/s",
+    "mass": 1.499,
+    "age": "1.87",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 8,
+  "fields": {
+    "star": 10,
+    "full_spectrum": "M1.5Iab-Ib",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.6 – 1.6",
+    "absolute_magnitude": "-5.28",
+    "distance": "550 light years (170 parsecs)",
+    "radial_velocity": "-3.4 km/s",
+    "mass": 11.0,
+    "age": "15.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 9,
+  "fields": {
+    "star": 11,
+    "full_spectrum": "K1.5IIIFe-0.5",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "−0.05",
+    "absolute_magnitude": "−0.30 ±0.02",
+    "distance": "36.7 ± 0.2 light years (11.26 ± 0.07 parsecs)",
+    "radial_velocity": "−5.19 km/s",
+    "mass": 1.08,
+    "age": "7.10",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 10,
+  "fields": {
+    "star": 12,
+    "full_spectrum": "M1–M2 Ia–ab",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.50",
+    "absolute_magnitude": "-5.85",
+    "distance": "548 light-years",
+    "radial_velocity": "+21.91 ±0.51 km/s",
+    "mass": 14.0,
+    "age": "8.50",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 11,
+  "fields": {
+    "star": 13,
+    "full_spectrum": "K0III + F0V",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "1.79",
+    "absolute_magnitude": "–1.10 ± 0.04",
+    "distance": "123 ± 2 light years (37.7 ± 0.7 parsecs)",
+    "radial_velocity": "-9 km/s",
+    "mass": 3.44,
+    "age": "280.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 12,
+  "fields": {
+    "star": 14,
+    "full_spectrum": "M2e Ia",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "4.08",
+    "absolute_magnitude": "-7.63",
+    "distance": "2,840 light years (870 parsecs)",
+    "radial_velocity": "20.63 km/s",
+    "mass": 19.2,
+    "age": "10.10",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 13,
+  "fields": {
+    "star": 3,
+    "full_spectrum": "B8 Ia",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "0.13",
+    "absolute_magnitude": "-7.84",
+    "distance": "860 ± 80 light years (260 ± 20 parsecs)",
+    "radial_velocity": "17.8 ± 0.4 km/s",
+    "mass": 21.0,
+    "age": "8.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 14,
+  "fields": {
+    "star": 20,
+    "full_spectrum": "O9.2 IVnn or O9.5 V",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "2.56 – 2.58",
+    "absolute_magnitude": "-4.2",
+    "distance": "366 ± 8 light-years (112 ± 3 parsecs)",
+    "radial_velocity": "-9.00 ± 5.5 km/s",
+    "mass": 20.2,
+    "age": "3.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 15,
+  "fields": {
+    "star": 17,
+    "full_spectrum": "A0mA1 Va",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "-1.46",
+    "absolute_magnitude": "+1.42",
+    "distance": "8.60 ± 0.04 light years (2.64 ± 0.01 parsecs)",
+    "radial_velocity": "-5.50",
+    "mass": 2.063,
+    "age": "242.00",
+    "age_unit": 1
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 16,
+  "fields": {
+    "star": 4,
+    "full_spectrum": "B8 IVn",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "1.40",
+    "absolute_magnitude": "-0.57",
+    "distance": "79.3 ± 0.7 light-years",
+    "radial_velocity": "318±8 km/s",
+    "mass": 3.8,
+    "age": "1.00",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 17,
+  "fields": {
+    "star": 16,
+    "full_spectrum": "A5IVnn",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "2.07",
+    "absolute_magnitude": "+1.248",
+    "distance": "48,6 ± 0,8 light-years",
+    "radial_velocity": "+12.6 km/s",
+    "mass": 2.4,
+    "age": "0.77",
+    "age_unit": 2
+  }
+},
+{
+  "model": "space.starcharacteristics",
+  "pk": 18,
+  "fields": {
+    "star": 19,
+    "full_spectrum": "A0Va",
+    "galaxy": "Milky Way",
+    "apparent_magnitude": "+0.026 (−0.02 – +0.07)",
+    "absolute_magnitude": "",
+    "distance": "25.04 ± 0.07 light-years",
+    "radial_velocity": "−13.9±0.9 km/s",
+    "mass": 2.135,
+    "age": "455.00",
+    "age_unit": 1
+  }
 }
 ]

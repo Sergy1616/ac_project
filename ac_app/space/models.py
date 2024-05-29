@@ -105,3 +105,39 @@ class Star(models.Model):
 
     class Meta:
         ordering = ["name", "spectrum"]
+
+
+class StarCharacteristics(models.Model):
+    AGE_UNITS_CHOICES = (
+        (1, "Million Years"),
+        (2, "Billion Years")
+    )
+
+    star = models.OneToOneField(Star, on_delete=models.CASCADE, blank=True, null=True)
+    full_spectrum = models.CharField(max_length=50, blank=True)
+    galaxy = models.CharField(max_length=100, blank=True)
+    apparent_magnitude = models.CharField(max_length=50, blank=True)
+    absolute_magnitude = models.CharField(max_length=50, blank=True)
+    distance = models.CharField(max_length=100, blank=True)
+    radial_velocity = models.CharField(max_length=50, blank=True)
+    mass = models.FloatField(verbose_name="Mass (in solar masses)", null=True, blank=True)
+    age = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    age_unit = models.IntegerField(
+        blank=True,
+        choices=AGE_UNITS_CHOICES,
+        default=1,
+        verbose_name="Unit of Age"
+    )
+
+    class Meta:
+        verbose_name = "Characteristics"
+        verbose_name_plural = "Key characteristics"
+
+
+class FavoriteStar(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="favorites")
+    star = models.ForeignKey(Star, on_delete=models.CASCADE, related_name="favorited_by")
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "star")
