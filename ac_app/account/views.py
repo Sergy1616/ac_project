@@ -15,7 +15,7 @@ from account.forms import (
     DeleteAccountForm
 )
 from account.models import Profile
-from space.models import Comment
+from space.models import Comment, FavoriteStar
 
 
 class LoginProfileView(LoginView):
@@ -146,3 +146,14 @@ class UserCommentsView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Comment.objects.select_related('news', 'author').filter(author=self.request.user)
+
+
+class UserFavoriteStarsView(LoginRequiredMixin, ListView):
+    model = FavoriteStar
+    template_name = 'account/user_favorites.html'
+    context_object_name = 'user_favorites'
+
+    def get_queryset(self):
+        return FavoriteStar.objects.select_related(
+            'star__spectrum',
+            'star__constellation').filter(user=self.request.user)

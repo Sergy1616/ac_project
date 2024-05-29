@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Profile - Favorite Stars{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">Your Favorite Stars</h1>
+            <div class="favorite-stars">
+                {% if user_favorites %}
+                    {% for favorite in user_favorites %}
+                        <p class="favorite-add">Added on:<span>{{ favorite.date_added|date:"F j, Y" }}</span></p>
+                        <div class="stars-wrapper">
+                            <a class="img-link" href="{{ favorite.star.get_absolute_url }}">
+                                {% if favorite.star.image %}
+                                    <img src="{{ favorite.star.image.url }}" alt="{{ favorite.star.name }}">
+                                {% endif %}
+                            </a>
+                            <div class="star">
+                                <div class="star-title">
+                                    <h2>
+                                        <a class="page-link" href="{{ favorite.star.get_absolute_url }}">
+                                            {{ favorite.star.name }}</a>
+                                    </h2>
+                                    {% with constellation=favorite.star.constellation %}
+                                        {% if constellation %}
+                                            <div class="constellation-link">(
+                                                <a class="page-link" href="{{ constellation.get_absolute_url }}">
+                                                    {{ constellation.name }}</a>
+                                                <span>constellation</span>
+                                                )
+                                            </div>
+                                        {% endif %}
+                                    {% endwith %}
+                                </div>
+                                <p class="star-info">Class<span>{{ favorite.star.spectrum.name }}</span></p>
+                                {{ favorite.star.description|safe|truncatewords:35 }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="page-title">No favorites yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

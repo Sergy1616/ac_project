@@ -254,6 +254,17 @@
     font-family: 'Merriweather', serif;
 }
 
+/* profile Favorite Stars */
+.favorite-add {
+    margin: 0 0 10px 10px;
+    font-weight: 400;
+}
+
+.favorite-add span {
+    margin-left: 10px;
+    font-weight: 200;
+}
+
 /* templates/registration */
 .main-registration {
     background-image: url(../images/bg_image1.jpg);
