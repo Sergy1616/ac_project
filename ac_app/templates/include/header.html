@@ -20,7 +20,7 @@
                         <a href="{% url 'constellations' %}">Сonstellations</a>
                     </li>
                     <li class="menu-item {% if url_name == 'products' %}active{% endif %}">
-                        <a href="#">Shop</a>
+                        <a href="{% url 'products' %}">Shop</a>
                     </li>
                 {% endwith %}
             </ul>

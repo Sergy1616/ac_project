@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -8,6 +9,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('products_by_category', kwargs={'category_slug': self.slug})
 
     class Meta:
         verbose_name_plural = 'categories'
@@ -25,14 +29,17 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('products_by_brand', kwargs={'brand_slug': self.slug})
+
     class Meta:
         ordering = ['name']
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     name = models.CharField(max_length=100, unique=True, db_index=True)
     slug = models.SlugField(max_length=100, unique=True, db_index=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     brand = models.ForeignKey(Brand, models.SET_NULL, blank=True, null=True, default=None)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)

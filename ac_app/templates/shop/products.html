@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {% if selected_category %}
+        {{ selected_category.name }} - Shop
+    {% elif selected_brand %}
+        {{ selected_brand.name }} - Shop
+    {% else %}
+        Shop
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="slider">
+                <div class="slider-wrapper">
+                    <a href="#">
+                        <div class="product-slide">
+                            <img src="{% static 'images/home_sliders/Shop.png' %}" alt="img">
+                        </div>
+                    </a>
+                </div>                
+            </div>
+            <div class="shop-navbar">
+                <ul>
+                    {% for category in categories %}
+                        <li class="page-link {% if selected_category.slug == category.slug %}active{% endif %}">
+                            <a href="{% url 'products_by_category' category.slug %}">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="products">
+                <h1 class="page-title">
+                    {% if selected_brand %}
+                        Brand:<span>{{ selected_brand.name }}</span>
+                    {% else %}
+                        Products
+                    {% endif %}
+                </h1>
+                <form class="sort-form" method="get">
+                    <label>Sort by:</label>
+                    <span>New Arrivals</span>
+                </form>
+                <div class="product-wrapper">
+                    <ul>
+                        {% for product in product_list %}
+                            <li>
+                                <a href="#">
+                                    <div class="product-image">
+                                        {% if product.title_images %}
+                                            <img src="{{ product.title_images.0.image.url }}" alt="{{ product.name }}">
+                                        {% else %}
+                                            <img src="{{ product.images.all.0.image.url }}" alt="{{ product.name }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-item">
+                                        <h2 class="product-title">{{ product.name|truncatewords:5 }}</h2>
+                                        <p>$<span>{{ product.price }}</span></p>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="shop-brands">
+                <ul>
+                    {% for brand in brands %}
+                        {% if brand.image %}
+                            <li><a href="{{ brand.get_absolute_url }}">
+                                <img class="brand-image" src="{{ brand.image.url }}" alt="{{ brand.name }}"></a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr>           
+        </div>
+    </main>
+
+{% endblock %}
