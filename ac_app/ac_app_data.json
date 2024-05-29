@@ -869,5 +869,817 @@
     "age": "455.00",
     "age_unit": 1
   }
+},
+{
+  "model": "shop.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Sega Toys",
+    "slug": "sega-toys",
+    "image": "brands/sega/SEGA_toys.png"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 2,
+  "fields": {
+    "name": "National Geographic",
+    "slug": "national-geographic",
+    "image": "brands/national-geographic/national_gc.png"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 3,
+  "fields": {
+    "name": "Estes",
+    "slug": "estes",
+    "image": "brands/estes/Estes_Logo.png"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 4,
+  "fields": {
+    "name": "Levenhuk",
+    "slug": "levenhuk",
+    "image": "brands/levenhuk/Levenhuk_logo.png"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 5,
+  "fields": {
+    "name": "CubicFun",
+    "slug": "cubicfun",
+    "image": "brands/cubicfun/cubicfun_logo.jpeg"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 6,
+  "fields": {
+    "name": "PODOI",
+    "slug": "podoi",
+    "image": ""
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Bresser",
+    "slug": "bresser",
+    "image": "brands/bresser/Bresser.jpg"
+  }
+},
+{
+  "model": "shop.brand",
+  "pk": 8,
+  "fields": {
+    "name": "Pococo",
+    "slug": "pococo",
+    "image": "brands/pococo/pococo.jpg"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "Toys",
+    "slug": "toys"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "Games",
+    "slug": "games"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 3,
+  "fields": {
+    "name": "Projectors",
+    "slug": "projectors"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 4,
+  "fields": {
+    "name": "Books",
+    "slug": "books"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 5,
+  "fields": {
+    "name": "Gifts",
+    "slug": "gifts"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "category": 3,
+    "name": "Homestar Pro Original home planetarium",
+    "slug": "homestar-pro-original-home-planetarium",
+    "brand": 1,
+    "description": "<p>Imagine enjoying the sky full of stars while sitting on your sofa. This dream can become reality with the Homestar Original from Sega Toys. Matataki is the first Sega Homestar Planetarium which lets the stars twinkle softly while projecting an authentic heaven view into your room. This creates a 3D image effect while projecting the stars at the same time. Matataki has built-in speakers with natural sounds from the sea and the mountains. Enjoy a perfect and romantic vision of the night sky. Fall asleep under twinkling stars with the timer on. While following the original Sega Homestar Planet design the Matataki has its own fresh appearance.</p>\r\n\r\n<p>Since the product launch of the Sega Toys Homestar Original in 2006 it has established itslf as a leading brand. The Homestar Series was developed by the Japanese inventor &amp; entrepreneur Takayuki Ohira. As a recognized specialist for professional planetariums he has received numerous innovation prizes. His company supplies large planetariums internationally. Ohira has been driving the development of the Sega Homestar series in the joint development efforts of both companies. The result is home planetariums which project thousands of stars also at home at a very fair price.</p>\r\n\r\n<h2>Technical specifications</h2>\r\n\r\n<ul>\r\n\t<li>10,000 twinkling stars or 60,000 solid stars</li>\r\n\t<li>Ultra-bright white LED with the power of 3 watt</li>\r\n\t<li>Speaker with natural sounds for deep sleep</li>\r\n\t<li>Shooting star</li>\r\n\t<li>USB cable enabling wall plug or wall plug free power bank operation</li>\r\n\t<li>Projecting diameter of 106 in</li>\r\n\t<li>Original Japanese packaging gift box</li>\r\n</ul>\r\n\r\n<p>Twinkling is made possible by adding a second disc, the effect plate, under a special star disc. Next you turn on the diurnal motion (rotation) function. After starting the projection your eyes and mind will relax and focus. After a short time, you will see the realistic twinkling effect as if you are watching the stars in the universe from planet earth. This effect gives the projection more depth (3D).</p>",
+    "price": "195.00",
+    "discount": 0,
+    "time_create": "2024-03-02T12:10:57.846Z",
+    "time_updated": "2024-04-24T15:09:23.810Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "category": 3,
+    "name": "Astro Planetarium - Multimedia",
+    "slug": "astro-planetarium-multimedia",
+    "brand": 7,
+    "description": "<p>Having your own home planetarium no longer needs to be a pipe dream! With the Astro Planetarium, you can project the night sky directly on to your ceiling - and have it accurate to the day and time! Furthermore, thanks to an integrated motor, it is possible for shooting stars to pass by. Suitable musical accompaniment is provided either by the inbuilt FM radio or the option to connect your MP3 player.</p>\r\n\r\n<p><strong>Technical specifications</strong></p>\r\n<ul>\r\n\t<li>Projection surface: approx. 1.6m x 2.2m (from 2m away)</li>\r\n\t<li>Output power (lumens): 190lm (for 2m high ceilings)</li>\r\n\t<li>Slides: 2 pieces (stars, constellations)</li>\r\n\t<li>Integrated radio function and loudspeaker</li>\r\n\t<li>Option to connect MP3 player</li>\r\n\t<li>Sturdy stand</li>\r\n</ul>",
+    "price": "110.00",
+    "discount": 0,
+    "time_create": "2024-03-02T12:30:08.819Z",
+    "time_updated": "2024-03-09T15:17:32.573Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "category": 3,
+    "name": "Planetarium LabZZ SP50 UFO",
+    "slug": "planetarium-labzz-sp50-ufo",
+    "brand": 4,
+    "description": "<p>The Levenhuk LabZZ SP50 UFO is a compact planetarium designed in the shape of a flying saucer with LED lighting and remote control. It includes space-themed projection films. Its large projection area covers 30m&sup2;. You can select the rotation mode as well as adjust its speed and direction. Depending on the lighting in the room you decide on the brightness level. The LEDs have two modes of operation: single color and multicolor.</p>\r\n\r\n<p>It is optimal to place the planetarium at a distance of 2&ndash;2.5m from the ceiling or other surface on which the image will be projected. The device comes with a 1.8m USB cable and an adapter to power the projector from the power supply. The remote control is powered by batteries. You can adjust the image sharpness manually by rotating the focusing wheel. You can leave the projector on before going to bed by simply setting the auto-off time (45 or 90 minutes).</p>\r\n\r\n<p><strong>Technical specifications</strong></p>\r\n\r\n<ul>\r\n\t<li>Projection distance: 200&thinsp;cm to 250&thinsp;cm</li>\r\n\t<li>3 brightness levels 3 rotation speeds option to select the direction of rotation</li>\r\n\t<li>Color LEDs for creating ambient light</li>\r\n\t<li>Remote control</li>\r\n\t<li>6 projection films</li>\r\n\t<li>Light source power 10W</li>\r\n</ul>",
+    "price": "124.99",
+    "discount": 20,
+    "time_create": "2024-03-02T12:38:01.881Z",
+    "time_updated": "2024-04-24T16:05:20.816Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Shoot the Moon",
+    "slug": "shoot-the-moon",
+    "brand": null,
+    "description": "<p>Shoot the Moon will be an instant hit in your house or office! This classic 1940&rsquo;s nostalgia game is hilariously addictive, fun and challenging. The object of the game is to balance the ball on the metal track to score points in corresponding wells. Mercury, Earth, Mars, Jupiter, Saturn, and Pluto signify score zones. Seems simple enough right? See for yourself why people go crazy for this game.</p>\r\n<p>Ages 9+</p>",
+    "price": "18.99",
+    "discount": 0,
+    "time_create": "2024-03-02T13:48:10.022Z",
+    "time_updated": "2024-03-09T15:20:23.864Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Space-opoly",
+    "slug": "space-opoly",
+    "brand": null,
+    "description": "<p>Get lost in space. Collect your favorite cosmic wonders and play to rule the universe. Watch out for the black hole or you won&#39;t be home in time for dinner.</p>\r\n<p>Ages 8+</p>\r\n<ul>\r\n\t<li>For 2-6 players</li>\r\n\t<li>Traditional play or one-hour version</li>\r\n\t<li>Great family fun</li>\r\n\t<li>Package dimension : 15.375&quot; L x 10.625&quot; W x 2.0625&quot; H</li>\r\n</ul>",
+    "price": "20.99",
+    "discount": 0,
+    "time_create": "2024-03-02T14:03:38.788Z",
+    "time_updated": "2024-03-09T15:52:16.227Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+    "category": 1,
+    "name": "NASA Space Shuttle Discovery",
+    "slug": "nasa-space-shuttle-discovery",
+    "brand": 5,
+    "description": "<p>The most outstanding feature of this Shuttle Discovery model kit is its authentic details. Open the payload bay to deploy the Hubble Telescope on its mission to explore the cosmos. Adjust the elevons, engage the landing gear on reentry and deploy the robotic arm. These details help to make the model look like the real-life Space Shuttle, making it a great addition to any collection or display.</ br>\r\nThis detail-filled space shuttle model comes with a display stand and is an eye-catching centerpiece for the home or office. It&#39;s the best gift for adults and older kids who love creative projects. Enjoy hours of immersive building, perfect for experienced and beginner model builders alike, it&#39;s a must-have for anyone interested in space exploration and the history of NASA.</p>\r\n<p>Ages 8+</p>\r\n\r\n<p><strong>About:</strong></p>\r\n<ul>\r\n\t<li>Theme&nbsp;Building</li>\r\n\t<li>Package dimension :&nbsp;19.3&quot;L x 12.2&quot;W</li>\r\n</ul>",
+    "price": "32.99",
+    "discount": 0,
+    "time_create": "2024-03-02T14:32:22.983Z",
+    "time_updated": "2024-03-09T15:56:21.886Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 7,
+  "fields": {
+    "category": 2,
+    "name": "Planet Doku",
+    "slug": "planet-doku",
+    "brand": null,
+    "description": "<p>Each set has three levels of puzzles to challenge your Sudoku skills. By using planet and sun tokens instead of numbers, a solar system is created while playing each game.</p>\r\n\r\n<p>This visually stunning version of Soduku adds an exciting twist to a classic game.</p>\r\n\r\n<p>Ages 9+</p>",
+    "price": "23.99",
+    "discount": 10,
+    "time_create": "2024-03-02T14:42:12.425Z",
+    "time_updated": "2024-04-24T16:04:14.447Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 8,
+  "fields": {
+    "category": 1,
+    "name": "SpaceX Falcon 9",
+    "slug": "spacex-falcon-9",
+    "brand": 3,
+    "description": "<p>The Space X Falcon 9 is the world&rsquo;s first human-rated, reusable launch vehicle. This scale model rocket can lift payloads to LEO and geosynchronous orbits, or even to Mars. There&rsquo;s nothing else like it in the world! And now Estes and Space X have collaborated to create a highly accurate 1:100 scale flying model of the remarkable Falcon 9 rocket topped with a Dragon Crew spacecraft. Looks great on its custom display stand or soaring up to 300 feet on a recommended Estes engine.</p>\r\n\r\n<p><strong>About:</strong></p>\r\n<ul>\r\n\t<li>Precision 1:100 scale reproduction</li>\r\n\t<li>Detailed Dragon Crew Spacecraft</li>\r\n\t<li>Accurate silkscreened markings</li>\r\n\t<li>Custom Display Stand</li>\r\n\t<li>Removable plastic fins for stable flight</li>\r\n\t<li>Large 24 in. parachute</li>\r\n</ul>",
+    "price": "149.99",
+    "discount": 0,
+    "time_create": "2024-03-02T15:23:43.612Z",
+    "time_updated": "2024-03-09T15:55:12.380Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 9,
+  "fields": {
+    "category": 4,
+    "name": "Haynes NASA Moon Missions Operations Manual",
+    "slug": "haynes-nasa-moon-missions-operations-manual",
+    "brand": null,
+    "description": "<p>Author: <strong>Dr. David Baker</strong><br />\r\nOriginally published to coincide with the 50th anniversary of the first Moon landing by Apollo 11. While the original Apollo 11 mission is a great tale, this book dives deeper than other guides with an in-depth look at all of NASA&rsquo;s lunar missions! An overview of the innovations, technology, political pressure, and more behind the Moon landings that are a testament to the bold vision NASA has maintained since first launching in 1958. All this information is formatted as an operations manual in an instructional manner so convincing you might just think you&rsquo;ve been on an Apollo Moon mission yourself, yet digestible enough for any layperson to understand.<br />\r\nAuthor Dr. David Baker worked with NASA on three different programs over the course of 25 years and has written over 100 books on space flight. This expertise and inside knowledge paired with countless photographs, diagrams, illustrations, and more result in an outstandingly thorough guide.<br />\r\nSpace enthusiasts, NASA fans, and anyone who loves to learn will appreciate this Haynes operations manual that highlights the advancements of the legendary agency that has pioneered Moon exploration for over 50 years.</p>\r\n\r\n<p>Size: 8.5x11<br />\r\nPages: 220&nbsp;</p>",
+    "price": "25.99",
+    "discount": 0,
+    "time_create": "2024-03-03T12:56:17.818Z",
+    "time_updated": "2024-05-02T22:40:03.690Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 10,
+  "fields": {
+    "category": 4,
+    "name": "Observing Nebulae",
+    "slug": "observing-nebulae",
+    "brand": null,
+    "description": "<p>Author: <strong>Mark Griffiths</strong></p>\r\n<p>Nebulae, or ethereal clouds of gas and dust, are some of the most beautiful objects in the sky. By using a telescope, one can observe or even photograph nebulae from their own home.</p>\r\n<p>This guide offers a non-mathematical approach to the subject that is easy for anyone to follow. Details of some of the brightest and best nebulae are outlined as well as some challenges for the more experienced observers. Photographs of each object to help with identification and celestial coordinates are outlined to help locate nebulae in the night sky.</p>\r\n<p>Size: &quot;6.1&quot; x 9.2&quot;<br />\r\nPages: 289</p>",
+    "price": "45.99",
+    "discount": 0,
+    "time_create": "2024-03-03T13:04:18.060Z",
+    "time_updated": "2024-03-09T15:25:54.567Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 11,
+  "fields": {
+    "category": 5,
+    "name": "3D Galaxy Crystal Ball",
+    "slug": "3d-galaxy-crystal-ball",
+    "brand": 6,
+    "description": "<p>LED base can be powered by USB or battery (product does not contain batteries), so that you can send the gift can be light up again at any time and place, stunning brilliant colorful lights, will make him fascinated and like the gift you send, it can be placed in the dresser, living room, work desk, bedroom, fireplace to bring a sense of ritual to life.</p>",
+    "price": "24.99",
+    "discount": 15,
+    "time_create": "2024-03-03T13:27:38.707Z",
+    "time_updated": "2024-04-24T16:04:14.449Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 12,
+  "fields": {
+    "category": 5,
+    "name": "Ceramic Coffee Mug Tea Cup",
+    "slug": "ceramic-coffee-mug-tea-cup",
+    "brand": null,
+    "description": "<p>The coffee mug cup is made of ceramic and not your ordinary coffee mug. You will definitely like the feel of the mug in your hands as it is sturdy but had a wonderful shape to fit comfortably wrap your hands around it and it holds a perfect amount of tea coffee of more than 11 OZ.&nbsp;</p>",
+    "price": "10.99",
+    "discount": 0,
+    "time_create": "2024-03-03T13:37:28.752Z",
+    "time_updated": "2024-04-25T10:59:04.044Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 13,
+  "fields": {
+    "category": 4,
+    "name": "Visual Galaxy",
+    "slug": "visual-galaxy",
+    "brand": 2,
+    "description": "<p><strong>Visual Galaxy: The Ultimate Guide to the Milky Way and Beyond</strong><br />\r\n<strong>Publisher&rlm;:&nbsp;</strong>National Geographic; Illustrated edition (October 22, 2019)</p>\r\n<p>This compelling visual journey through our galaxy combines more than 350 photographs, illustrations, and graphics to present the universe as you&#39;ve never seen it before.<br />\r\nVisual Galaxy&nbsp;is a deep dive into the past, present, and future of our home galaxy, the Milky Way. In this mind-expanding visual tour through the cosmos, spectacular photographs are converted into interpretive graphics, starting with the sun and moving outward into space where stars are born, black holes lurk, and planets of diverse size and anatomy spin through their orbit. The final chapters locate our galaxy within the known universe and add a scintillating peek of other exoplanets in the cosmos. Detailed maps and fascinating imagery from recent space missions are paired with clear, authoritative scientific information.</p>\r\n<p>Size: 9.23 x 1.09 x 11.58<br />\r\nPages: 324</p>",
+    "price": "35.99",
+    "discount": 0,
+    "time_create": "2024-03-05T23:43:57.540Z",
+    "time_updated": "2024-03-09T15:23:17.852Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 14,
+  "fields": {
+    "category": 3,
+    "name": "Galaxy Projector",
+    "slug": "galaxy-projector",
+    "brand": 8,
+    "description": "<p>Experience the cosmos in stunning detail with our next-generation high-transparency optical lens. Boasting an industrial-grade 2-million pixel lens with an incredible 95% light transmission rate, it reveals the night sky&#39;s every nuance. The 5K Ultra HD disc lens, meticulously etched using cutting-edge photolithography, brings the universe right before your eyes.</p>\r\n<p>Dive into an array of disc series sets, from constellations and starry skies to the Milky Way and planetary discs. This lamp allows you to experience the awe-inspiring beauty of the galaxy. Plus, we&#39;ve curated exclusive disc sets for kids to spark their curiosity and exploration of the universe. We&#39;re continuing to design more fun discs!</p>\r\n<p>POCOCO Galaxy Projector + Realistic Constellation-1</p>\r\n\r\n<p><strong>Technical specifications</strong></p>\r\n<ul>\r\n\t<li>Included Components:&nbsp;Projector&times;1, Disc (Diamond Stars) &times; 1, Usb-c charging cable &times; 1(No Charger), Blank postcards and user manual posters &times;1, , An extra disc (Westerlund2) as a gift</li>\r\n\t<li>Product dimension:&nbsp;6.18 x 4.72 x 4.72 inches</li>\r\n</ul>",
+    "price": "109.99",
+    "discount": 0,
+    "time_create": "2024-03-06T00:25:10.704Z",
+    "time_updated": "2024-03-09T15:19:32.492Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 15,
+  "fields": {
+    "category": 3,
+    "name": "JUNIOR Astro Planetarium",
+    "slug": "junior-astro-planetarium",
+    "brand": 7,
+    "description": "<p>The&nbsp;BRESSER JUNIOR Astro Planetarium&nbsp;quickly transforms your ceiling into a starry sky. And then it&rsquo;s time for you to go exploring: This home planetarium projects over&nbsp;8,000 stars&nbsp;and&nbsp;61 named constellations&nbsp;using&nbsp;2 projection discs&nbsp;and a&nbsp;bright LED, bringing the universe into your home. Ever curious about the constellations visible on your birthday? Why not have a look? Just set the&nbsp;date&nbsp;and a&nbsp;time&nbsp;between 8 PM and 2 AM, because during this time there will always be stars in the sky. Then just switch on the&nbsp;children&#39;s planetarium&nbsp;and the night sky of your birthday lights up above you. For the best experience, maintain a 2-meter distance from the ceiling. This allows the projection to cover a substantial area of&nbsp;approximately 1.6 x 2.1 metres. A&nbsp;focusing wheel&nbsp;ensures the celestial display is crystal clear. This is not just for special occasions like Christmas or birthdays; it&#39;s a year-round gateway to the stars.</p>\r\n\r\n<p><strong>Technical specifications</strong></p>\r\n<ul>\r\n\t<li>Star projector suitable for children aged 14 and up</li>\r\n\t<li>Shooting star function</li>\r\n\t<li>Automatic shut-off (after 30, 60, or 120 minutes)</li>\r\n\t<li>Projection area of 1.6 x 2.1 metres (at a 2-metre distance)</li>\r\n\t<li>1 bright, white LED</li>\r\n\t<li>Motion-enabled projection through dual motors offering 6 speeds</li>\r\n\t<li>Focusing wheel for clear images</li>\r\n\t<li>Night sky simulation on walls or ceilings, adjustable for specific dates and times</li>\r\n\t<li>More than 8,000 celestial bodies and 61 constellations on 2 projection discs</li>\r\n\t<li>Maximum projection distance: 3 metres</li>\r\n</ul>",
+    "price": "69.50",
+    "discount": 10,
+    "time_create": "2024-04-02T15:02:34.426Z",
+    "time_updated": "2024-04-29T19:51:23.818Z",
+    "in_stock": true
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "image": "product_images/star-projectors/astro-planetarium-multimedia/NG-Astro_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 2,
+    "image": "product_images/star-projectors/astro-planetarium-multimedia/NG-Astro-Planetarium1.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 2,
+    "image": "product_images/star-projectors/astro-planetarium-multimedia/NG-Astro-Planetarium2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 2,
+    "image": "product_images/star-projectors/astro-planetarium-multimedia/NG-Astro-Planetarium3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 9,
+  "fields": {
+    "product": 3,
+    "image": "product_images/star-projectors/planetarium-labzz-sp50-ufo/LabZZ_SP50_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 3,
+    "image": "product_images/star-projectors/planetarium-labzz-sp50-ufo/LabZZ_SP50_nlo1.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 3,
+    "image": "product_images/star-projectors/planetarium-labzz-sp50-ufo/LabZZ_SP50_nlo2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 3,
+    "image": "product_images/star-projectors/planetarium-labzz-sp50-ufo/LabZZ_SP50_nlo3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 27,
+  "fields": {
+    "product": 4,
+    "image": "product_images/games/shoot-the-moon/Shoot_the_Moon_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 28,
+  "fields": {
+    "product": 4,
+    "image": "product_images/games/shoot-the-moon/Shoot_the_Moon1.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 29,
+  "fields": {
+    "product": 4,
+    "image": "product_images/games/shoot-the-moon/Shoot_the_Moon2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 5,
+    "image": "product_images/games/space-opoly/Space-opoly.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 36,
+  "fields": {
+    "product": 7,
+    "image": "product_images/games/planet-doku/Planet_Doku_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 37,
+  "fields": {
+    "product": 7,
+    "image": "product_images/games/planet-doku/Planet_Doku2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 38,
+  "fields": {
+    "product": 7,
+    "image": "product_images/games/planet-doku/Planet_Doku3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 42,
+  "fields": {
+    "product": 9,
+    "image": "product_images/books/haynes-nasa-moon-missions-operations-manual/Haynes_nasa__moon_missi_dcxuKmB.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 43,
+  "fields": {
+    "product": 10,
+    "image": "product_images/books/observing-nebulae/Observing_nebulae_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 44,
+  "fields": {
+    "product": 11,
+    "image": "product_images/gifts/3d-galaxy-crystal-ball/galaxy_crystal_ball_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 45,
+  "fields": {
+    "product": 11,
+    "image": "product_images/gifts/3d-galaxy-crystal-ball/galaxy_crystal_ball2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 46,
+  "fields": {
+    "product": 11,
+    "image": "product_images/gifts/3d-galaxy-crystal-ball/galaxy_crystal_ball3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 47,
+  "fields": {
+    "product": 12,
+    "image": "product_images/gifts/ceramic-coffee-mug-tea-cup/coffee_cup.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 48,
+  "fields": {
+    "product": 7,
+    "image": "product_images/games/planet-doku/Slider_doku.jpg",
+    "title_image": false,
+    "is_for_slider": true
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 49,
+  "fields": {
+    "product": 11,
+    "image": "product_images/gifts/3d-galaxy-crystal-ball/Slider_galaxy_crystal_ball.jpg",
+    "title_image": false,
+    "is_for_slider": true
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 50,
+  "fields": {
+    "product": 3,
+    "image": "product_images/star-projectors/planetarium-labzz-sp50-ufo/Slider_labZZ.jpg",
+    "title_image": false,
+    "is_for_slider": true
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 52,
+  "fields": {
+    "product": 8,
+    "image": "product_images/toys/spacex-falcon-9/Falcon-9_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 53,
+  "fields": {
+    "product": 8,
+    "image": "product_images/toys/spacex-falcon-9/Falcon2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 54,
+  "fields": {
+    "product": 8,
+    "image": "product_images/toys/spacex-falcon-9/Falcon3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 55,
+  "fields": {
+    "product": 8,
+    "image": "product_images/toys/spacex-falcon-9/Falcon4.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 56,
+  "fields": {
+    "product": 1,
+    "image": "product_images/star-projectors/homestar-pro-original-home-planetarium/Homestar_Sega_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 57,
+  "fields": {
+    "product": 1,
+    "image": "product_images/star-projectors/homestar-pro-original-home-planetarium/Homestar_Sega2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 58,
+  "fields": {
+    "product": 1,
+    "image": "product_images/star-projectors/homestar-pro-original-home-planetarium/Homestar_Sega3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 59,
+  "fields": {
+    "product": 1,
+    "image": "product_images/star-projectors/homestar-pro-original-home-planetarium/Homestar_Sega4.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 60,
+  "fields": {
+    "product": 6,
+    "image": "product_images/toys/nasa-space-shuttle-discovery/Space_Shuttle_title.jpeg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 61,
+  "fields": {
+    "product": 6,
+    "image": "product_images/toys/nasa-space-shuttle-discovery/Space_Shuttle2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 62,
+  "fields": {
+    "product": 6,
+    "image": "product_images/toys/nasa-space-shuttle-discovery/Space_Shuttle3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 63,
+  "fields": {
+    "product": 9,
+    "image": "product_images/books/haynes-nasa-moon-missions-operations-manual/Haynes_nasa__moon_missions.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 64,
+  "fields": {
+    "product": 10,
+    "image": "product_images/books/observing-nebulae/Observing_nebulae.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 65,
+  "fields": {
+    "product": 13,
+    "image": "product_images/books/visual-galaxy/Visual_Galaxy_title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 66,
+  "fields": {
+    "product": 13,
+    "image": "product_images/books/visual-galaxy/Visual_Galaxy.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 67,
+  "fields": {
+    "product": 14,
+    "image": "product_images/star-projectors/galaxy-projector/Galaxy_Projector_title1.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 68,
+  "fields": {
+    "product": 14,
+    "image": "product_images/star-projectors/galaxy-projector/Galaxy_Projector.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 69,
+  "fields": {
+    "product": 15,
+    "image": "product_images/star-projectors/junior-astro-planetarium/Home-planetarium-junior-title.jpg",
+    "title_image": true,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 70,
+  "fields": {
+    "product": 15,
+    "image": "product_images/star-projectors/junior-astro-planetarium/Home-planetarium-junior1.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 71,
+  "fields": {
+    "product": 15,
+    "image": "product_images/star-projectors/junior-astro-planetarium/Home-planetarium-junior2.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 72,
+  "fields": {
+    "product": 15,
+    "image": "product_images/star-projectors/junior-astro-planetarium/Home-planetarium-junior3.jpg",
+    "title_image": false,
+    "is_for_slider": false
+  }
+},
+{
+  "model": "shop.productimage",
+  "pk": 73,
+  "fields": {
+    "product": 15,
+    "image": "product_images/star-projectors/junior-astro-planetarium/Slider_astro.png",
+    "title_image": false,
+    "is_for_slider": true
+  }
 }
 ]
