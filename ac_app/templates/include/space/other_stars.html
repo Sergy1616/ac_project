@@ -1,11 +1,11 @@
 {% for star in stars_list %}
     <div class="stars-wrapper">
-        <a class="img-link" href="#">
+        <a class="img-link" href="{{ star.get_absolute_url }}">
             {% if star.image %}<img src="{{ star.image.url }}" alt="img">{% endif %}
         </a>
         <div class="star">
             <div class="star-title">
-                <h2><a class="page-link" href="#">{{ star.name }}</a></h2>
+                <h2><a class="page-link" href="{{ star.get_absolute_url }}">{{ star.name }}</a></h2>
                 {% if star.constellation %}
                     <div class="constellation-link">(
                         <a class="page-link" href="{{ star.constellation.get_absolute_url }}">

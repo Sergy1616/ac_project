@@ -7,7 +7,9 @@ from .views import (
     CommentDeleteView,
     ConstellationView,
     ConstellationDetailView,
-    StarsView
+    StarsView,
+    StarsDetailView,
+    FavoriteStarView
 )
 
 urlpatterns = [
@@ -18,4 +20,6 @@ urlpatterns = [
     path('constellations/', ConstellationView.as_view(), name='constellations'),
     path('constellations/<slug:slug>/', ConstellationDetailView.as_view(), name='constellation_detail'),
     path('stars/', StarsView.as_view(), name='stars'),
+    path('stars/<slug:slug>/', StarsDetailView.as_view(), name='star_detail'),
+    path('stars/<slug:slug>/favorite/', FavoriteStarView.as_view(), name='favorite'),
 ]

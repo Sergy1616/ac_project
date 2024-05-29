@@ -1,5 +1,6 @@
+from django.templatetags.static import static
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
@@ -11,7 +12,9 @@ from .models import (
     Comment,
     Constellation,
     SpectralClass,
-    Star
+    Star,
+    StarCharacteristics,
+    FavoriteStar
 )
 from .forms import CommentForm
 
@@ -97,6 +100,7 @@ class ConstellationDetailView(NavigationMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["constellation_list"] = reverse("constellations")
+        context["stars"] = Star.objects.filter(constellation=self.object)
         return context
 
 
@@ -126,3 +130,49 @@ class StarsView(PaginatedListView):
 
     def get_ajax_template_name(self):
         return "include/space/other_stars.html"
+
+
+class StarsDetailView(NavigationMixin, DetailView):
+    model = Star
+    template_name = "space/star_detail.html"
+    context_object_name = "star"
+    navigate_on_field = "name"
+    sort_order = "asc"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["characteristics"] = StarCharacteristics.objects.filter(star=self.object)
+        context["stars_list"] = reverse("stars")
+
+        star = self.object  # ! similar queries
+        if self.request.user.is_authenticated:
+            context["is_favorite"] = FavoriteStar.objects.filter(user=self.request.user, star=star).exists()
+        else:
+            context["is_favorite"] = False
+
+        return context
+
+
+class FavoriteStarView(View):
+    def post(self, request, slug):
+        if not request.user.is_authenticated:
+            return JsonResponse({
+                "error": "You must be logged in to add stars to favorites",
+                "status": "login_required"}, status=401)
+
+        star = get_object_or_404(Star, slug=slug)
+
+        favorite, created = FavoriteStar.objects.get_or_create(user=request.user, star=star)
+        if not created:
+            favorite.delete()
+            return JsonResponse({
+                "result": "removed",
+                "action": "Add to Favorites",
+                "image_src": static("images/favourite_a.svg")
+            })
+        else:
+            return JsonResponse({
+                "result": "added",
+                "action": "Remove from Favorites",
+                "image_src": static("images/favourite_r.svg")
+            })

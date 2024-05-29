@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ star.name }}{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="detail-box">
+                <h1 class="page-title">{{ star.name }}</h1>
+                <div class="detail-wrapper">
+                    {% if star.image %}<img src="{{ star.image.url }}" alt="img">{% endif %}
+                    <div class="star-detail-content">
+                        <ul class="characteristics-inner">
+                            {% if not characteristics %}
+                                {% if star.constellation %}
+                                    <li class="item-info">Constellation:<span>
+                                        <a href="{{ star.constellation.get_absolute_url }}">
+                                            {{ star.constellation.name }}</a></span>
+                                    </li>
+                                {% endif %}
+                                <li class="item-info">Spectral class:<span>{{ star.spectrum.name }}</span></li>
+                            {% else %}
+                                <li><h2>Key characteristics of star</h2></li>
+                                {% if star.constellation %}
+                                    <li class="char-row">
+                                        <p class="char-name">Constellation:</p>
+                                        <p class="char-description">
+                                            <a class="page-link" href="{{ star.constellation.get_absolute_url }}">
+                                                {{ star.constellation.name }}</a>
+                                        </p>
+                                    </li>
+                                {% endif %}
+                                {% include 'include/space/characteristics_of_star.html' %}
+                            {% endif %}
+                        </ul>
+                        <div class="item-description">{{ star.description|safe|linebreaksbr }}</div>
+                    </div>
+                </div>
+                <form method="post" action="{% url 'favorite' star.slug %}" id="favorite-form-ajax">
+                    {% csrf_token %}
+                    <div class="favorite">
+                        <button type="submit" class="page-button favorite-button">
+                            {% if is_favorite %}
+                                <img src="{% static 'images/favourite_r.svg' %}" alt="img">
+                                <span>Remove from Favorites</span>
+                            {% else %}
+                                <img src="{% static 'images/favourite_a.svg' %}" alt="img">
+                                <span>Add to Favorites</span>
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+                <hr>
+                {% include "include/pagination/item_navigator.html" with return_url='stars' return_params='?SpectralClass=' items_name='Stars' %}
+            </div>
+        </div>
+    </main>
+    <script type="module" src="{% static 'js/ajaxFormManager.js' %}"></script>
+{% endblock %}

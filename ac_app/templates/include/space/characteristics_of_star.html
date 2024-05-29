@@ -1,0 +1,54 @@
+{% for char in characteristics %}
+    {% if char.full_spectrum %} 
+        <li class="char-row">
+            <p class="char-name">Spectral class:</p>
+            <p class="char-description">{{ char.full_spectrum }}</p>
+        </li>
+    {% endif %}
+    {% if char.galaxy %}
+        <li class="char-row">
+            <p class="char-name">Galaxy:</p>
+            <p class="char-description">{{ char.galaxy}}</p>
+        </li>
+    {% endif %}
+    {% if char.apparent_magnitude %}
+        <li class="char-row">
+            <p class="char-name">Apparent magnitude:</p>
+            <p class="char-description">{{ char.apparent_magnitude }}</p>
+        </li>
+    {% endif %}
+    {% if char.absolute_magnitude %}
+        <li class="char-row">
+            <p class="char-name">Absolute magnitude:</p>
+            <p class="char-description">{{ char.absolute_magnitude }}</p>
+        </li>
+    {% endif %}
+    {% if char.distance %}
+        <li class="char-row">
+            <p class="char-name">Distance:</p>
+            <p class="char-description">{{ char.distance }}</p>
+        </li>
+    {% endif %}
+    {% if char.radial_velocity %}
+        <li class="char-row">
+            <p class="char-name">Radial velocity:</p>
+            <p class="char-description">{{ char.radial_velocity }}</p>
+        </li>
+    {% endif %}
+    {% if char.mass %}
+        <li class="char-row">
+            <p class="char-name">Mass:</p>
+            <p class="char-description left-indent">{{ char.mass|floatformat:"-1" }}<span>M</span><sub>☉</sub>
+                {% if star.name == 'Sun' %}(equivalent to 332,950 Earths){% endif %}
+            </p>
+        </li>
+    {% endif %}
+    {% if char.age %}
+        <li class="char-row">
+            <p class="char-name">Age:</p>
+            <p class="char-description left-indent">{{ char.age|floatformat:"-1" }}
+                <span>{{ char.get_age_unit_display }}</span>
+            </p>
+        </li>
+    {% endif %}
+{% endfor %}

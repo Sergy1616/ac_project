@@ -11,12 +11,16 @@
                     <div class="constellation-content">
                         <p class="item-info">Area:<span>{{ constellation.area }}</span></p>
                         <p class="item-info">Quadrant:<span>{{ constellation.quadrant }}</span>square degrees</p>
+                        {% if stars %}
                         <ul class="constellation-stars">
                             <li>Stars:</li>
-                            <li><a class="page-link" href="#">Star1</a></li>
-                            <li><a class="page-link" href="#">Star2</a></li>
-                            <li><a class="page-link" href="#">Star3</a></li>
-                        </ul>
+                                {% for star in stars %}
+                                    <li>
+                                        <a class="page-link" href="{{ star.get_absolute_url }}">{{ star.name }}</a>,
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                         <div class="item-description">{{ constellation.description|safe|linebreaksbr }}</div>
                         <hr>
                     </div>

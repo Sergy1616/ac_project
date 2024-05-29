@@ -360,7 +360,8 @@
 
 /*  space detail */
 .space-news-content,
-.constellation-content {
+.constellation-content,
+.star-detail-content {
     text-align: justify;
     margin-top: 20px;
     padding: 0 10px;
@@ -673,3 +674,45 @@
     font-size: 16px;
     font-weight: 400;
 }
+
+/* space star detail */
+.star-detail-content h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: 'Merriweather', serif;
+}
+
+.characteristics-inner {
+    margin-bottom: 30px;
+}
+
+.char-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.char-name {
+    flex-basis: 40%;
+    margin-right: 5px;
+}
+
+.char-description {
+    flex-basis: 50%;
+    font-family: 'Merriweather', serif;
+}
+
+.favorite { margin: 25px 10px; }
+
+.favorite-button {
+    display: flex;
+    align-items: center;
+}
+
+.favorite img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border: none;
+}
+
+.favorite span { font-size: 14px; }
