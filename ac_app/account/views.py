@@ -143,6 +143,7 @@ class UserCommentsView(LoginRequiredMixin, ListView):
     model = Comment
     template_name = 'account/user_comments.html'
     context_object_name = 'user_comments'
+    paginate_by = 8
 
     def get_queryset(self):
         return Comment.objects.select_related('news', 'author').filter(author=self.request.user)
@@ -152,6 +153,7 @@ class UserFavoriteStarsView(LoginRequiredMixin, ListView):
     model = FavoriteStar
     template_name = 'account/user_favorites.html'
     context_object_name = 'user_favorites'
+    paginate_by = 8
 
     def get_queryset(self):
         return FavoriteStar.objects.select_related(

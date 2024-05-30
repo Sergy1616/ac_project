@@ -38,9 +38,9 @@
                         Products
                     {% endif %}
                 </h1>
-                <form class="sort-form" method="get">
-                    <label>Sort by:</label>
-                    <span>New Arrivals</span>
+                <form id="sortForm" class="sort-form" method="get">
+                    <label for="id_sort">Sort by:</label>
+                    <span>{{ form.sort }}</span>
                 </form>
                 <div class="product-wrapper">
                     <ul>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="product-item">
                                         <h2 class="product-title">{{ product.name|truncatewords:5 }}</h2>
-                                        <p>$<span>{{ product.price }}</span></p>
+                                            <p>$<span>{{ product.price }}</span></p>
                                     </div>
                                 </a>
                             </li>
@@ -75,7 +75,10 @@
                     {% endfor %}
                 </ul>
             </div>
-            <hr>           
+            <hr>
+            {% if page_obj.has_other_pages %}
+                {% include 'include/pagination/items_pagination.html' %}
+            {% endif %}
         </div>
     </main>
 

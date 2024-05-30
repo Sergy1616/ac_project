@@ -15,7 +15,12 @@ document.addEventListener('DOMContentLoaded', function () {
     //  constellations pagination
     if (window.location.pathname === '/space/constellations/') {
         new Pagination('constellation', 'constellation');
-    }  
+    }
+    
+    // sort products
+    if (window.location.pathname === '/shop/products/' || window.location.pathname.includes('/category/') || window.location.pathname.includes('/brand/')) {
+        sortProducts();
+    }
 
     function initializeOnAllPages() {
         handleMenu();
@@ -173,3 +178,12 @@ class Pagination {
         }
     }
 }
+
+// SHOP:
+// Sort Products
+function sortProducts() {
+    var sortSelect = document.getElementById('id_sort');
+        sortSelect.addEventListener('change', function() {
+            document.getElementById('sortForm').submit();
+        });
+};

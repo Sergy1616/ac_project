@@ -40,6 +40,9 @@
                     <p class="page-title">No favorites yet</p>
                 {% endif %}
             </div>
+            {% if page_obj.has_other_pages %}
+                {% include 'include/pagination/items_pagination.html' %}
+            {% endif %}
         </div>
     </main>
 {% endblock %}

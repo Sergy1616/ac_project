@@ -35,6 +35,9 @@
                     <p class="page-title">No comments yet</p>
                 {% endif %}
             </div>
+            {% if page_obj.has_other_pages %}
+                {% include 'include/pagination/items_pagination.html' %}
+            {% endif %}
         </div>
     </main>
     <body data-page="comment-edit">

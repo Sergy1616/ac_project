@@ -1,0 +1,34 @@
+{% load static %}
+
+<ul class="pagination-list">
+    {% if page_obj.has_previous %}
+        <li class="pagin-arrows">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}
+                {% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                <img class="page-arrows" src="{% static 'images/arrow_left.svg' %}" alt="img">
+            </a>
+        </li>
+    {% endif %}
+
+    {% for num in paginator.page_range %}
+        {% if page_obj.number == num %}
+            <li class="active">{{ num }}</li>
+        {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+            <li>
+                <a class="page-link" href="?page={{ num }}
+                    {% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                    {{ num }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <li class="pagin-arrows">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}
+                {% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                <img class="page-arrows" src="{% static 'images/arrow_right.svg' %}" alt="img">
+            </a>
+        </li>
+    {% endif %}
+</ul>

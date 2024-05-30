@@ -2,19 +2,23 @@ from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 
+from .forms import ProductSortForm
 from .models import Category, Product, Brand, ProductImage
 
 
 class ProductListView(ListView):
     model = Product
+    form_class = ProductSortForm
     template_name = "shop/products.html"
     context_object_name = "product_list"
     category_slug_url_kwarg = 'category_slug'
     brand_slug_url_kwarg = 'brand_slug'
     allow_empty = False
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class(self.request.GET)
         context['categories'] = Category.objects.all()
         context['brands'] = Brand.objects.all()
         context.update(self.get_selected_context())
@@ -28,6 +32,8 @@ class ProductListView(ListView):
             Prefetch('images', queryset=ProductImage.objects.filter(title_image=True),
                      to_attr='title_images')
         )
+        queryset = self.get_sorted_queryset(queryset)
+
         return queryset
 
     def filter_by_category_and_brand(self, queryset):
@@ -38,6 +44,23 @@ class ProductListView(ListView):
             return queryset.filter(category__slug=category_slug)
         if brand_slug:
             return queryset.filter(brand__slug=brand_slug)
+
+        return queryset
+
+    def get_sorted_queryset(self, queryset):
+        form = self.form_class(self.request.GET)
+        if form.is_valid() and form.cleaned_data.get('sort'):
+            sort_option = form.cleaned_data['sort']
+            if sort_option == 'date_desc':
+                queryset = queryset.order_by('-time_create')
+            elif sort_option == 'price_desc':
+                queryset = queryset.order_by('-price')
+            elif sort_option == 'price_asc':
+                queryset = queryset.order_by('price')
+            elif sort_option == 'name_asc':
+                queryset = queryset.order_by('name')
+            elif sort_option == 'name_desc':
+                queryset = queryset.order_by('-name')
 
         return queryset
 
