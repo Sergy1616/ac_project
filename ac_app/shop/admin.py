@@ -1,7 +1,7 @@
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.contrib import admin
-from .models import Category, Brand, ProductImage, Product
+from .models import Category, Brand, ProductImage, Product, WishList
 
 
 @admin.register(Category)
@@ -54,3 +54,16 @@ class ProductAdmin(admin.ModelAdmin):
     def final_price_display(self, obj):
         return obj.final_price()
     final_price_display.short_description = 'Final Price'
+
+
+@admin.register(WishList)
+class WishListAdmin(admin.ModelAdmin):
+    list_display = ('user', 'date_added', 'get_product_count')
+    list_display_links = ('user',)
+    list_filter = ('date_added', 'user')
+    search_fields = ['user__username',]
+    filter_horizontal = ('products',)
+
+    def get_product_count(self, obj):
+        return obj.products.count()
+    get_product_count.short_description = 'Number of Products'
