@@ -1,9 +1,12 @@
 from django.db.models import Prefetch
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.views import View
+from django.templatetags.static import static
 from django.views.generic import ListView, DetailView
 
 from .forms import ProductSortForm
-from .models import Category, Product, Brand, ProductImage
+from .models import Category, Product, Brand, ProductImage, WishList
 
 
 class ProductListView(ListView):
@@ -87,4 +90,33 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['images'] = ProductImage.objects.filter(product=self.object, is_for_slider=False)
 
+        if self.request.user.is_authenticated:
+            context['in_wishlist'] = WishList.objects.filter(user=self.request.user, products=self.object).exists()
+        else:
+            context['in_wishlist'] = False
         return context
+
+
+class WishListUpdateView(View):
+    def post(self, request, product_slug):
+        if not request.user.is_authenticated:
+            return JsonResponse({
+                'error': 'You must be logged in to add an item to your wishlist',
+                'status': 'login_required'}, status=401)
+
+        product = get_object_or_404(Product, slug=product_slug)
+        wishlist, created = WishList.objects.get_or_create(user=request.user)
+        if product in wishlist.products.all():
+            wishlist.products.remove(product)
+            return JsonResponse({
+                'result': 'removed',
+                'action': 'Add to Wish List',
+                'image_src': static('images/favourite_a.svg')
+            })
+        else:
+            wishlist.products.add(product)
+            return JsonResponse({
+                'result': 'added',
+                'action': 'Remove from Wish List',
+                'image_src': static('images/favourite_r.svg')
+            })

@@ -45,6 +45,19 @@
                             </li>
                         </ul>
                         <h1>{{ product.name }}</h1>
+                        <form class="wishlist" method="post" action="{% url 'wishlist' product.slug %}" 
+                        id="favourite-wishlist-form-ajax">
+                            {% csrf_token %}
+                            <button type="submit" class="wishlist-button">
+                                {% if in_wishlist %}
+                                    <img class="remove-wishlist-img" src="{% static 'images/favourite_r.svg' %}" alt="img">
+                                    <span>Remove from Wish List</span>
+                                {% else %}
+                                    <img class="add-wishlist-img" src="{% static 'images/favourite_a.svg' %}" alt="img">
+                                    <span>Add to Wish List</span>
+                                {% endif %}
+                            </button>
+                        </form>
                         <hr>
                         <div class="product-price">
                             {% if product.discount %}
@@ -52,7 +65,7 @@
                                     <p>$<span><s>{{ product.price }}</s></span></p>
                                     <p>$<span>{{ product.final_price }}</span></p>
                                     <p>({{ product.discount }}%<span>off</span>)</p>
-                                </div>
+                                </div>                                
                             {% else %}
                                 <p>$<span>{{ product.price }}</span></p>
                             {% endif %}
@@ -73,4 +86,5 @@
         </div>
     </main>
     <body data-page="product_detail">
+    <script type="module" src="{% static 'js/ajaxFormManager.js' %}"></script>
 {% endblock %}
