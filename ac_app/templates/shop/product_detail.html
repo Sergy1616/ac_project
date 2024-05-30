@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="product-detail-wrapper">
+                <div class="product-detail">
+                    <div class="product-images">
+                        <img class="main-image" src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                        <div id="thumbnails" class="thumbnails-wrapper">
+                            {% for image in images %}
+                                <img class="thumbnail" src="{{ image.image.url }}" alt="{{ product.name }}">
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="product-main">
+                        <ul class="product-info">
+                            <li class="info-row">
+                                <p class="info-title">Item:</p>
+                                <p>#{{ product.id }}</p>
+                            </li>
+                            <li class="info-row">
+                                <p class="info-title">Category:</p>
+                                <p>
+                                    <a class="page-link" href="{{ product.category.get_absolute_url }}">
+                                        {{ product.category.name }}</a>
+                                </p>
+                            </li>
+                            <li class="info-row">
+                                {% if product.brand %}
+                                    <p class="info-title">Brand:</p>
+                                    <p>
+                                        {% if product.brand.image %}
+                                            <a href="{{ product.brand.get_absolute_url }}">
+                                                <img class="brand-image" src="{{ product.brand.image.url }}"
+                                                     alt="{{ product.brand.name }}">
+                                            </a>
+                                        {% else %}
+                                            <a class="page-link" href="{{ product.brand.get_absolute_url }}">
+                                                {{ product.brand.name }}</a>
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <h1>{{ product.name }}</h1>
+                        <hr>
+                        <div class="product-price">
+                            {% if product.discount %}
+                                <div class="discount discount_detail">
+                                    <p>$<span><s>{{ product.price }}</s></span></p>
+                                    <p>$<span>{{ product.final_price }}</span></p>
+                                    <p>({{ product.discount }}%<span>off</span>)</p>
+                                </div>
+                            {% else %}
+                                <p>$<span>{{ product.price }}</span></p>
+                            {% endif %}
+                        </div>
+                        <form class="add-product-form">
+                            <div class="add-cart">
+                                <button class="page-button" type="submit">Add To Cart</button>
+                                <a href="#">View shipping estimates</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <h1>PRODUCT DESCRIPTION</h1>
+                    <p>{{ product.description|safe|linebreaksbr }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <body data-page="product_detail">
+{% endblock %}

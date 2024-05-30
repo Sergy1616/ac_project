@@ -1,6 +1,6 @@
 from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .forms import ProductSortForm
 from .models import Category, Product, Brand, ProductImage
@@ -9,8 +9,8 @@ from .models import Category, Product, Brand, ProductImage
 class ProductListView(ListView):
     model = Product
     form_class = ProductSortForm
-    template_name = "shop/products.html"
-    context_object_name = "product_list"
+    template_name = 'shop/products.html'
+    context_object_name = 'product_list'
     category_slug_url_kwarg = 'category_slug'
     brand_slug_url_kwarg = 'brand_slug'
     allow_empty = False
@@ -73,5 +73,18 @@ class ProductListView(ListView):
             context['selected_category'] = get_object_or_404(Category, slug=category_slug)
         if brand_slug:
             context['selected_brand'] = get_object_or_404(Brand, slug=brand_slug)
+
+        return context
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'shop/product_detail.html'
+    context_object_name = 'product'
+    slug_url_kwarg = 'product_slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['images'] = ProductImage.objects.filter(product=self.object, is_for_slider=False)
 
         return context

@@ -46,7 +46,7 @@
                     <ul>
                         {% for product in product_list %}
                             <li>
-                                <a href="#">
+                                <a href="{{ product.get_absolute_url }}">
                                     <div class="product-image">
                                         {% if product.title_images %}
                                             <img src="{{ product.title_images.0.image.url }}" alt="{{ product.name }}">
@@ -56,7 +56,15 @@
                                     </div>
                                     <div class="product-item">
                                         <h2 class="product-title">{{ product.name|truncatewords:5 }}</h2>
+                                        {% if product.discount %}
+                                            <div class="discount">
+                                                <p>$<span><s>{{ product.price }}</s></span></p>
+                                                <p>$<span>{{ product.final_price }}</span></p>
+                                                <p>({{ product.discount }}%<span>Off</span>)</p>
+                                            </div>                                
+                                        {% else %}
                                             <p>$<span>{{ product.price }}</span></p>
+                                        {% endif %}                                        
                                     </div>
                                 </a>
                             </li>
@@ -78,8 +86,7 @@
             <hr>
             {% if page_obj.has_other_pages %}
                 {% include 'include/pagination/items_pagination.html' %}
-            {% endif %}
+            {% endif %}           
         </div>
     </main>
-
 {% endblock %}

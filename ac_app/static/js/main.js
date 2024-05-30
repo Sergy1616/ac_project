@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
         sortProducts();
     }
 
+    // product detail slider
+    if (document.body.getAttribute('data-page') === 'product_detail') {
+        productDetailSlider();
+    }
+
     function initializeOnAllPages() {
         handleMenu();
         accountMenu();
@@ -180,7 +185,19 @@ class Pagination {
 }
 
 // SHOP:
-// Sort Products
+// 1. Slider Product Detail
+function productDetailSlider() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.querySelector('.product-images img');
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', () => {
+            mainImage.src = thumbnail.src;
+        });
+    });
+};
+
+// 2. Sort Products
 function sortProducts() {
     var sortSelect = document.getElementById('id_sort');
         sortSelect.addEventListener('change', function() {
