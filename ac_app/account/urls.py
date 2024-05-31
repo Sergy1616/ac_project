@@ -10,7 +10,8 @@ from .views import (
     CustomPasswordResetConfirmView,
     DeleteAccountView,
     UserCommentsView,
-    UserFavoriteStarsView
+    UserFavoriteStarsView,
+    UserWishListView
 )
 
 urlpatterns = [
@@ -25,5 +26,6 @@ urlpatterns = [
     path('edit/', EditProfileView.as_view(), name='edit_profile'),
     path('user_comments/', UserCommentsView.as_view(), name='user_comments'),
     path('user_favorites/', UserFavoriteStarsView.as_view(), name='user_favorites'),
+    path('wish_list/', UserWishListView.as_view(), name='user_wish_list'),
     path('<username>/', ProfileView.as_view(), name='user_detail'),
 ]

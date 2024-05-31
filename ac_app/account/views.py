@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordRes
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, FormView, UpdateView, ListView
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 
 from account.forms import (
     CustomPasswordResetForm,
@@ -16,6 +16,7 @@ from account.forms import (
 )
 from account.models import Profile
 from space.models import Comment, FavoriteStar
+from shop.models import WishList
 
 
 class LoginProfileView(LoginView):
@@ -159,3 +160,34 @@ class UserFavoriteStarsView(LoginRequiredMixin, ListView):
         return FavoriteStar.objects.select_related(
             'star__spectrum',
             'star__constellation').filter(user=self.request.user)
+
+
+class UserWishListView(LoginRequiredMixin, DetailView):
+    model = WishList
+    template_name = 'account/user_wish_list.html'
+
+    def get_object(self, queryset=None):
+        wishlist, created = WishList.objects.prefetch_related(
+            'products__images').get_or_create(user=self.request.user)
+        return wishlist
+
+    def get_queryset(self):
+        queryset = WishList.objects.filter(user=self.request.user).select_related('user')
+        return queryset
+
+    def post(self, request, *args, **kwargs):
+        wishlist = self.get_object()
+        products = wishlist.products.all()
+        action = request.POST.get('action')
+
+        if action == 'delete_product':
+            return self.delete_product_from_wishlist(wishlist)
+
+        return super().get_context_data(**kwargs)
+
+    def delete_product_from_wishlist(self, wishlist):
+        product_id = self.request.POST.get('product_id')
+        if product_id:
+            product = get_object_or_404(wishlist.products, id=product_id)
+            wishlist.products.remove(product)
+            return redirect(self.request.META.get('HTTP_REFERER'))

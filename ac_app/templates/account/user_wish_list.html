@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile - Wish List{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            <div class="page-title">
+                <h1>{{ wishlist.title }}</h1>
+                <p class="wishlist-date">Added on:<span>{{ wishlist.date_added|date:"F j, Y" }}</span></p>
+            </div>
+            <div class="wishlist-products">
+                {% if wishlist.products.all %}
+                    {% for product in wishlist.products.all %}                    
+                        <div class="wishlist-product-wrapper">
+                            <a class="img-link" href="{{ product.get_absolute_url }}">
+                                <img class="wishlist-product-img" src="{{ product.images.all.0.image.url }}"
+                                 alt="{{ product.name }}">
+                            </a>
+                            <div class="wishlist-product">
+                                <div class="wishlist-product-title">
+                                    <p>Item<span>#{{ product.id }}</span></p>
+                                    <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>                        
+                                </div>
+                                <div class="wishlist-product-description">{{ product.description|safe|truncatewords:35 }}</div>
+                                <form class="wishlist" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <button type="submit" name="action" value="delete_product" class="wishlist-button">
+                                        <img class="remove-wishlist" src="{% static 'images/favourite_r.svg' %}" alt="img">
+                                        <span>Remove</span>
+                                    </button>
+                                </form>
+                                <div class="wishlist-product-price">
+                                    {% if product.discount %}
+                                        <div class="discount discount_detail">
+                                            <p>$<span><s>{{ product.price }}</s></span></p>
+                                            <p>$<span>{{ product.final_price }}</span></p>
+                                            <p>({{ product.discount }}%<span>off</span>)</p>
+                                        </div>                                
+                                    {% else %}
+                                        <p>$<span>{{ product.price }}</span></p>
+                                    {% endif %} 
+                                </div>                                                
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <form class="add-product-form">
+                        <label class="label-checkbox">
+                            <input class="checkbox" type="checkbox">
+                            <span class="checkbox-main"></span>
+                            <span>Delete Wish List after adding to cart</span>
+                        </label>
+                        <div class="add-cart"><button class="page-button" type="submit">Add To Cart</button></div>
+                    </form>
+                {% else %}
+                    <p class="page-title">Your wish list is empty</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

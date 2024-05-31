@@ -297,6 +297,55 @@
     font-weight: 200;
 }
 
+/* profile Wish List */
+.wishlist-date {
+    margin-top: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.wishlist-date span { font-weight: 200; }
+
+.wishlist-product-wrapper {
+    display: flex;
+    margin-bottom: 25px;
+    text-align: justify;
+    align-items: center;
+    font-size: 18px;
+}
+
+.wishlist-product-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.wishlist-product { margin: 0px 10px 5px 20px; }
+
+.wishlist-product-title { text-align: left; }
+
+.wishlist-product-title h2 { font-size: 20px; }
+
+.wishlist-product-title p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.wishlist-product-description {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.wishlist-product-price {
+    font-family: 'Merriweather', serif;
+    margin-top: 10px;
+}
+
+.wishlist-product-title span,
+
+.wishlist-product-price span { margin-left: 5px; }
+
 /* templates/registration */
 .main-registration {
     background-image: url(../images/bg_image1.jpg);
