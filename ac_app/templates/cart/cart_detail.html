@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cache %}
+{% block title %}Shopping Cart{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container container-cart">
+            <h1 class="page-title">Shopping Cart</h1>
+            <div class="cart-wrapper">
+                <div class="list-item">
+                    <ul class="item-header">
+                        <li class="cart-cell">
+                            Product
+                            <span>
+                                {% with total_unique=cart.total_unique_items %}
+                                    (x{{ total_unique }})
+                                {% endwith %}
+                            </span>
+                        </li>
+                        <li class="cart-cell">Quantity</li>
+                        <li class="cart-cell unit-price">Unit price</li>
+                        <li class="cart-cell">Price</li>
+                    </ul>
+                </div>
+                <div class="list-item">
+                    {% if not cart.total_unique_items %}
+                        <h2>Your shopping cart is currently empty.</h2>
+                    {% else %}
+                        {% for item in cart %}
+                            {% with product=item.product %}
+                                <ul class="item-value">
+                                    <li class="cart-cell">
+                                        {% cache 600 product_images product %}
+                                            {% if product.images.all %}
+                                                {% with product_image=product.images.all.0 %}
+                                                    <img src="{{ product_image.image.url }}" alt="{{ product.name }}">
+                                                {% endwith %}
+                                            {% endif %}
+                                        {% endcache %}
+                                        <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>
+                                    </li>
+                                    <li class="cart-cell">
+                                        <form class="cart-update" action="{% url 'cart_add' product.id %}" method="post">
+                                            {% csrf_token %}
+                                            {{ item.update_quantity_form.quantity }}
+                                            {{ item.update_quantity_form.override }}
+                                            <input class="cell-button" type="submit" value="Update">
+                                        </form>
+                                        <form action="{% url 'cart_remove' product.id %}" method="post">
+                                            <input class="cell-button" type="submit" value="Remove">
+                                            {% csrf_token %}
+                                        </form>
+                                    </li>
+                                    <li class="cart-cell unit-price">${{ item.price }}</li>
+                                    <li class="cart-cell">${{ item.total_price }}</li>
+                                </ul>
+                                <hr>
+                            {% endwith %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="item-header">
+                    <div>Total</div>
+                    <div class="num">${{ cart.get_total_price }}</div>
+                </div>
+            </div>
+            <div class="cart-links">
+                <button class="page-button" type="submit"><a href="{% url 'products' %}">Continue Shopping</a></button>
+                {% if cart.total_unique_items > 0 %}
+                    <button class="page-button" type="submit"><a href="#">Checkout Now</a></button>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

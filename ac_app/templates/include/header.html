@@ -40,7 +40,12 @@
                     <img class="user-base" src="{% static 'images/user1.svg' %}">
                     <img class="user-action" src="{% static 'images/user2.svg' %}">
                 </div>
-                <a class="menu-cart" href="#">
+                <a class="menu-cart" href="{% url 'cart_detail' %}">
+                    {% with total_unique=cart.total_unique_items %}
+                        {% if total_unique > 0 %}
+                            <div class="cart-total-icon"><span>{{ total_unique }}</span></div>
+                        {% endif %}
+                    {% endwith %}
                     <div class="cart-container">
                         <img class="cart-base" src="{% static 'images/cart1.svg' %}">
                         <img class="cart-action" src="{% static 'images/cart2.svg' %}">

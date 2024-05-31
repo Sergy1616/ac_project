@@ -422,6 +422,25 @@ main { min-height: calc(100vh - 150px); }
     transition: 0.5s;
 }
 
+.cart-total-icon {
+    position: absolute;
+    top: -3px;
+    right: 8px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--bg-cart);
+    cursor: default;
+}
+
+.menu-cart span {
+    font-weight: 400;
+}
+
 /* Slider */
 .slider {
     position: relative;
