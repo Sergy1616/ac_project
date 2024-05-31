@@ -44,11 +44,13 @@
                             </div>
                         </div>
                     {% endfor %}
-                    <form class="add-product-form">
+                    <form class="add-product-form" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1" id="id_quantity">
                         <label class="label-checkbox">
-                            <input class="checkbox" type="checkbox">
+                            <input class="checkbox" type="checkbox" id="delete_wishlist" name="delete_wishlist">
                             <span class="checkbox-main"></span>
-                            <span>Delete Wish List after adding to cart</span>
+                            <span for="delete_wishlist">Delete Wish List after adding to cart</span>
                         </label>
                         <div class="add-cart"><button class="page-button" type="submit">Add To Cart</button></div>
                     </form>

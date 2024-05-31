@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, FormView, UpdateView, ListView
 from django.shortcuts import get_object_or_404, redirect
 
+from cart.forms import CartAddProductForm
 from account.forms import (
     CustomPasswordResetForm,
     SignUpProfileForm,
@@ -17,6 +18,7 @@ from account.forms import (
 from account.models import Profile
 from space.models import Comment, FavoriteStar
 from shop.models import WishList
+from cart.cart import Cart
 
 
 class LoginProfileView(LoginView):
@@ -175,13 +177,33 @@ class UserWishListView(LoginRequiredMixin, DetailView):
         queryset = WishList.objects.filter(user=self.request.user).select_related('user')
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cart_product_form'] = CartAddProductForm(initial={'override': False})
+        return context
+
     def post(self, request, *args, **kwargs):
         wishlist = self.get_object()
         products = wishlist.products.all()
         action = request.POST.get('action')
+        form = CartAddProductForm(request.POST)
+        delete_wishlist = request.POST.get('delete_wishlist', False)
 
         if action == 'delete_product':
             return self.delete_product_from_wishlist(wishlist)
+
+        if form.is_valid():
+            valid_data = form.cleaned_data
+            cart = Cart(request)
+            for product in products:
+                cart.add(
+                    product_id=product.id,
+                    quantity=valid_data['quantity'],
+                    override_quantity=valid_data['override']
+                    )
+            if delete_wishlist:
+                wishlist.delete()
+            return redirect('cart_detail')
 
         return super().get_context_data(**kwargs)
 
