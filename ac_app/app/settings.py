@@ -148,3 +148,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# to store cart in user session:
+
+CART_SESSION_ID = 'cart'
