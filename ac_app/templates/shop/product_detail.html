@@ -69,8 +69,11 @@
                             {% else %}
                                 <p>$<span>{{ product.price }}</span></p>
                             {% endif %}
+                        </div>                        
+                        <div id="notification-modal" class="modal-message">
+                            <p id="modal-message"></p>
                         </div>
-                        <form class="add-product-form" action="{% url 'cart_add' product.id %}" method="post">
+                        <form id="add-product-form" action="{% url 'cart_add' product.id %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1" id="id_quantity">
                             <div class="add-cart">

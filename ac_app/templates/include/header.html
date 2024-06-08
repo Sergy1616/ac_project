@@ -42,9 +42,9 @@
                 </div>
                 <a class="menu-cart" href="{% url 'cart_detail' %}">
                     {% with total_unique=cart.total_unique_items %}
-                        {% if total_unique > 0 %}
-                            <div class="cart-total-icon"><span>{{ total_unique }}</span></div>
-                        {% endif %}
+                        <div class="cart-total-icon" style="{% if cart.total_unique_items == 0 %}display: none;{% endif %}">
+                            <span id="total-unique-items">{{ total_unique }}</span>
+                        </div>
                     {% endwith %}
                     <div class="cart-container">
                         <img class="cart-base" src="{% static 'images/cart1.svg' %}">

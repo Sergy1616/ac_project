@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.views import View
 
 from .cart import Cart
@@ -21,13 +22,17 @@ class CartAddView(View):
         if form.is_valid():
             valid_data = form.cleaned_data
             cart.add(product_id=product_id, quantity=valid_data['quantity'], override_quantity=valid_data['override'])
-
-        referer_url = request.META.get('HTTP_REFERER')
-        return redirect(referer_url if referer_url else 'cart_detail')
+            total_unique = cart.total_unique_items()
+            return JsonResponse({
+                'result': 'success',
+                'message': 'Product successfully added to the cart',
+                'total_unique': total_unique
+            })
+        return JsonResponse({"result": "error"}, status=400)
 
 
 class CartRemoveView(View):
     def post(self, request, product_id, *args, **kwargs):
         cart = Cart(request)
         cart.remove(product_id)
-        return redirect('cart_detail')
+        return JsonResponse({'result': 'success'})

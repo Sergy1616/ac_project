@@ -46,9 +46,9 @@
                                             {{ item.update_quantity_form.override }}
                                             <input class="cell-button" type="submit" value="Update">
                                         </form>
-                                        <form action="{% url 'cart_remove' product.id %}" method="post">
-                                            <input class="cell-button" type="submit" value="Remove">
+                                        <form class="cart-remove" action="{% url 'cart_remove' product.id %}" method="post">
                                             {% csrf_token %}
+                                            <input class="cell-button" type="submit" value="Remove">
                                         </form>
                                     </li>
                                     <li class="cart-cell unit-price">${{ item.price }}</li>
@@ -72,4 +72,5 @@
             </div>
         </div>
     </main>
+    <script type="module" src="{% static 'js/ajaxFormManager.js' %}"></script>
 {% endblock %}

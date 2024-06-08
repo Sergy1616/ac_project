@@ -103,6 +103,19 @@ main { min-height: calc(100vh - 150px); }
 
 .img-link:hover { opacity: 1; }
 
+.modal-message {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 30px;
+    font-family: 'Merriweather', serif;
+    background-color: var(--bg-table);
+  }
+
 .messages {
     margin-bottom: 10px;
     text-align: center;
@@ -132,7 +145,8 @@ main { min-height: calc(100vh - 150px); }
 }
 
 .page-button:hover, 
-.confirm-button button:hover {
+.confirm-button button:hover,
+.modal-message {
     color: #b1c3ff;
     box-shadow:
         0 3px 15px var(--hover-color),

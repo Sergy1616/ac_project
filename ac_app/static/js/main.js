@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // sort products
-    if (window.location.pathname === '/shop/products/' || window.location.pathname.includes('/category/') || window.location.pathname.includes('/brand/')) {
+    if (document.body.getAttribute('data-page') === 'products') {
         sortProducts();
     }
 
@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initializeOnAllPages();
 });
+
+// Browser
+function handlePageShow(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+}
+window.addEventListener('pageshow', handlePageShow);
 
 
 // HEADER:
