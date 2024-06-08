@@ -52,7 +52,7 @@ function handleMenu() {
     var menu = document.getElementById("menu");
     var isUpdating = false;
 
-    window.onscroll = function() {
+    window.onscroll = function(event) {
         var currentScrollPos = window.pageYOffset;
 
         if (!isUpdating && Math.abs(prevPos - currentScrollPos) > 200) {
@@ -76,7 +76,7 @@ function handleMenu() {
 function accountMenu() {
     const accountMenu = document.getElementById('account-menu');
 
-    document.getElementById('open-account-menu').onclick = function() {
+    document.getElementById('open-account-menu').onclick = function(event) {
         accountMenu.classList.add('account-menu-open');
         localStorage.setItem('accountMenuState', 'open');
         event.stopPropagation();
@@ -89,10 +89,6 @@ function accountMenu() {
             event.stopPropagation();
         }
     });
-
-    if (localStorage.getItem('accountMenuState') === 'open') {
-        accountMenu.classList.add('account-menu-open');
-    }
 };
 
 // 3. htmx login 
@@ -111,11 +107,27 @@ function handleInput() {
 
             if (event.detail.xhr.getResponseHeader('HX-Trigger') === 'loginSuccess') {
                 document.getElementById('account-menu').classList.remove('account-menu-open');
-                location.reload();
+                var response = JSON.parse(event.detail.xhr.responseText);
+                showModal(response.message, true);
             }
         });
     });
 };
+
+// 4. Modal message
+function showModal(message, reload=false) {
+    const modal = document.getElementById('notification-modal');
+    const modalMessage = document.getElementById('modal-message');
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+    setTimeout(() => {
+        modal.style.display = 'none';
+        if (reload) {
+            window.location.reload();
+        }
+    }, 2000);
+ };
+ 
 
 // COMMENTS:
 class CommentsHandler {

@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // cart page
-    if (window.location.pathname === '/cart/') {
-        cartProductUpdate();
-        cartProductRemove();
+    // star detail page
+    if (document.body.getAttribute('data-page') === 'star_detail') {
+        favoriteAndWishlist();
     }
 
     // product detail page
@@ -11,112 +10,97 @@ document.addEventListener('DOMContentLoaded', function () {
         favoriteAndWishlist();
     }
 
-    // star detail page
-    if (document.body.getAttribute('data-page') === 'star_detail') {
-        favoriteAndWishlist();
+    // user wishlist page
+    if (window.location.pathname === '/account/wish_list/') {
+        removeFromWishlist();
     }
-
 });
 
-// favorite/wishlist ajax
-function favoriteAndWishlist() {
-    document.getElementById('favourite-wishlist-form-ajax').addEventListener('submit', function (e) {
-        e.preventDefault();
-    
-        const form = this;
-        const xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action);
-    
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                const response = JSON.parse(xhr.responseText);
-                form.querySelector('button span').innerText = response.action;
-                form.querySelector('button img').src = response.image_src;
-            } else {
-                if (xhr.status === 401) {
-                    window.location.replace(`/account/login/?next=${encodeURIComponent(window.location.href)}`);
-                }
-            }
-        };
-        xhr.send(new FormData(form));
-    });
-}
 
-// Cart form (ajax cartProductUpdate, cartProductRemove)
-function handleCartForm(form) {
-    var formData = new FormData(form);
-    var csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
+async function handleFormSubmit(form, onSuccess) {
+    const formData = new FormData(form);
+    const csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
-    fetch(form.action, {
-        method: form.method,
-        headers: {'X-CSRFToken': csrfToken},
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === 'success') {
-            window.location.reload();
-        } else {
-            alert('An error occurred. Please try again.');
-            window.location.reload();
-        }
-    })
-    .catch(error => {
-        alert('An error occurred. Please try again.');
-        window.location.reload();
-        console.error('Error:', error);
-    });
-}
-
-function cartProductUpdate() {
-    document.querySelectorAll('.cart-update').forEach(function (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            handleCartForm(form);
-        });
-    });
-}
-
-function cartProductRemove() {
-    document.querySelectorAll('.cart-remove').forEach(function (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            handleCartForm(form);
-        });
-    });
-}
-
-// product detail page
-function addProductCart() {
-    var form = document.getElementById('add-product-form');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var formData = new FormData(form);
-        var csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
-
-        fetch(form.action, {
+    try {
+        const response = await fetch(form.action, {
             method: form.method,
             headers: {'X-CSRFToken': csrfToken},
             body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                document.getElementById('total-unique-items').textContent = data.total_unique;
-                updateTotalUniqueItems(data.total_unique);
-                showModal(data.message);
-            } else {
-                showModal('Failed to add the product to the cart. Please try again.');
-            }
-        })
-        .catch(error => {
-            showModal('An error occurred. Please try again later.');
-            console.error('Error:', error);
+        });
+
+        if (response.status === 401) {
+            window.location.replace(`/account/login/?next=${encodeURIComponent(window.location.href)}`);
+            throw new Error('Unauthorized');
+        }
+
+        const data = await response.json();
+        onSuccess(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+// favorite/wishlist
+function favoriteAndWishlist() {
+    const form = document.getElementById('ajax-form-submit');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleFormSubmit(form, (data) => {
+                const button = form.querySelector('button');
+                button.querySelector('span').innerText = data.action;
+                button.querySelector('img').src = data.image_src;
+            });
+        });
+    }
+};
+
+// remove product (user wishlist page)
+function removeFromWishlist() {
+    document.querySelectorAll('form[id^="ajax-form-submit"]').forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleFormSubmit(form, (data) => {
+                if (data.result === 'removed') {
+                    location.reload();
+                }
+            });
         });
     });
-}
+};
+
+// product detail page
+function addProductCart() {
+    const form = document.getElementById('add-product-form');
+    if (form) {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    headers: {'X-CSRFToken': csrfToken},
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (data.result === 'success') {
+                    document.getElementById('total-unique-items').textContent = data.total_unique;
+                    updateTotalUniqueItems(data.total_unique);
+                    showModal(data.message);
+                } else {
+                    showModal('Failed to add the product to the cart. Please try again.');
+                }
+            } catch (error) {
+                showModal('An error occurred. Please try again later.');
+                console.error('Error:', error);
+            }
+        });
+    }
+};
 
 // display (total_unique) "addProductCart"
 function updateTotalUniqueItems(total_unique) {
@@ -130,15 +114,4 @@ function updateTotalUniqueItems(total_unique) {
             totalUniqueItemsElement.parentElement.style.display = 'none';
         }
     }
-}
-
-// modal "addProductCart"
-function showModal(message) {
-    const modal = document.getElementById('notification-modal');
-    const modalMessage = document.getElementById('modal-message');
-    modalMessage.textContent = message;
-    modal.style.display = 'block';
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 2000);
-}
+};

@@ -22,10 +22,10 @@
                                     <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>                        
                                 </div>
                                 <div class="wishlist-product-description">{{ product.description|safe|truncatewords:35 }}</div>
-                                <form class="wishlist" method="post">
+                                <form class="wishlist" method="post" action="{% url 'wishlist' product.slug %}"
+                                    id="ajax-form-submit-{{ product.id }}">
                                     {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ product.id }}">
-                                    <button type="submit" name="action" value="delete_product" class="wishlist-button">
+                                    <button type="submit" class="wishlist-button">
                                         <img class="remove-wishlist" src="{% static 'images/favourite_r.svg' %}" alt="img">
                                         <span>Remove</span>
                                     </button>
@@ -60,4 +60,5 @@
             </div>
         </div>
     </main>
+    <script type="module" src="{% static 'js/ajaxFormManager.js' %}"></script>
 {% endblock %}

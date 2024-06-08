@@ -35,7 +35,7 @@
                         <div class="item-description">{{ star.description|safe|linebreaksbr }}</div>
                     </div>
                 </div>
-                <form method="post" action="{% url 'favorite' star.slug %}" id="favourite-wishlist-form-ajax">
+                <form method="post" action="{% url 'favorite' star.slug %}" id="ajax-form-submit">
                     {% csrf_token %}
                     <div class="favorite">
                         <button type="submit" class="page-button favorite-button">

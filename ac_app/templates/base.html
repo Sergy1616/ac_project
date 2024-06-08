@@ -20,6 +20,7 @@
     <script src="{% static 'js/htmx.min.js' %}"></script>
 </head>
 <body>
+    <div id="notification-modal" class="modal-message"><p id="modal-message"></p></div>
     {% include 'include/header.html' %}
     {% block content %}
     {% endblock %}

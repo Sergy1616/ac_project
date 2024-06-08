@@ -185,12 +185,8 @@ class UserWishListView(LoginRequiredMixin, DetailView):
     def post(self, request, *args, **kwargs):
         wishlist = self.get_object()
         products = wishlist.products.all()
-        action = request.POST.get('action')
         form = CartAddProductForm(request.POST)
         delete_wishlist = request.POST.get('delete_wishlist', False)
-
-        if action == 'delete_product':
-            return self.delete_product_from_wishlist(wishlist)
 
         if form.is_valid():
             valid_data = form.cleaned_data
@@ -207,9 +203,3 @@ class UserWishListView(LoginRequiredMixin, DetailView):
 
         return super().get_context_data(**kwargs)
 
-    def delete_product_from_wishlist(self, wishlist):
-        product_id = self.request.POST.get('product_id')
-        if product_id:
-            product = get_object_or_404(wishlist.products, id=product_id)
-            wishlist.products.remove(product)
-            return redirect(self.request.META.get('HTTP_REFERER'))

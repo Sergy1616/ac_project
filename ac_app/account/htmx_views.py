@@ -50,4 +50,4 @@ def login_user_htmx(request):
         return HttpResponse("Authentication failed")
 
     login(request, auth_user)
-    return JsonResponse({}, headers={'HX-Trigger': 'loginSuccess'})
+    return JsonResponse({'message': f'Welcome {auth_user.username}!'}, headers={'HX-Trigger': 'loginSuccess'})

@@ -46,7 +46,7 @@
                         </ul>
                         <h1>{{ product.name }}</h1>
                         <form class="wishlist" method="post" action="{% url 'wishlist' product.slug %}"
-                        id="favourite-wishlist-form-ajax">
+                        id="ajax-form-submit">
                             {% csrf_token %}
                             <button type="submit" class="wishlist-button">
                                 {% if in_wishlist %}
@@ -69,9 +69,6 @@
                             {% else %}
                                 <p>$<span>{{ product.price }}</span></p>
                             {% endif %}
-                        </div>                        
-                        <div id="notification-modal" class="modal-message">
-                            <p id="modal-message"></p>
                         </div>
                         <form id="add-product-form" action="{% url 'cart_add' product.id %}" method="post">
                             {% csrf_token %}

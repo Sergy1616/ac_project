@@ -105,6 +105,8 @@ main { min-height: calc(100vh - 150px); }
 
 .modal-message {
     display: none;
+    width: max-content;
+    text-align: center;
     position: fixed;
     z-index: 100;
     left: 50%;
