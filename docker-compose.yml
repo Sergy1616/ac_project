@@ -2,7 +2,7 @@ version: '3.9'
 services:
   web-app:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - ./ac_app:/ac_app
     ports:
@@ -14,7 +14,7 @@ services:
       DB_NAME: ac_db
       DB_USER: admin
       DB_PASS: admin
-
+      
   db:
     image: postgres:16-alpine
     environment:
@@ -23,6 +23,7 @@ services:
       POSTGRES_PASSWORD: admin
     volumes:
       - ac_data:/var/lib/postgresql/data/
+      - ./postgres-init:/docker-entrypoint-initdb.d
 
 volumes:
   ac_data: null

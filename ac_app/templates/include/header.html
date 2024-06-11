@@ -26,8 +26,9 @@
             </ul>
             <div class="extra-menu-list">
                 <div class="search-bar">
-                    <form action="" method="get">
-                        <input type="text" name="query" placeholder="Search">
+                    <form action="{% url 'search' %}" method="get" id="search-form">
+                        {% csrf_token %}
+                        <input id="search-input" type="text" name="query" placeholder="Search" value="{{ query }}">
                         <button type="submit">
                             <span class="query-container">
                                 <img class="query-base" src="{% static 'images/query1.svg' %}" alt="query1">

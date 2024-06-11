@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Search{% endblock %}
+{% block content %}
+    <main class="main">
+        <div class="container">
+            {% if query %}
+                <div class="search-content">
+                    <h1 class="page-title">Search results for:<span>{{ query }}</span></h1>
+                    <h2>Found {{ total_results }} result{{ total_results|pluralize }}:</h2>
+                    {% for item in results %}
+                        <div class="search-item">
+                            <a class="img-link" href="{{ item.get_absolute_url }}">
+                                {% if item.images.all %}
+                                    <img src="{{ item.images.all.0.image.url }}" alt="{{ item.name }}">
+                                {% else %}
+                                    <img src="{{ item.image.url }}" alt="img">
+                                {% endif %}
+                            </a>
+                            <div class="search-item-info">
+                                <h3>
+                                    <a href="{{ item.get_absolute_url }}">
+                                        {% if item.title %}
+                                            {{ item.headline|safe|default:item.title }}
+                                        {% else %}
+                                            {{ item.headline|safe|default:item.name }}
+                                        {% endif %}
+                                    </a>
+                                </h3>
+                                <p>{{ item.headline_description|safe }}</p>
+                                <p>{{ item.description|truncatewords_html:50|safe }}</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="search-no-results">There are no results for your query.</p>
+                    {% endfor %}
+                    <!-- pagination -->
+                    {% if page_obj.has_other_pages %}
+                        {% include 'include/pagination/items_pagination.html' %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}

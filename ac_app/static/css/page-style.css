@@ -409,7 +409,8 @@
 
 /* space listView */
 .news-wrapper,
-.constellations-wrapper {
+.constellations-wrapper,
+.search-item {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 20px;
@@ -418,7 +419,8 @@
 }
 
 .news-wrapper img,
-.constellations-wrapper img {
+.constellations-wrapper img,
+.search-item img {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -427,14 +429,16 @@
 }
 
 .news,
-.constellation {
+.constellation,
+.search-item-info {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .news h2,
-.constellation h2 {
+.constellation h2,
+.search-item h3 {
     font-family: 'Merriweather', serif;
     margin-bottom: 10px;
     font-size: 18px;
@@ -1089,4 +1093,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}  
+}
+
+/* search */
+.search-content span { font-style: italic; }
+
+.search-content h2,
+.search-no-results {
+    margin: 0 0 30px 20px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.search-item-info p { margin-bottom: 10px; }
