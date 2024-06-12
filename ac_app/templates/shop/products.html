@@ -12,15 +12,7 @@
 {% block content %}
     <main class="main">
         <div class="container">
-            <div class="slider">
-                <div class="slider-wrapper">
-                    <a href="#">
-                        <div class="product-slide">
-                            <img src="{% static 'images/home_sliders/Shop.png' %}" alt="img">
-                        </div>
-                    </a>
-                </div>                
-            </div>
+            {% include 'include/sliders/shop_slider.html' %}
             <div class="shop-navbar">
                 <ul>
                     {% for category in categories %}

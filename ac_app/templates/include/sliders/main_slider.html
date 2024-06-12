@@ -1,0 +1,44 @@
+{% load static %}
+
+<div class="slider">
+    <div class="slider-wrapper">
+        <div class="slide">
+            <img src="{% static 'images/home_sliders/Stars.png' %}" alt="img">
+            <div class="star-slide">
+                <h1>Explore the Stars</h1>
+                <button class="page-button" type="submit">
+                    <a href="{{ slider_star.get_absolute_url }}">Explore</a>
+                </button>
+                <p>What spectral class is the Sun?</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/home_sliders/Constell.png' %}" alt="img">
+            <div class="constell-slide">
+                <h1>Find the Constellations</h1>
+                <p>Learn more about what these groups of stars can tell us about our place in the univers</p>
+                <button class="page-button" type="submit">
+                    <a href="{% url 'constellations' %}">Learn More</a>
+                </button>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/home_sliders/Shop.png' %}" alt="img">
+            <div class="shop-slide">
+                <div class="shop-slide-info">
+                    <h1>Visit our Online Shop</h1>
+                    <p>Books, Games, Gifts, Toys and Star Projectors</p>
+                    <button class="page-button" type="submit">
+                        <a href="{% url 'products' %}">Shop Now</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="arrow prev">
+        <img class="arrows-img" src="{% static 'images/slidearrow_left.svg' %}" alt="img">
+    </button>
+    <button class="arrow next">
+        <img class="arrows-img" src="{% static 'images/slidearrow_right.svg' %}" alt="img">
+    </button>
+</div>

@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.views.generic import FormView, ListView, TemplateView
 from itertools import chain
 from django.contrib.postgres.search import (
@@ -15,6 +16,11 @@ from shop.models import Product
 
 class HomePageView(TemplateView):
     template_name = "main/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["slider_star"] = get_object_or_404(Star.objects.only('slug'), slug="sun")
+        return context
 
 
 class SearchView(FormView, ListView):

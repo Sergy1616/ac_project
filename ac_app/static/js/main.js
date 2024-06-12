@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
         productDetailSlider();
     }
 
+    // main slider
+    if (window.location.pathname === '/' || document.body.getAttribute('data-page') === 'products') {
+        mainSlider();
+    }
+
     function initializeOnAllPages() {
         handleMenu();
         accountMenu();
@@ -223,4 +228,99 @@ function sortProducts() {
         sortSelect.addEventListener('change', function() {
             document.getElementById('sortForm').submit();
         });
+};
+
+// SLIDER:
+function mainSlider() {
+    const slider = document.querySelector('.slider-wrapper');
+    const ImageAndLink = slider.querySelectorAll('img, a');
+    const cardBounding = slider.getBoundingClientRect();
+    let clicked = false;
+    let initialPos = 0;
+    let currentScroll = 0;
+    let autoscroll;
+    let isDragging = false;
+
+    function setGrabState(state) {
+        if(state){
+            slider.classList.add('grab');
+        } else{
+            slider.classList.remove('grab');
+        }
+        clicked = state;
+    };
+
+    slider.onmousedown = (event) => {
+        initialPos = event.clientX - cardBounding.left;
+        currentScroll = slider.scrollLeft;
+        setGrabState(true);
+    };
+
+    slider.onmousemove = (event) => {
+        if (clicked) {
+            isDragging = true;
+            const xPos = event.clientX - cardBounding.left;
+            const scrollPos = currentScroll + -(xPos - initialPos);
+            slider.scrollLeft = scrollPos;
+        }
+    };
+
+    slider.onmouseup = slider.onmouseleave = () => {
+        setGrabState(false);
+        if (!isDragging) {
+            isDragging = false;
+        }
+    };
+
+    ImageAndLink.forEach(item=> {
+        item.setAttribute('draggable', false);
+        item.addEventListener('click', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+            }
+            isDragging = false;
+        });
+    });
+
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let widthToScroll = slider.children[0].offsetWidth;
+
+    window.onresize = function() {
+        widthToScroll = slider.children[0].offsetWidth;
+    };
+
+    prevButton.onclick = function() { slider.scrollLeft -= widthToScroll; };
+    nextButton.onclick = function() { slider.scrollLeft += widthToScroll; };
+
+    const slides = Array.from(slider.children);
+    slides.slice(-1).reverse().forEach(item=> {
+        slider.insertAdjacentHTML('afterbegin', item.outerHTML);
+    });
+    slides.slice(0, 1).forEach(item=> {
+        slider.insertAdjacentHTML('beforeend', item.outerHTML);
+    });
+
+    slider.onscroll = function() {
+        if(slider.scrollLeft === 0) {
+            slider.classList.add('no-smooth');
+            slider.scrollLeft = slider.scrollWidth - (2 * slider.offsetWidth);
+            slider.classList.remove('no-smooth');
+        }
+        else if(slider.scrollLeft === slider.scrollWidth - slider.offsetWidth) {
+            slider.classList.add('no-smooth');
+            slider.scrollLeft = slider.offsetWidth;
+            slider.classList.remove('no-smooth');
+        }
+        if(autoscroll) {
+            clearTimeout(autoscroll);
+        }
+        autoscroll = setTimeout(()=> {
+            slider.scrollLeft += widthToScroll;
+        }, 5000);
+    };
+
+    autoscroll = setTimeout(() => {
+        slider.scrollLeft += slider.children[0].offsetWidth;
+    }, 5000);
 };

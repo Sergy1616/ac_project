@@ -25,6 +25,8 @@ class ProductListView(ListView):
         context['categories'] = Category.objects.all()
         context['brands'] = Brand.objects.all()
         context.update(self.get_selected_context())
+        context['sale_product_list'] = self.get_is_on_sale_products()
+
         return context
 
     def get_queryset(self):
@@ -78,6 +80,12 @@ class ProductListView(ListView):
             context['selected_brand'] = get_object_or_404(Brand, slug=brand_slug)
 
         return context
+
+    def get_is_on_sale_products(self):
+        sale_products = Product.objects.filter(in_stock=True, discount__gt=0).prefetch_related(
+            Prefetch('images', queryset=ProductImage.objects.filter(is_for_slider=True))
+        )
+        return sale_products
 
 
 class ProductDetailView(DetailView):

@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="slider">
+    <div class="slider-wrapper">
+        {% for product in sale_product_list %}
+            <a href="{{ product.get_absolute_url }}">
+                <div class="product-slide">
+                    {% for image in product.images.all %}
+                        {% if image.is_for_slider %}
+                            <img src="{{ image.image.url }}" alt="{{ product.name }}" loading="lazy">
+                        {% endif %}
+                    {% endfor %}
+                    <div class="sale-discount"><p>-{{ product.discount }}%</p></div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <button class="arrow prev">
+        <img class="arrows-img" src="{% static 'images/slidearrow_left.svg' %}" alt="img">
+    </button>
+    <button class="arrow next">
+        <img class="arrows-img" src="{% static 'images/slidearrow_right.svg' %}" alt="img">
+    </button>
+</div>
