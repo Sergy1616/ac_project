@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         mainSlider();
     }
 
+    // home page content sliders
+    if (window.location.pathname === '/') {
+        homeContentSlider();
+    }
+
     function initializeOnAllPages() {
         handleMenu();
         accountMenu();
@@ -323,4 +328,68 @@ function mainSlider() {
     autoscroll = setTimeout(() => {
         slider.scrollLeft += slider.children[0].offsetWidth;
     }, 5000);
+};
+
+// Home page sliders
+function homeContentSlider() {
+    const sliders = document.querySelectorAll('.slider-container');
+
+    sliders.forEach(slider => {
+        const contentSlider = slider.querySelector('.content-slider');
+        const linksAndImages = contentSlider.querySelectorAll('a, img');
+        const cardBounding = contentSlider.getBoundingClientRect();
+        let clicked = false, initialPos = 0, currentScroll = 0, isDragging = false;
+
+        function setGrabState(state) {
+            if (state) {
+                contentSlider.classList.add('grab');
+            } else {
+                contentSlider.classList.remove('grab');
+            }
+            clicked = state;
+        }
+
+        const handleMouseDown = (event) => {
+            initialPos = event.clientX - cardBounding.left;
+            currentScroll = contentSlider.scrollLeft;
+            setGrabState(true);
+        };
+
+        const handleMouseMove = (event) => {
+            if (clicked) {
+                isDragging = true;
+                const xPos = event.clientX - cardBounding.left;
+                const scrollPos = currentScroll + -(xPos - initialPos);
+                contentSlider.scrollLeft = scrollPos;
+            }
+        };
+
+        const handleMouseUp = () => {
+            setGrabState(false);
+            if (!isDragging) {
+                isDragging = false;
+            }
+        };
+
+        contentSlider.addEventListener('mousedown', handleMouseDown);
+        contentSlider.addEventListener('mousemove', handleMouseMove);
+        contentSlider.addEventListener('mouseup', handleMouseUp);
+        contentSlider.addEventListener('mouseleave', handleMouseUp);
+
+        linksAndImages.forEach(item => {
+            item.setAttribute('draggable', false);
+            item.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                }
+                isDragging = false;
+            });
+        });
+
+        const widthToScroll = contentSlider.children[0].offsetWidth;
+        const prevButton = slider.querySelector('.left-arrow');
+        const nextButton = slider.querySelector('.right-arrow');
+        prevButton.addEventListener('click', () => { contentSlider.scrollLeft -= widthToScroll });
+        nextButton.addEventListener('click', () => { contentSlider.scrollLeft += widthToScroll });
+    });
 };

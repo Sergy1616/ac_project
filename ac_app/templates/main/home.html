@@ -5,6 +5,81 @@
     <main class="main">
         <div class="container-home">
             {% include 'include/sliders/main_slider.html' %}
+            <section class="slider-container">
+                <h1 class="page-title">Sale</h1>
+                <div class="content-slider content-slider-shop">
+                    {% for product in sale_products %}
+                        <a href="{{ product.get_absolute_url }}">
+                            <div class="home-products">
+                                <div class="home-products-images">
+                                    {% if product.title_images %}
+                                        <img src="{{ product.title_images.0.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{{ product.images.all.0.image.url }}" alt="{{ product.name }}">
+                                    {% endif %}
+                                </div>
+                                <div class="home-item-info">
+                                    <h2>{{ product.name|truncatewords:5 }}</h2>                                    
+                                    <div class="discount">
+                                        <p>$<span><s>{{ product.price }}</s></span></p>
+                                        <p>$<span>{{ product.final_price }}</span></p>
+                                        <p>({{ product.discount }}%<span>Off</span>)</p>
+                                    </div>                                                               
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% include 'main/slider_navigation.html' %}                
+            </section>
+            <section class="slider-container">
+                <h1 class="page-title">Latest Space News</h1>
+                <div class="content-slider content-slider-news">
+                    {% for news in latest_news %}
+                        <a href="{{ news.get_absolute_url }}">
+                            <div class="home-news">                                
+                                <img src="{{ news.image.url }}" alt="{{ news.title }}" loading="lazy">
+                                <h2>{{ news.title }}</h2>                            
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% include 'main/slider_navigation.html' %}
+            </section>
+            <section class="slider-container">
+                <h1 class="page-title">The Oldest Stars</h1>
+                <div class="content-slider">
+                    {% for item in oldest_stars %}
+                        <a href="{{ item.star.get_absolute_url }}">
+                            <div class="home-stars">                                
+                                <img src="{{ item.star.image.url }}" alt="{{ item.star.name }}" loading="lazy">
+                                <div class="home-item-info left-indent">
+                                    <h2>{{ item.star.name }}</h2>
+                                    <p>{{ item.age }}<span>{{ item.get_age_unit_display }}</span></p>
+                                </div>                                               
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% include 'main/slider_navigation.html' %}
+            </section>
+            <section class="slider-container">
+                <h1 class="page-title">The Most Massive Stars</h1>
+                <div class="content-slider">
+                    {% for item in massive_stars %}
+                        <a href="{{ item.star.get_absolute_url }}">
+                            <div class="home-stars">                                
+                                <img src="{{ item.star.image.url }}" alt="{{ item.star.name }}" loading="lazy">
+                                <div class="home-item-info left-indent">
+                                    <h2>{{ item.star.name }}</h2>
+                                    <p>{{ item.mass|floatformat:"-1" }}<span>M</span><sub>☉</sub></p>
+                                </div>  
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                {% include 'main/slider_navigation.html' %}
+            </section>
         </div>
     </main>
 {% endblock %}

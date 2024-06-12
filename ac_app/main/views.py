@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
 from django.views.generic import FormView, ListView, TemplateView
 from itertools import chain
@@ -10,17 +11,55 @@ from django.contrib.postgres.search import (
 )
 
 from .forms import SearchForm
-from space.models import Star, SpaceNews, Constellation
-from shop.models import Product
+from space.models import Star, SpaceNews, Constellation, StarCharacteristics
+from shop.models import Product, ProductImage
 
 
 class HomePageView(TemplateView):
     template_name = "main/home.html"
+    LATEST_NEWS_COUNT = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["slider_star"] = get_object_or_404(Star.objects.only('slug'), slug="sun")
+        context["latest_news"] = self.get_latest_news()
+        context["sale_products"] = self.get_is_on_sale_products()
+        context["oldest_stars"] = self.get_list_of_oldest_stars()
+        context["massive_stars"] = self.get_list_of_most_massive_stars()
         return context
+
+    def get_latest_news(self):
+        return SpaceNews.objects.filter(published=True).order_by("-time_create")[
+            : self.LATEST_NEWS_COUNT
+        ]
+
+    def get_is_on_sale_products(self):
+        sale_products = Product.objects.filter(
+            in_stock=True, discount__gt=0
+        ).prefetch_related(
+            Prefetch("images", queryset=ProductImage.objects.filter(is_for_slider=True))
+        )
+        return sale_products
+
+    def get_list_of_oldest_stars(self):
+        oldest_stars = (
+            StarCharacteristics.objects.filter(age_unit=2)
+            .order_by("-age")
+            .select_related("star")
+            .only(
+                "age", "age_unit", "star__name", "star__image", "star__slug"
+            )
+        )
+        return oldest_stars
+
+    def get_list_of_most_massive_stars(self):
+        most_massive_stars = (
+            StarCharacteristics.objects.filter(mass__gt=10)
+            .order_by("-mass")
+            .select_related("star")
+            .only("mass", "star__name", "star__image", "star__slug")
+        )
+        return most_massive_stars
 
 
 class SearchView(FormView, ListView):
