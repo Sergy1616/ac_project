@@ -128,16 +128,20 @@ function handleInput() {
 function showModal(message, reload=false) {
     const modal = document.getElementById('notification-modal');
     const modalMessage = document.getElementById('modal-message');
+    const modalBackground = document.getElementById('modal-background');
+
     modalMessage.textContent = message;
-    modal.style.display = 'block';
+    modal.classList.add('modal-message-open');
+    modalBackground.classList.add('modal-background-open')
     setTimeout(() => {
-        modal.style.display = 'none';
+        modal.classList.remove('modal-message-open');
+        modalBackground.classList.remove('modal-background-open');
         if (reload) {
             window.location.reload();
         }
-    }, 2000);
+    }, 1500);
  };
- 
+
 
 // COMMENTS:
 class CommentsHandler {

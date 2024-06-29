@@ -40,14 +40,10 @@ def check_password_htmx(request):
 def login_user_htmx(request):
     username_or_email = request.POST.get("username_or_email", "").lower().strip()
     password = request.POST.get("password", "").strip()
-    user = get_user_by_username_or_email(username_or_email)
+    user = authenticate(request, username=username_or_email, password=password)
 
-    if not user or not check_password(password, user.password):
-        return HttpResponse("Invalid username or password",  headers={'HX-Redirect': '/account/login/'})
+    if user is None:
+        return HttpResponse("Invalid username or password", status=401, headers={'HX-Redirect': '/account/login/'})
 
-    auth_user = authenticate(request, username=user.username, password=password)
-    if not auth_user:
-        return HttpResponse("Authentication failed")
-
-    login(request, auth_user)
-    return JsonResponse({'message': f'Welcome {auth_user.username}!'}, headers={'HX-Trigger': 'loginSuccess'})
+    login(request, user)
+    return JsonResponse({'message': f'Welcome {user.username}!'}, headers={'HX-Trigger': 'loginSuccess'})

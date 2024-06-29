@@ -1,18 +1,8 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django import forms
 from django.contrib.auth import get_user_model
 
 Profile = get_user_model()
-
-
-class SignInProfileForm(AuthenticationForm):
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        return username.lower()
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        return email.lower()
 
 
 class SignUpProfileForm(UserCreationForm):

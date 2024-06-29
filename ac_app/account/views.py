@@ -1,35 +1,40 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
+from django.contrib.auth.views import (
+    PasswordChangeView,
+    PasswordResetView,
+)
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, DetailView, FormView, UpdateView, ListView
-from django.shortcuts import get_object_or_404, redirect
+from django.views.generic import (
+    DeleteView,
+    DetailView,
+    FormView,
+    UpdateView,
+    ListView
+)
+from django.shortcuts import redirect
 
 from cart.forms import CartAddProductForm
-from account.forms import (
+from .forms import (
     CustomPasswordResetForm,
     SignUpProfileForm,
     ProfileEditForm,
     CustomPasswordChangeForm,
     DeleteAccountForm
 )
-from account.models import Profile
+from .models import Profile
 from space.models import Comment, FavoriteStar
 from shop.models import WishList
 from cart.cart import Cart
 
 
-class LoginProfileView(LoginView):
-    template_name = "registration/login.html"
-
-
 class ProfileView(LoginRequiredMixin, DetailView):
     model = Profile
-    template_name = "account/profile.html"
-    slug_field = "username"
-    slug_url_kwarg = "username"
+    template_name = 'account/profile.html'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
 
 
 class SignUpProfileView(FormView):
@@ -98,18 +103,7 @@ class CustomPasswordResetView(PasswordResetView):
         if form.is_valid():
             form.save(request=request)
             messages.success(request, "We've emailed you instructions for setting your password.")
-            return self.get(request, *args, **kwargs)
-        else:
-            return self.form_invalid(form)
-
-
-class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Your password has been set successfully.")
-            return self.get(request, *args, **kwargs)
+            return self.render_to_response(self.get_context_data(form=form))
         else:
             return self.form_invalid(form)
 
@@ -161,7 +155,7 @@ class UserFavoriteStarsView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return FavoriteStar.objects.select_related(
             'star__spectrum',
-            'star__constellation').filter(user=self.request.user)
+            'star__constellation').filter(user=self.request.user).order_by('-date_added')
 
 
 class UserWishListView(LoginRequiredMixin, DetailView):
@@ -169,9 +163,9 @@ class UserWishListView(LoginRequiredMixin, DetailView):
     template_name = 'account/user_wish_list.html'
 
     def get_object(self, queryset=None):
-        wishlist, created = WishList.objects.prefetch_related(
+        self.object, created = WishList.objects.prefetch_related(
             'products__images').get_or_create(user=self.request.user)
-        return wishlist
+        return self.object
 
     def get_queryset(self):
         queryset = WishList.objects.filter(user=self.request.user).select_related('user')
@@ -183,8 +177,8 @@ class UserWishListView(LoginRequiredMixin, DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
-        wishlist = self.get_object()
-        products = wishlist.products.all()
+        self.object = self.get_object()
+        products = self.object.products.all()
         form = CartAddProductForm(request.POST)
         delete_wishlist = request.POST.get('delete_wishlist', False)
 
@@ -198,8 +192,9 @@ class UserWishListView(LoginRequiredMixin, DetailView):
                     override_quantity=valid_data['override']
                     )
             if delete_wishlist:
-                wishlist.delete()
+                self.object.delete()
             return redirect('cart_detail')
-
-        return super().get_context_data(**kwargs)
-
+        else:
+            context = self.get_context_data(**kwargs)
+            context['form_errors'] = form.errors
+            return self.render_to_response(context)

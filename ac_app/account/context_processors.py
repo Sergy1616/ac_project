@@ -1,5 +1,5 @@
-from account.forms import SignInProfileForm
+from django.contrib.auth.forms import AuthenticationForm
 
 
 def login_form(request):
-    return {'login_form': SignInProfileForm()}
+    return {'login_form': AuthenticationForm()}
