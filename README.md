@@ -1,8 +1,6 @@
 # Astronomy Club Project
 
-The Astronomy Club Project is a Django-based web application designed to provide educational resources in astronomy for both children and adults. The project includes a range of functionalities such as user management, space news, detailed information on constellations and stars, and an online shop for astronomy-related products. Additionally, the application is optimized for mobile devices, ensuring a seamless user experience across various platforms. The project also includes comprehensive Django testing to ensure the reliability and stability of the application. 
-
-This project aims to inspire and educate users about the wonders of the universe through an engaging and interactive platform.
+The Astronomy Club Project is a Django-based web application designed to provide educational resources in astronomy for both children and adults. The project includes a range of functionalities such as user authentication, profile management, space news, detailed information on constellations and stars, and an online shop for astronomy-related products.
 
 ## Technologies Used
 

@@ -5,11 +5,13 @@ from django.views import View
 from django.templatetags.static import static
 from django.views.generic import ListView, DetailView
 
+from mixins.view_mixins import OnSaleProductsMixin
 from .forms import ProductSortForm
 from .models import Category, Product, Brand, ProductImage, WishList
 
 
-class ProductListView(ListView):
+
+class ProductListView(OnSaleProductsMixin, ListView):
     model = Product
     form_class = ProductSortForm
     template_name = 'shop/products.html'
@@ -18,6 +20,11 @@ class ProductListView(ListView):
     brand_slug_url_kwarg = 'brand_slug'
     allow_empty = False
     paginate_by = 6
+
+    def setup(self, request, *args, **kwargs):
+        self.category_slug = kwargs.get('category_slug')
+        self.brand_slug = kwargs.get('brand_slug')
+        super().setup(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -70,22 +77,14 @@ class ProductListView(ListView):
         return queryset
 
     def get_selected_context(self):
-        category_slug = self.kwargs.get(self.category_slug_url_kwarg)
-        brand_slug = self.kwargs.get(self.brand_slug_url_kwarg)
         context = {}
 
-        if category_slug:
-            context['selected_category'] = get_object_or_404(Category, slug=category_slug)
-        if brand_slug:
-            context['selected_brand'] = get_object_or_404(Brand, slug=brand_slug)
+        if self.category_slug:
+            context['selected_category'] = get_object_or_404(Category, slug=self.category_slug)
+        if self.brand_slug:
+            context['selected_brand'] = get_object_or_404(Brand, slug=self.brand_slug)
 
         return context
-
-    def get_is_on_sale_products(self):
-        sale_products = Product.objects.filter(in_stock=True, discount__gt=0).prefetch_related(
-            Prefetch('images', queryset=ProductImage.objects.filter(is_for_slider=True))
-        )
-        return sale_products
 
 
 class ProductDetailView(DetailView):

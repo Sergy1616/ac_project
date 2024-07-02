@@ -1,4 +1,3 @@
-from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
 from django.views.generic import FormView, ListView, TemplateView
 from itertools import chain
@@ -10,12 +9,13 @@ from django.contrib.postgres.search import (
     TrigramSimilarity,
 )
 
+from mixins.view_mixins import OnSaleProductsMixin
 from .forms import SearchForm
 from space.models import Star, SpaceNews, Constellation, StarCharacteristics
-from shop.models import Product, ProductImage
+from shop.models import Product
 
 
-class HomePageView(TemplateView):
+class HomePageView(OnSaleProductsMixin, TemplateView):
     template_name = "main/home.html"
     LATEST_NEWS_COUNT = 6
 
@@ -32,14 +32,6 @@ class HomePageView(TemplateView):
         return SpaceNews.objects.filter(published=True).order_by("-time_create")[
             : self.LATEST_NEWS_COUNT
         ]
-
-    def get_is_on_sale_products(self):
-        sale_products = Product.objects.filter(
-            in_stock=True, discount__gt=0
-        ).prefetch_related(
-            Prefetch("images", queryset=ProductImage.objects.filter(is_for_slider=True))
-        )
-        return sale_products
 
     def get_list_of_oldest_stars(self):
         oldest_stars = (
