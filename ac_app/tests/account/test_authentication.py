@@ -1,5 +1,5 @@
 from account.authentication import EmailAuthBackend
-from .base_test import *
+from tests.base_test import *
 
 
 class EmailAuthBackendTest(BaseTest):

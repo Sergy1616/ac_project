@@ -120,6 +120,10 @@
     color: var(--hover-color);
 }
 
+.left-indent span { margin-left: 5px; }
+
+.left-indent sub { font-size: smaller; }
+
 /* account/profile */
 .profile {
     max-width: 500px;

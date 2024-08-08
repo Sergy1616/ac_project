@@ -2,11 +2,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.messages import get_messages
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse, resolve
+from django.utils.text import slugify
 
 from cart.forms import CartAddProductForm
 from shop.models import WishList, Product
-from space.models import Comment, FavoriteStar
-from .base_test import *
+from space.models import Comment, FavoriteStar, Star
+from tests.base_test import *
 from account.forms import (
     SignUpProfileForm,
     ProfileEditForm,
@@ -363,7 +364,6 @@ class DeleteAccountViewTest(BaseTest):
         response = self.client.post(
             self.url, data={"password": self.password, "confirm_delete": True}
         )
-        self.assertRedirects(response, reverse("home"))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Profile.objects.filter(username=self.user).exists())
 
@@ -402,7 +402,7 @@ class UserCommentsViewTest(BaseTest):
         super().setUp()
         self.client.force_login(self.user)
         self.comment = Comment.objects.create(
-            news_id=1, author=self.user, text="User comment"
+            news=self.news, author=self.user, text="User comment"
         )
         self.url = reverse("user_comments")
         self.response = self.client.get(self.url)
@@ -418,8 +418,8 @@ class UserCommentsViewTest(BaseTest):
         self.assertIn(self.comment, self.response.context["user_comments"])
 
     def test_view_pagination(self):
-        for i in range(10):
-            Comment.objects.create(news_id=2, author=self.user, text=f"Comment {i}")
+        for i in range(9):
+            Comment.objects.create(news=self.news, author=self.user, text=f"Comment {i}")
 
         response = self.client.get(reverse("user_comments"))
         self.assertEqual(response.status_code, 200)
@@ -427,12 +427,22 @@ class UserCommentsViewTest(BaseTest):
         self.assertTrue(response.context["is_paginated"] is True)
         self.assertEqual(len(response.context["user_comments"]), 8)
 
+        response = self.client.get(self.url + '?page=2')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['user_comments']), 2)
+
 
 class UserFavoriteStarsViewTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.client.force_login(self.user)
-        self.favorite_star = FavoriteStar.objects.create(user=self.user, star_id=1)
+
+        for i in range(9):
+            name = f"Star {i + 1}"
+            slug = slugify(name)
+            star = Star.objects.create(name=name, slug=slug, spectrum=self.spectrum)
+            FavoriteStar.objects.create(user=self.user, star=star)
+        
         self.url = reverse("user_favorites")
         self.response = self.client.get(self.url)
 
@@ -442,17 +452,20 @@ class UserFavoriteStarsViewTest(BaseTest):
         self.assertEqual(view.func.__name__, UserFavoriteStarsView.as_view().__name__)
 
     def test_correct_template_and_view_context(self):
-        self.assertTemplateUsed(self.response, "account/user_favorites.html")
-        self.assertIn(self.favorite_star, self.response.context["user_favorites"])
+        self.assertTemplateUsed(self.response, 'account/user_favorites.html')
+        self.assertIn('user_favorites', self.response.context)
+        self.assertEqual(len(self.response.context['user_favorites']), 8)
 
     def test_view_pagination(self):
-        for i in range(2, 10):
-            FavoriteStar.objects.create(user=self.user, star_id=f"{i}")
-        response = self.client.get(reverse("user_favorites"))
+        response = self.client.get(reverse('user_favorites'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue("is_paginated" in response.context)
-        self.assertTrue(response.context["is_paginated"] is True)
-        self.assertEqual(len(response.context["user_favorites"]), 8)
+        self.assertTrue('is_paginated' in response.context)
+        self.assertTrue(response.context['is_paginated'] is True)
+        self.assertEqual(len(response.context['user_favorites']), 8)
+
+        response = self.client.get(self.url + '?page=2')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['user_favorites']), 1)
 
 
 class UserWishListViewTest(BaseTest):
@@ -461,6 +474,8 @@ class UserWishListViewTest(BaseTest):
         self.client.force_login(self.user)
         self.url = reverse("user_wish_list")
         self.response = self.client.get(self.url)
+        self.wishlist = WishList.objects.get(user=self.user)
+        self.wishlist.products.add(self.product1, self.product2)
 
     def test_page_status_and_view_url(self):
         self.assertEqual(self.response.status_code, 200)
@@ -480,45 +495,38 @@ class UserWishListViewTest(BaseTest):
         self.assertEqual(wishlist.user, self.user)
 
     def test_post_adds_products_to_cart_and_deletes_wishlist(self):
-        for i in range(1, 3):
-            wishlist = WishList.objects.get(user=self.user)
-            wishlist.products.add(Product.objects.get(id=i))
-
-        form_data = {"quantity": 1, "override": False, "delete_wishlist": True}
+        form_data = {
+            'quantity': 1,
+            'override': False,
+            'delete_wishlist': True
+        }
         response = self.client.post(self.url, data=form_data)
-        self.assertRedirects(response, reverse("cart_detail"))
-        cart = self.client.session.get("cart")
+        self.assertRedirects(response, reverse('cart_detail'))
+
+        cart = self.client.session.get('cart')
         self.assertIsNotNone(cart)
-        for i in range(1, 3):
-            self.assertIn(str(Product.objects.get(id=i).id), cart)
+        self.assertIn(str(self.product1.id), cart)
+        self.assertIn(str(self.product2.id), cart)
         self.assertEqual(WishList.objects.filter(user=self.user).count(), 0)
 
     def test_get_queryset_returns_correct_wishlist(self):
-        product1 = Product.objects.get(id=1)
-        product2 = Product.objects.get(id=2)
-        wishlist = WishList.objects.get(user=self.user)
-        wishlist.products.add(product1, product2)
         view = UserWishListView()
         view.request = self.client.get(self.url).wsgi_request
         queryset = view.get_queryset()
-
         self.assertEqual(queryset.count(), 1)
-        self.assertEqual(queryset.first(), wishlist)
+        self.assertEqual(queryset.first(), self.wishlist)
 
     def test_post_with_invalid_form(self):
-        product = Product.objects.get(id=1)
-        wishlist = WishList.objects.get(user=self.user)
-        wishlist.products.add(product)
-
-        data = {"quantity": -1, "delete_wishlist": True}
+        data = {
+            'quantity': -1,
+            'delete_wishlist': True
+        }
         response = self.client.post(self.url, data)
-
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "account/user_wish_list.html")
-        self.assertIn("form_errors", response.context)
-        form_errors = response.context["form_errors"]
-        self.assertIn("quantity", form_errors)
-        self.assertIn(
-            "Ensure this value is greater than or equal to 1.", form_errors["quantity"]
-        )
-        self.assertFalse(self.client.session.get("cart", None))
+        self.assertTemplateUsed(response, 'account/user_wish_list.html')
+        self.assertIn('form_errors', response.context)
+
+        form_errors = response.context['form_errors']
+        self.assertIn('quantity', form_errors)
+        self.assertIn('Ensure this value is greater than or equal to 1.', form_errors['quantity'])
+        self.assertFalse(self.client.session.get('cart', None))

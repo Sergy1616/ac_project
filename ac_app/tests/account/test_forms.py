@@ -1,4 +1,4 @@
-from .base_test import *
+from tests.base_test import *
 from account.forms import (
     SignUpProfileForm,
     ProfileEditForm,
