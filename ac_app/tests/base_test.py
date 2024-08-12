@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 
-from shop.models import Category, Brand, Product
+from shop.models import Category, Brand, Product, WishList
 from space.models import SpectralClass, SpaceNews, Constellation
 
 Profile = get_user_model()
@@ -53,6 +53,7 @@ class BaseTest(TestCase):
         self.product2 = self.create_product(
             name="Test Product 2", slug="test-product-2", price=200.00
         )
+        self.wishlist = WishList.objects.create(user=self.user)
 
     def get_test_form_data(self, **kwargs):
         default_data = {

@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse, NoReverseMatch
 
 from tests.base_test import BaseTest
-from shop.models import Category, ProductImage, WishList
+from shop.models import Category, ProductImage
 
 
 class CategoryModelTest(BaseTest):
@@ -144,10 +144,6 @@ class ProductImageModelTest(BaseTest):
 
 
 class WishListModelTest(BaseTest):
-    def setUp(self):
-        super().setUp()
-        self.wishlist = WishList.objects.create(user=self.user)
-
     def test_create_wishlist(self):
         self.assertEqual(self.wishlist.user, self.user)
         self.assertEqual(self.wishlist.title, "Wish List")
@@ -168,3 +164,8 @@ class WishListModelTest(BaseTest):
         self.assertEqual(self.wishlist.products.count(), 1)
         self.assertIn(self.product2, self.wishlist.products.all())
         self.assertNotIn(self.product1, self.wishlist.products.all())
+
+    def test_clear_wishlist(self):
+        self.wishlist.products.add(self.product1, self.product2)
+        self.wishlist.products.clear()
+        self.assertEqual(self.wishlist.products.count(), 0)

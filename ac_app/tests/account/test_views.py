@@ -5,7 +5,6 @@ from django.urls import reverse, resolve
 from django.utils.text import slugify
 
 from cart.forms import CartAddProductForm
-from shop.models import WishList, Product
 from space.models import Comment, FavoriteStar, Star
 from tests.base_test import *
 from account.forms import (
