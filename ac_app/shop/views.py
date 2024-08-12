@@ -1,4 +1,4 @@
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Count
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -8,7 +8,6 @@ from django.views.generic import ListView, DetailView
 from mixins.view_mixins import OnSaleProductsMixin
 from .forms import ProductSortForm
 from .models import Category, Product, Brand, ProductImage, WishList
-
 
 
 class ProductListView(OnSaleProductsMixin, ListView):
@@ -29,8 +28,12 @@ class ProductListView(OnSaleProductsMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.form_class(self.request.GET)
-        context['categories'] = Category.objects.all()
-        context['brands'] = Brand.objects.all()
+        context['categories'] = Category.objects.annotate(
+            product_count=Count('products')
+        ).filter(product_count__gt=0)
+        context['brands'] = Brand.objects.annotate(
+            product_count=Count('product')
+        ).filter(product_count__gt=0)
         context.update(self.get_selected_context())
         context['sale_product_list'] = self.get_is_on_sale_products()
 
@@ -49,13 +52,10 @@ class ProductListView(OnSaleProductsMixin, ListView):
         return queryset
 
     def filter_by_category_and_brand(self, queryset):
-        category_slug = self.kwargs.get(self.category_slug_url_kwarg)
-        brand_slug = self.kwargs.get(self.brand_slug_url_kwarg)
-
-        if category_slug:
-            return queryset.filter(category__slug=category_slug)
-        if brand_slug:
-            return queryset.filter(brand__slug=brand_slug)
+        if self.category_slug:
+            return queryset.filter(category__slug=self.category_slug)
+        if self.brand_slug:
+            return queryset.filter(brand__slug=self.brand_slug)
 
         return queryset
 

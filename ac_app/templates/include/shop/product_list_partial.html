@@ -1,0 +1,27 @@
+<ul>
+    {% for product in product_list %}
+        <li>
+            <a href="{{ product.get_absolute_url }}">
+                <div class="product-image">
+                    {% if product.title_images %}
+                        <img src="{{ product.title_images.0.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{{ product.images.all.0.image.url }}" alt="{{ product.name }}">
+                    {% endif %}
+                </div>
+                <div class="product-item">
+                    <h2 class="product-title">{{ product.name|truncatewords:5 }}</h2>
+                    {% if product.discount %}
+                        <div class="discount">
+                            <p>$<span><s>{{ product.price }}</s></span></p>
+                            <p>$<span>{{ product.final_price }}</span></p>
+                            <p>({{ product.discount }}%<span>Off</span>)</p>
+                        </div>
+                    {% else %}
+                        <p>$<span>{{ product.price }}</span></p>
+                    {% endif %}
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
