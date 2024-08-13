@@ -19,7 +19,7 @@ class BaseTest(TestCase):
         self.email = "testuser@mail.com"
         self.invalid_email = "invalid_email.com"
 
-        self.user = Profile.objects.create_user(
+        self.user = self.create_user(
             username=self.existing_user,
             email=self.existing_email,
             password=self.password,
@@ -76,6 +76,11 @@ class BaseTest(TestCase):
         }
         default_data.update(kwargs)
         return default_data
+
+    def create_user(self, **kwargs):
+        default_data = {"username": self.username, "password": self.password}
+        default_data.update(kwargs)
+        return Profile.objects.create_user(**default_data)
 
     def create_product(self, **kwargs):
         product_data = self.get_test_product_data(**kwargs)

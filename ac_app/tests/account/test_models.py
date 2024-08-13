@@ -1,40 +1,30 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 from account.models import upload_photo
 from account.validators import validate_file_size
+from tests.base_test import BaseTest
 
 
-class ProfileModelTest(TestCase):
+class ProfileModelTest(BaseTest):
     def setUp(self):
-        self.Profile = get_user_model()
-        self.username = "testuser"
-        self.email = "testuser@mail.com"
-        self.password = "testpass123"
+        super().setUp()
         self.test_image = SimpleUploadedFile(
             name="test_image.jpg", content=b"content", content_type="image/jpeg"
         )
         self.bio = "Test bio"
 
-    def create_user(self, **kwargs):
-        default_data = {"username": self.username, "password": self.password}
-        default_data.update(kwargs)
-        return self.Profile.objects.create_user(**default_data)
-
     def test_str_method(self):
-        user = self.create_user()
-        self.assertEqual(str(user), "testuser")
+        self.assertEqual(str(self.user), self.existing_user)
 
     def test_get_absolute_url_method(self):
-        user = self.create_user()
-        expected_url = reverse("user_detail", kwargs={"username": user.username})
-        self.assertEqual(user.get_absolute_url(), expected_url)
+        expected_url = reverse("user_detail", kwargs={"username": self.user.username})
+        self.assertEqual(self.user.get_absolute_url(), expected_url)
 
     def test_username_and_email_saved_as_lower(self):
-        user = self.Profile.objects.create_user(
+        user = self.create_user(
             username="TestUser",
             email="TEST@EXAMPLE.COM",
         )

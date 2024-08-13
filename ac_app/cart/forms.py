@@ -2,5 +2,12 @@ from django import forms
 
 
 class CartAddProductForm(forms.Form):
-    quantity = forms.IntegerField(min_value=1, initial=1, widget=forms.TextInput(attrs={'class': 'edit-input'}))
-    override = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
+    quantity = forms.IntegerField(
+        min_value=1,
+        max_value=1000,
+        initial=1,
+        widget=forms.TextInput(attrs={"class": "edit-input"}),
+    )
+    override = forms.BooleanField(
+        required=False, initial=False, widget=forms.HiddenInput
+    )
