@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         handleMenu();
         accountMenu();
         handleInput();
+        preventSearch();
     }
 
     initializeOnAllPages();
@@ -137,10 +138,25 @@ function showModal(message, reload=false) {
         modal.classList.remove('modal-message-open');
         modalBackground.classList.remove('modal-background-open');
         if (reload) {
-            window.location.reload();
+            const currentPath = window.location.pathname;
+            if (currentPath.includes('signup')) {
+                window.location.href = '/';
+            } else {
+                window.location.reload();
+            }
         }
     }, 1500);
  };
+
+ // 5. Search
+function preventSearch() {
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+        var searchInput = document.getElementById('search-input').value;
+        if (!searchInput.trim()) {
+            event.preventDefault();
+        }
+    });
+}
 
 
 // COMMENTS:

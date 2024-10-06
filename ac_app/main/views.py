@@ -10,7 +10,6 @@ from django.contrib.postgres.search import (
 )
 
 from mixins.view_mixins import OnSaleProductsMixin
-from .forms import SearchForm
 from space.models import Star, SpaceNews, Constellation, StarCharacteristics
 from shop.models import Product
 
@@ -21,7 +20,7 @@ class HomePageView(OnSaleProductsMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["slider_star"] = get_object_or_404(Star.objects.only('slug'), slug="sun")
+        context["slider_star"] = get_object_or_404(Star.objects.only("slug"), slug="sun")
         context["latest_news"] = self.get_latest_news()
         context["sale_products"] = self.get_is_on_sale_products()
         context["oldest_stars"] = self.get_list_of_oldest_stars()
@@ -38,9 +37,7 @@ class HomePageView(OnSaleProductsMixin, TemplateView):
             StarCharacteristics.objects.filter(age_unit=2)
             .order_by("-age")
             .select_related("star")
-            .only(
-                "age", "age_unit", "star__name", "star__image", "star__slug"
-            )
+            .only("age", "age_unit", "star__name", "star__image", "star__slug")
         )
         return oldest_stars
 
@@ -54,8 +51,7 @@ class HomePageView(OnSaleProductsMixin, TemplateView):
         return most_massive_stars
 
 
-class SearchView(FormView, ListView):
-    form_class = SearchForm
+class SearchView(ListView):
     context_object_name = "results"
     success_url = "/search/"
     template_name = "main/search.html"
@@ -101,22 +97,27 @@ class SearchView(FormView, ListView):
         return queryset
 
     def get_queryset(self):
-        form = self.form_class(self.request.GET)
-        if form.is_valid():
-            query = form.cleaned_data.get("query")
-            if query:
-                news = self.annotate_queryset(SpaceNews, query, "title")
-                constellations = self.annotate_queryset(Constellation, query, "name")
-                stars = self.annotate_queryset(Star, query, "name")
-                products = self.annotate_queryset(
-                    Product, query, "name", prefetch_related="images"
-                )
+        query = self.request.GET.get("query", "").strip()
 
-                queryset = list(chain(news, constellations, stars, products))
-                self.total_results = len(queryset)
-            else:
-                self.total_results = 0
-                queryset = []
+        if not query:
+            self.total_results = 0
+            return []
+
+        news = self.annotate_queryset(SpaceNews, query, "title")
+        constellations = self.annotate_queryset(Constellation, query, "name")
+        stars = self.annotate_queryset(Star, query, "name")
+        products = self.annotate_queryset(
+            Product, query, "name", prefetch_related="images"
+        )
+
+        queryset = sorted(
+            chain(news, constellations, stars, products),
+            key=lambda item: item.rank or 0,
+            reverse=True,
+        )
+
+        self.total_results = len(queryset)
+
         return queryset
 
     def get_context_data(self, **kwargs):

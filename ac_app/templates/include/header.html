@@ -27,7 +27,6 @@
             <div class="extra-menu-list">
                 <div class="search-bar">
                     <form action="{% url 'search' %}" method="get" id="search-form">
-                        {% csrf_token %}
                         <input id="search-input" type="text" name="query" placeholder="Search" value="{{ query }}">
                         <button type="submit">
                             <span class="query-container">

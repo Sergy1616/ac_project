@@ -4,9 +4,11 @@
 {% block content %}
     <main class="main">
         <div class="container">
-            {% if query %}
+            {% if not query or total_results == 0 %}
+                <p class="search-no-results">No results found for your query. Please try using different keywords.</p>
+            {% else %}
                 <div class="search-content">
-                    <h1 class="page-title">Search results for:<span>{{ query }}</span></h1>
+                    <h1 class="page-title">Search results for:<span>{{ query|truncatewords:10 }}</span></h1>
                     <h2>Found {{ total_results }} result{{ total_results|pluralize }}:</h2>
                     {% for item in results %}
                         <div class="search-item">
